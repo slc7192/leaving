@@ -1,0 +1,34 @@
+var index = new Vue({
+  el:"#app",
+  data:{
+    indexlist:[
+      {img:'../img/index/green.png',name:'绿色'},
+      {img:'../img/index/red.png',name:'红色'},
+      {img:'../img/index/blue.png',name:'蓝色'},
+      {img:'../img/index/purple.png',name:'紫色'},
+      {img:'../img/index/orange.png',name:'橙色'},
+    ],
+    isshow:false,
+    ischange:false
+  },
+  created(){
+    var bod=x=document.getElementsByTagName('bod');
+    console.log(bod);
+  },
+  methods:{
+    editor(bol){
+      if(bol){
+        this.isshow=true;
+      }else{
+        this.isshow=false;
+      }
+    },
+    change(bol){
+      if(bol){
+        this.ischange=true;
+      }else{
+        this.ischange=false
+      }
+    },
+  },
+})

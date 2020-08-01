@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../publicJs/element_ui/element.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/reg.css">
+    <style>
+       [v-cloak]{
+            display: none
+        }
+        .ipt{
+            height: 42px;
+        }
+        .ipt>div {
+            margin-top: 8px;
+        }
+        .sendCode {
+            top: -9px;
+        }
+        .login {
+            margin-top: 22px;
+            margin-bottom: 22px;
+        }
+        .log_btn{
+            margin-top: 6px;
+        }
+        .ipt {
+            width: 390px;
+            margin-bottom: 14px;
+        }
+        .ipt>.select {
+            padding-right: 39px;
+        }
+        .log_btn a {
+            width: 200px;
+            height: 48px;
+            line-height: 48px;
+        }
+        .el-select .el-input .el-select__caret {
+            color: #000;
+            font-size: 14px;
+            -webkit-transition: -webkit-transform .3s;
+            transition: -webkit-transform .3s;
+            transition: transform .3s;
+            transition: transform .3s, -webkit-transform .3s;
+            -webkit-transform: rotateZ(180deg);
+            transform: rotateZ(180deg);
+            cursor: pointer;
+        }
+        input::-webkit-input-placeholder {
+            color: #dfaf89!important;
+        }
+        input::-moz-input-placeholder {
+            color: #dfaf89!important;
+        }
+        input::-ms-input-placeholder {
+            color: #dfaf89!important;
+        }
+        input::-webkit-input-placeholder{
+            color:#dfaf89!important;
+        }
+        .el-input__inner {
+            padding: 0 0px;
+        }
+        .el-select .el-input .el-select__caret {
+         color: #dfaf89!important;
+        }
+         /*** 消除input元素 type="number" 时默认的 加减按钮*/
+         input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /*** 消除input元素 type="number" 时默认的 加减按钮---moz版*/
+        input[type=number] {
+            -moz-appearance:textfield;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body" v-cloak id="reg">
+        <div class="band">
+            <div class="left">
+                <div class="log">
+                    <img src="../img/logo-golden.png" width="100%" alt="">
+                </div>
+                <h4 class="title">河南牧业经济学院</h4>
+                <div class="intro">
+                    河南牧业经济学院始建于1957年，由原郑州牧业工程高等专科学校和原河南商业高等专科学校合并组建而成，是经教育部批准设置、河南省人民政府举办的一所省属公办全日制普通本科院校，是河南省本科转型发展试点学校。学校坐落于九州之中、中华腹地的河南省省会郑州，地理位置优越，人文底蕴深厚，自然环境优美。
+                </div>
+                <a href="./login.html">
+                    <div class="btn">登录</div>
+                </a>
+            </div>
+            <div class="right">
+                <div class="login">注册</div>
+                <!-- <div class="error">
+                    账号或密码有误，请重新输入或找回密码
+                </div> -->
+                <div class="ipt">
+                    <div class="phone"></div>
+                    <input type="number" placeholder="请输入手机号" v-model="reg.phone" @input="regphone">
+                </div>
+                <div class="ipt">
+                    <div class="name"></div>
+                    <input type="text" placeholder="请输入真实姓名" v-model="reg.student_name">
+                </div>
+
+                <div class="ipt location">
+                    <div class="attr"></div>
+                    <div class="select">
+                        <el-select v-model="value" placeholder="请选择学生属性" style="width: 222px; margin-top: 0px;" @change="changlist">
+                            <el-option
+                              v-for="item in studentlist"
+                              :key="item.value"
+                              :label="item.label"
+                              :value="item.value">
+                            </el-option>
+                          </el-select>
+                  
+                    </div>
+                    
+                </div>
+                <div class="ipt">
+                    <div class="name"></div>
+                    <el-select v-model="value1" placeholder="班级" style="width: 222px; margin-top: 0px;" @change="chang">
+                        <el-option
+                          v-for="item in options"
+                          :key="item.dictionary_id"
+                          :label="item.dictionary_name"
+                          :value="{value:item.dictionary_id,label:item.dictionary_name}">
+                        </el-option>
+                      </el-select>
+                </div>
+                <div class="ipt">
+                    <div class="name"></div>
+                    <input type="number" placeholder="学号" v-model="reg.student_id">
+                </div>
+                <div class="ipt">
+                    <div class="pwd"></div>
+                    <input type="password" placeholder="请设置登录密码" v-model="againpass" @input="animate(1)">
+                </div>
+                <div class="ipt">
+                    <div class="pwd"></div>
+                    <input type="password" placeholder="请确认登录密码" v-model="reg.password" @input="animate(2)">
+                </div>
+                <!-- <div class="ipt">
+                    <div class="pwd"></div>
+                    <input type="text" placeholder="请输入验证码">
+                    <div class="sendCode">获取验证码</div>
+                </div> -->
+                <div class="ab_pwd">
+                    <div>
+                        点击“提交”，表示您已同意相关协议
+                    </div>
+                </div>
+                <div class="log_bottm">
+                    <div class="log_btn"  @click="raeg">
+                        <a>
+                            提交
+                        </a> 
+                    </div>
+                    <div class="log_btn">
+                        <a href="#">
+                            重置
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../publicJs/vue.js"></script>
+    <script src="../publicJs/element_ui/element.js"></script>
+    <script src="../publicJs/axios.js"></script>
+    <script src="../js/pub.js"></script>
+    <script src="../js/reg.js"></script>
+    <script src="../js/cookie.js"></script>
+    <script>
+        var body = document.querySelector('.body');
+        body.style.height = window.innerHeight+'px'
+        var select = document.querySelector('.select');
+        var select_content = document.querySelector('.select_content');
+        select.onclick = function(){
+            var state = select_content.style.display;
+            if(state=='none'){
+                state = 'block'
+            }else if(state =='block'){
+                state = 'none'
+            }
+            select_content.style.display = state
+        }
+        // var options = document.querySelector('.tringle').children;
+        // var value = document.querySelector('.value')
+        // for(var i = 0 ; i < options.length;i++){
+        //     options[i].onclick = function(e){
+        //         value.innerText = this.innerText;
+        //         // e.cancleBubble = true
+        //         e.stopProgatation()
+        //         return false;
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

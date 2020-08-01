@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品详情实验</title>
+  <!-- <link rel="stylesheet" href="./css/header.css"> -->
+  <link rel="shortcut icon" href="favicon.ico" >
+  <link rel="stylesheet" href="../css/storeopt.css">
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+    #app{
+      height:100%;
+    }
+  </style>
+</head>
+<body id="bod">
+  <div id="app" v-cloak> 
+    <div class="right">
+      <div class="right_p">
+        <p>当前模板可选择的配色方案</p>
+      </div>
+      <div class="right_point">
+        <div class="right_top" v-for="(value,index) of indexlist">
+         <img :src="value.img" alt="" class="right_litter" @click="change(true)">
+         <p>{{value.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="left">
+      <div style="width: 1200px;margin: 0 auto;">
+        <img src="../img/index/head.png" alt="">
+      </div>
+      <div class="left_top">
+        <p>首页</p>
+        <p>免费推广</p>
+      </div>
+      <!-- <div class="left_k"></div> -->
+      <div class="left_sec">
+        <p>以上为页头区域</p>
+      </div>
+      <div style="width: 1200px; margin: 0 auto;"> 
+        <img src="../img/index/xq.png" alt="" style="padding: 20px 0;">
+      </div>
+    </div>
+    <div class="zhe" :class="{change:ischange}">
+      <div class="modela" :class="{change:ischange}">
+        <img src="../img/index/close.png" alt="" @click="change(false)">
+        <p>替换颜色成功！</p>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="../publicJs/vue.js"></script>
+<script src="../js/storeopt.js"></script>
+</html>

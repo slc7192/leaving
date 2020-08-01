@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="./css/introduceInfo1.css">
+  <style>
+    .layui-colla-icon {
+      color: #dfaf89;
+      left: 15px;
+    }
+
+    .layui-colla-content {
+      padding: 0;
+    }
+
+    .expand .a_active:hover,
+    .expand .a_active:active {
+      color: #dfaf89 !important;
+    }
+
+    .expand .liat_a:hover {
+      color: #dfaf89
+    }
+
+    .list .li_title:hover,
+    .list .li_title:active {
+      background-color: #f7f7f7;
+    }
+
+    body {
+      line-height: 0 !important;
+    }
+
+    fieldset {
+      border: none;
+    }
+
+    /* .list .ul_active {
+      background-color: #f7f7f7;
+    } */
+
+    /* .li_m_active {
+      color: #dfaf89;
+    } */
+
+    .introduce {
+      display: none
+    }
+
+    .a_active {
+      color: #dfaf89;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .arrow_banner {
+      display: flex;
+      justify-content: space-between;
+      width: 1200px;
+      height: 80px;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      margin-top: -40px;
+      left: 19%;
+    }
+
+    .arrow_banner span {
+      /* display: block; */
+      width: 45px;
+      height: 80px;
+      background-color: rgba(0, 0, 0, 0.3);
+      line-height: 80px;
+      text-align: center;
+      cursor: pointer;
+      display: none;
+      transition: all 1s;
+    }
+
+    .arrow_banner span img {
+      vertical-align: middle;
+      border-style: none;
+    }
+
+    .banner:hover .arrow_left {
+      display: block;
+
+    }
+    .part1{
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .banner:hover .arrow_right {
+      display: block;
+    }
+
+    .arrow_left:hover,
+    .arrow_left:active {
+      background-color: rgba(0, 0, 0, 1);
+    }
+    /* 顶 */
+    .con{
+      width:1200px;
+      margin:0 auto;
+      display: flex;
+      justify-content: space-between;
+      height: 81px;
+    line-height: 81px;
+    position: relative;
+    z-index: 999999;
+    }
+    .btn_black a{
+        color: #fff;
+    }
+    .text_s{
+      text-indent:2em
+    }
+    .te_left tr>td:nth-child(2){
+      text-align: left;
+      margin-left: 5px;
+    }
+    .te_left tr>td:first-child{
+      width: 240px;
+    }
+    .te_left thead tr>td{
+      text-align: center!important;
+    }
+    .te_left  tbody tr>td p{
+      margin-left: 15px;
+    }
+    .btn_white a{
+      color:#dfaf89;
+    }
+    .layui-colla-content {
+       padding: 10px 0px;
+    }
+    .sjg{
+      background-color: #dfaf89;
+      
+      margin-right: 20px;
+    }
+    .sjg a{
+      
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content">
+    <div class="top" id="tp">
+      <div class="con">
+        <div class="left">
+          <img  src="./img/logo.png" alt="">
+        </div>
+        <div class="use_handler">
+              <div class="btn_black sjg">
+                <a href="http://lab.groupontrading.com/CCL/login.html" target="_blank">教师登录</a>
+              </div>
+              <div class="btn_black">
+                <a href="./html/login.html" target="_blank">登录</a>
+              </div>
+              <div class="btn_white">
+                <a href="./html/reg.html" target="_blank">注册</a>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="banner">
+      <div class="banner_cont">
+        <div>
+          <div class="dv">
+            <h5>物流与电商学院</h5>
+            <p>生鲜电商与冷链物流虚拟仿真项目</p>
+          </div>
+          <div class="intro">
+            生鲜电商与冷链物流虚拟仿真项目主要解决以理论为主的课程和校内的实践基地具有一定的局限性，并不能达到课程建设的主要目标，但生鲜电商与冷链物流虚拟仿真项目不仅让学生学习和领悟生鲜电商与冷链物流的相关理论知识，还能够让学习者通过虚拟仿真项目真正参与和体验到生鲜产品的交易、运营以及冷链全产业链的管理和追溯。
+          </div>
+          <!-- <div class="btn_hand">
+            <div>
+              <span class="opcity_line"></span>
+              实验练习→</div>
+            <div>
+              <span class="opcity_line"></span>
+              实验考试→</div>
+            <div>
+              <span class="opcity_line"></span>
+              查看成绩→</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="arrow_banner">
+        <span class="arrow_left">
+          <img src="./img/arrow-l.png" alt="上一张">
+        </span>
+        <span class="arrow_right">
+          <img src="./img/arrow-r.png" alt="下一张">
+        </span>
+      </div>
+      <div class="pot">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="m_left">
+        <div class="left_title">
+          <span></span>
+          实验目录
+        </div>
+        <div class="layui-collapse" lay-accordion="">
+          <div class="list layui-colla-item">
+            <h2 class="layui-colla-title li_title">实验描述</h2>
+            <div class="expand layui-colla-content">
+              <ul>
+                <li>
+                  <a class="liat_a a_active" href="#one">实验目的</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#two">实验原理</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#three">实验仪器设备</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#four">实验材料</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#five">实验教学方法</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#six">实验方法与步骤要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#seven">实验结果与结论要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#eight">考核要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#nine">面向学生要求</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="list layui-colla-item">
+            <h2 class="layui-colla-title li_title">实验相关网络要求描述
+            </h2>
+            <div class="expand layui-colla-content">
+              <ul>
+                <li>
+                  <a class="liat_a" href="#ten">网络条件要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#eleven">用户操作系统要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#twelve">用户非操作系统软件配置要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#thirteen">用户硬件配置要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#fourteen">用户特殊外置硬件要求</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="list layui-colla-item">
+            <h2 class="layui-colla-title li_title">实验技术架构及主要研发技术
+            </h2>
+            <div class="expand layui-colla-content">
+              <ul>
+                <li>
+                  <a class="liat_a" href="#fifteen">技术架构及主要研发技术</a>
+                </li>
+                <!-- <li>
+                  <a class="liat_a" href="#fourteen">网络条件</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#fifteen">用户操作</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#sixteen">用户非操作要求</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#seventeen">用户硬件配置</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#eighteen">特殊外置硬件</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+          <div class="list layui-colla-item">
+            <h2 class="layui-colla-title li_title">实验特色
+            </h2>
+            <div class="expand layui-colla-content">
+              <ul>
+                <li>
+                  <a class="liat_a" href="#sixteen">实验特色</a>
+                </li>
+                <!-- 
+                <li>
+                  <a class="liat_a" href="#seventeen">用户硬件配置</a>
+                </li>
+                <li>
+                  <a class="liat_a" href="#eighteen">特殊外置硬件</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+          <div class="list layui-colla-item">
+            <h2 class="layui-colla-title li_title">实验持续建设服务计划
+            </h2>
+            <div class="expand layui-colla-content">
+              <ul>
+                <li>
+                  <a class="liat_a" href="#seventeen">实验持续建设服务计划</a>
+                </li>
+                <!-- <li>
+                  <a class="liat_a" href="#eighteen">特殊外置硬件</a>
+                </li> -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="m_right">
+        
+        <!--2.2  实验目的 -->
+        <div id="one" class="introduce show">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验目的
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                
+              </div>
+              <div class="p_cont">
+                <p class="text_s">《生鲜电商与冷链物流》课程是在《电子商务概论》、《物流管理概论》、《冷链物流》三门课程的提炼与升华，现在已经建设完成，并被评为省级示范在线精品开放课程，可在中国大学慕课直接搜索“生鲜电商与冷链物流”观看学习。课程网址为：https://www.icourse163.org/course/HNUAHE-1002926003，现已在线学习将近2000人左右，涉及生鲜电商与冷链物流相关的企业、学生及爱好者。
+                </p>
+                <p class="text_s">
+                  《生鲜电商与冷链物流》课程建设的主要目的是解决众多企业及个人如何开展并运营生鲜电商业务、如何协同冷链物流发展为生鲜品供应链提供更好的支持、如何实现田间地头至餐桌的全程“不断链”物流服务。为了更好地进行教学和服务企业，以河南牧业经济学院物流与电商学院为主建设了生鲜电商与冷链物流学科创新基地，并研发《生鲜电商与冷链物流》教材。
+                </p>
+                <p class="text_s">
+                  在线开放课程以理论讲授为主，主要介绍生鲜电商的概念、生鲜电商的业态模式、生鲜电商的平台运维以及冷链物流的全产业链管理和追溯；生鲜电商与冷链物流学科创新基地为老师和学生进行生鲜电商的实践创新提供了场所；但是以理论为主的课程和校内的实践基地具有一定的局限性，并不能达到课程建设的主要目标，因此建设《生鲜电商与冷链物流虚拟仿真项目》，不仅让学生学习和领悟生鲜电商与冷链物流的相关理论知识，还能够让学习者通过虚拟仿真项目真正参与和体验到生鲜产品的交易、运营以及冷链全产业链的管理和追溯。具体而言，实验目标包括以下四个方面：
+                </p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                目标一
+              </div>
+              <div class="p_cont">
+                通过生鲜电商店铺的建设以及产品的发布等，让学生掌握生鲜电商网店建设的基本技能；让学生熟悉生鲜电商网上交易的基本流程；掌握生鲜电商与其他品类电商的差异性。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                目标二
+              </div>
+              <div class="p_cont">
+                通过生鲜电商的运营推广等，让学生掌握生鲜电商的软文营销策略及方法，掌握生鲜类产品电商短视频和电商直播的策略和技巧。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                目标三
+              </div>
+              <div class="p_cont">
+                通过冷链物流的模拟运营管理，让学生理解冷链物流的概念，掌握生鲜电商产品冷链物流的基本流程；掌握冷链物流中的设施设备、关键技术及应用；理解冷链物流与普通物流的联系和区别；明确全程温控和追溯的必要性和重要性。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                目标四
+              </div>
+              <div class="p_cont">
+                通过冷链物流的参数设置和仿真运行，掌握生鲜电商产品在冷链物流中物流网络搭建、资源配置、配送线路、库存设置等优化方法，进一步深化优化的目的和意义。
+              </div>
+              <!-- <table border="1">
+                <caption>表 1 PVC几何尺寸和物理性能 / Table 1 Property of PVC pipe</caption>
+                <thead>
+                  <td>外径D/cm</td>
+                  <td>内径d/cm</td>
+                  <td>半径R/cm</td>
+                  <td>长度L/cm</td>
+                  <td>弹性模量E/GPa</td>
+                  <td>惯性矩l/(10xmm4)</td>
+                </thead>
+                <tr>
+                  <td>6</td>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>200</td>
+                  <td>5</td>
+                  <td>59.65</td>
+                </tr>
+              </table> -->
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2.3 实验原理 -->
+        <div id="two" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验原理
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                知识点1
+              </div>
+              <div class="p_cont">
+                该项目以生鲜电商平台的搭建、冷链物流的全产业链管理为虚拟仿真的对象，允许学生在虚拟计算机环境中搭建自己的生鲜店铺、撰写生鲜电商软文、打造生鲜电商直播，针对订单进行管理并进行冷链物流网络构建、冷链物流配送运营与优化等的系统化解决方案。通过虚拟仿真系统，用户可以设置自己的店铺装修风格、产品展示风格、创造自己的软文，同时用户也可以改变一个或多个不同的参数，如改变冷链物流网络中本地仓、前置仓的选址和人员设备选择，优化构建冷链物流网络，或者改变配送线路优化和库存设置，测试不同冷链物流网络对生鲜品配送的时效、成本和新鲜度的影响。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                知识点2
+              </div>
+              <div class="p_cont">
+                在该虚拟仿真系统中，学生具备双重身份，既是生鲜电商冷链物流企业的经营者和管理者，又是生鲜电商市场的消费者。学生可以在该系统中开设自己的店铺，进行冷链物流全产业链管理，同时又可以作为消费者，参与到生鲜电商与冷链物流的市场中，营造出一种真实的市场环境和冷链物流管理环境。虚拟仿真实验中，通过将理论知识与实践操作相结合的方式，达到学以致用的目的。具体教学过程中，根据生鲜电商与冷链物流的实验设计流程，设计相应的任务，并嵌套相应的理论知识，相关知识点如表1所示。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                虚拟仿真任务-知识点
+              </div>
+              <table border="1" class="te_left">
+                <thead>
+                  <td>虚拟仿真任务/cm</td>
+                  <td>知识点</td>
+                </thead>
+                <tr>
+                  <td>调研与认知任务</td>
+                  <td>
+                    <p>(1)学习和掌握生鲜电商的概念。</p>
+                    <p>(2)学习和掌握生鲜产品的分类，不同生鲜产品的归属，以及不同类型生鲜产品的特点。</p>
+                    <p>(3)学习和掌握不同类型生鲜产品保鲜的要求。</p>
+                    <p>(4)学习和掌握生鲜电商的运营过程。</p>
+                    <p>(5)学习和掌握冷链物流的工作原理。</p>
+                    <p>(6)学习和掌握生鲜产品预冷的过程及保鲜的原理。</p>
+                    <p>(7)了解和认识生鲜电商与冷链物流的融合过程。</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>生鲜电商店铺的开设及装修</td>
+                  <td>
+                    <p>(1)了解和掌握生鲜电商店铺开设的基本流程，包括店铺名称设置、店铺logo设置、店铺的装修、产品上架以及销售、订单管理等。</p>
+                    <p>(2)掌握生鲜电商店铺包含的基本元素和模块，以及不同模块装修的技巧等。</p>
+                    <p>(3)掌握生鲜电商店铺的装修技巧和优化技巧。</p>
+                    <p>(4)学习和掌握电子商务店铺装修的UI设计等。</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>生鲜电商营销之软文撰写任务</td>
+                  <td>
+                    <p>(1)了解软文的概念以及常见的软文的类型。</p>
+                    <p>(2)了解软文营销在电子商务营销中的作用，以及其产生作用的原理。</p>
+                    <p>(3)学习和掌握软文的基本类型和基本特征，以及不同类型软文的营销目的和方法。</p>
+                    <p>(4)学习和掌握不同类型软文的写作方法、写作步骤，掌握生鲜电商类软文的写作技巧。</p>
+                    <p>(5)学习和掌握生鲜电商软文营销中的软文写作和软文设置方法及技巧。</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>生鲜电商营销之直播带货任务</td>
+                  <td>
+                    <p>(1)了解直播和点播的区别，直播的工作原理。</p>
+                    <p>(2)了解电商直播的场景以及场景设置。</p>
+                    <p>(3)了解电商直播的不同类型，包括卖货型、场景引入型、教学直播型、供应链直播型等不同直播类型的区别，以及不同类型直播的特点等。</p>
+                    <p>(4)了解电商直播的人员配置和分工，了解电商直播的岗位设置等。具体包括主播、助理、场控、策划、BD、数据分析等，并根据不同类型进行灵活配置。</p>
+                    <p>(5)掌握直播脚本的撰写方法，学会如何撰写电商直播的脚本。</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>冷链物流网络的构建与配置任务</td>
+                  <td>
+                    <p>(1)了解产地仓、本地仓和前置仓的概念、作用和辐射范围；</p>
+                    <p>(2)理解产地仓收货时，预冷步骤的重要性，了解常见生鲜品的预冷标准温度，使学生建立冷链食品安全的意识；</p>
+                    <p>(3)了解并掌握常见的冷链物流干线运输业务车辆，并合理开展冷藏车辆选型</p>
+                    <p>(4)学习并掌握冷链物流网络的构建，会根据所学专业知识和设定的仿真条件，为冷链物流网络开展布局规划，主要包含对本地仓和前置仓进行选址；</p>
+                    <p>(5)学习并熟练本地仓中冷藏车辆、制冷设备和温湿度传感器的分类和选择，并学会如何合理布局温湿度传感器的位置，理解传感器的灵敏度及位置对温度监控的影响；</p>
+                    <p>(6)了解前置仓中常见最后一公里设备，明确不同设备对货物新鲜度的影响；</p>
+                    <p>(7)学习并掌握如何根据订单对前置仓运用人员开展合理配置；</p>
+                    <p>(8)学习并掌握如何分析订单数据指导本地仓和前置仓的库存设置；</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>冷链物流配送模拟运营输入数据设置任务</td>
+                  <td>
+                    <p>(1)了解冷链物流运营中补货流程，明确补货对冷链物流网络运营的重要性；</p>
+                    <p>(2)理解本地仓和前置仓配送线路规划的意义，能够根据所学的配送线路优化的知识，开展合理的配送车辆配置、配送线路规划。对于本地仓，能够根据前置仓的需求，设置配送车辆送货至前置仓的车辆分配和顺序；对于前置仓，能够根据需求开展订单合并配送；</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>仿真模型的运行与管理任务</td>
+                  <td>
+                    <p>(1)明确配送网络布局、前置仓和本地仓人员设备配置、配送线路优化对冷链物流配送时效、成本、新鲜度的影响；</p>
+                    <p>(2)了解冷链物流配送中常见的问题，对货物温度超过阈值或货物线路偏移时，会实时的做出处理，树立学生全程监控与管理的概念；</p>
+                    <p>(3)理解冷链物流追溯的含义；</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>仿真模型的优化任务</td>
+                  <td>
+                    <p>(1)通过仿真结果和反复试验，对前置仓、本地仓的布局开展优化，深化系统仿真的意义；</p>
+                    <p>(2)对配送线路通过不同的算法开展优化和重新设置，通过仿真实验验证算法的优劣性；</p>
+                    <p>(3)通过不同的库存管理方法，对前置仓和本地仓的库存进行库存管理优化；</p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2.4 实验仪器设备 -->
+        <div id="three" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验仪器设备
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                实验仪器设备
+              </div>
+              <div class="p_cont">
+                生鲜电商与冷链物流虚拟仿真实验软件
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2.5  实验材料-->
+        <div id="four" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验材料
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                无
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2.6  实验教学方法-->
+        <div id="five" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验教学方法
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、使用目的
+              </div>
+              <div class="p_cont">
+                <p class="text_s">生鲜电商与冷链物流虚拟仿真实验平台采用先进的网络技术，3D仿真运行技术和先进的实验教学理念，将理论知识、企业应用与仿真运行等方面有机融合于实验教学系统，通过让学生参与实验，在课堂教学现场，充分感受从生鲜电商的运营到冷链物流配送整个过程的设计运行效果，对全过程的业务流程完整再现，使学生对生鲜电商与冷链物流中运营、优化及管理优化有一个全面的感性认识和理性认识，以培养学生的生鲜电商的店铺装修、软文写作、电商直播、冷链物流网络布局、冷链物流配送设备选择、冷链物流线路优化及冷链物流全过程追溯与管理等能力。
+                </p>
+                <p class="text_s">
+                  生鲜电商与冷链物流虚拟仿真实验平台可以有效解决实体实验室建设受限、学生集装箱码头参观与实习受限的问题，为学生实习提供全方位的教学辅助。随着国家对教育投入的逐年增加,高校实验室的设备质量和体量也不断提升,对实验教学和科研支持的能力也不断增加,而随之而来的设备能源的消耗、环境境噪声的污染,特别是实验室场地不足等问题越来越突出，尤其是对于生鲜电商与冷链物流的设施设备，由于课程内容跨度较大，单独设置生鲜电商机房或者购买冷链物流设施设备，都需要更多的场地和资金支持，并且需要不断的与实际结合更新设施设备，对资源的浪费更为明显，因此本项目的建设，是对课堂理论知识和教学的补充，以充分调动学生学习积极性和参与性为目的，将传统教学手段和现代教育技术协调应用，在仿真实验教学中培养学生的实践技能和创新能力。例如：每一步实验后，都可以通过查看动画更加直观的感受到实验结果。
+                </p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、实验过程
+              </div>
+              <div class="p_cont">
+                <p class="text_s">① 任务描述—让学生初步了解实验过程的内容和方法，让学生快速进入实验任务状态。例如:通过观看简介视频和引导视频。
+                </p>
+                <p class="text_s">② 知识链接—实验开始之前，教师对此次的教学内容相关理论知识进行讲解，在此过程中，学生需学习并理解相关理论知识，为后续的实验教学内容打下理论基础；
+                </p>
+                <p class="text_s">③ 互动讨论—为加深学生对重点理论知识的学习和理解，针对实验内容中的重点和难点，结合教师讲授的相关知识对实验内容进行探讨并回答问题。例如：学生可以针对操作过程中的疑问，与教师和同学进行在线讨论。
+                </p>
+                <p class="text_s">④ 实验训练—学生根据前期理论知识和课堂互动的学习，参考教学引导视频和实验步骤，在规定时间内完成实验任务及相关问题。此过程为实验教学过程的核心内容，在此过程中，学生将理论知识应用于实践操作，并在实践操作中发现问题并解决问题，综合提高学生的学习应用能力。例如：在冷链物流配送网络布局中，需要根据实际需要计算和布局本地仓和前置仓的位置，在仿真模拟运行中，可以通过仿真去观察本次设置的成本与服务水平之间的得分；
+                </p>wu
+                <p class="text_s">⑤ 根据实验结果，去明确此次设置的合理性，有无进一步优化的空间，如果需要进一步优化，可以重新做第四步；例如：对每次实验形成的结果报告结项分析就是为了锻炼学生分析解决问题的能力；
+                </p>
+                <p class="text_s">⑥ 评价总结—教师依据任务评价标准对学生实验的结果进行点评，学生对任务完成情况进行总结，形成实验报告。
+                </p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                三、实施效果
+              </div>
+              <div class="p_cont">
+                本项目突破了以往理论与实践相脱节的现象，弥补了生鲜电商与冷链物流实验设施设备的缺乏和资金场地资源占地严重等不足。强调充分发挥学生的主导作用，通过设定实验任务和实验目标，让师生双方边教、边学、边做，全程构建素质和技能培养框架，丰富课堂教学和实践教学环节，提高实验教学质量。
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2.7 实验方法与步骤要求-->
+        <div id="six" class="introduce" >
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验方法与步骤要求
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、实验方法描述
+              </div>
+              <div class="p_cont">
+                学生可在实验室或其他学习场所，以分配的账号密码登录生鲜电商与冷链物流虚拟仿真实验平台，系统中设定了三个角色，即教师、学生、管理员。教师可设定班级、管理学生账号、对实验过程进行监督和管理，如，导入班级、设定学生团队分组、设定实验内容、查看和分析学生实验结果等。学生按教师要求在规定时间内完成指定的学习内容、实验任务或案例讨论，查看学习成果等。管理员进行系统运行环境维护、账户管理、教学模块导入的操作与实施等。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、学生交互性操作步骤说明
+              </div>
+              <div class="p_cont">
+                学生交互性操作步骤主要分为生鲜电商运营与冷链物流运营两大部分，其中，生鲜电商运营分为店铺开设与装修、软文写作与发布、直播电商3个子任务，冷链物流运营分为冷链物流网络的构建与配置、冷链物流配送模拟运营输入数据设置、仿真模型的运行与管理、仿真模型优化等4个子任务，两大部分共计14个步骤。
+              </div>
+            </div>
+            <div class="part1">
+              <table border="1">
+                <!-- <caption>表 1 PVC几何尺寸和物理性能 / Table 1 Property of PVC pipe</caption> -->
+                <thead>
+                  <td width= "12% ">教学仿真任务</td>
+                  <td width= "13% ">子任务</td>
+                  <td width= "10% ">步骤 <br>
+                    序号
+                    </td>
+                  <td width= "20% ">操作名称</td>
+                  <td width= "45% ">主要任务及注意事项</td>
+                </thead>
+                <tbody class="t_left">
+                  <tr>
+                    <td  rowspan="11">生鲜电商管理与运营</td>
+                    <td rowspan="5">生鲜电商店铺的开设与装修</td>
+                    <td>步骤1</td>
+                    <td>设置自己的店铺信息</td>
+                    <td>学生登录，选择所要开设店铺的种类，并设置自己店铺的名称、logo、店铺介绍等基本的店铺信息。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤2</td>
+                    <td>设置自己店铺的首页</td>
+                    <td>根据店铺的主题，设置自己店铺的样式，并选择自己店铺的模板。包括店铺产品的分类、banner的设置、产品列表的设置等。</td>        
+                  </tr>
+                  <tr>
+                    <td>步骤3</td>
+                    <td>设置店铺产品的详情页</td>
+                    <td>分析的店铺详情页的主要元素及模块。并自主设计店铺产品详情页的样式，包括产品描述信息的位置、图片的大小及位置、产品评论信息的显示设置、产品详情信息的显示和设置等。并将模板进行保存，以备选用。</td>      
+                  </tr>
+                  <tr>
+                    <td>步骤4</td>
+                    <td>产品上传</td>
+                    <td>根据自己所销售产品的种类，上传自己所销售的产品，包括产品的名称、产品价格、属性信息、产品图片、产品描述性信息等。设置产品仓储位置和产品数量。</td>  
+                  </tr>
+                  <tr>
+                    <td>步骤5</td>
+                    <td>产品管理</td>
+                    <td>针对自己上传的产品，进行产品的管理，包括产品的删除、产品的修改等相关内容。</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">软文的写作与发布</td>
+                    <td>步骤6</td>
+                    <td>撰写软文</td>
+                    <td>将自己构思好的软文发布到自己的账号下。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤7</td>
+                    <td>软文设置</td>
+                    <td>设置自己软文的显示方式，在个人店铺内显示，还是在平台首页显示。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤8</td>
+                    <td>软文管理</td>
+                    <td>根据自己撰写的软文，对软文进行修改，对软文的显示方式进行修改等。</td>           
+                  </tr>
+                  <tr>
+                    <td rowspan="3">直播电商带货</td>
+                    <td>步骤9</td>
+                    <td>发布电商 <br> 直播预告</td>
+                    <td>根据自己直播电商的安排，发布直播电商的预告</td>
+                  </tr>
+                  <tr>
+                    <td>步骤10</td>
+                    <td>选择带货 <br> 生鲜产品</td>
+                    <td>选择自己店铺内的某一款产品作为直播电商带货的产品。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤11</td>
+                    <td>电商直播</td>
+                    <td>进行模拟直播</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="18">冷链物流运营</td>
+                    <td rowspan="8">冷链物流网络的构建与配置</td>
+                    <td>步骤5</td>
+                    <td>设置产地仓</td>
+                    <td>根据品类设置产地仓配送的商品种类，一个产地仓对应一种品种商品，因紧靠产地，商品假设无限不会缺货。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤6</td>
+                    <td>判断入库产品有无预冷、选择配送车辆</td>
+                    <td>配置产地仓入库标准和配送车辆。其中入库标准，主要是判断入库产品有无预冷，预冷温度是否达标，让学生
+                      1、对不同的产品选择合适的预冷温度；（正确后可作出3D收货效果；错误后则作出拒绝收货的3D效果）若温度不达标，则拒绝收货。
+                      2、对于配送车辆，让学生选择合适的配送车辆（选择单温冷藏车和多温冷藏车）。
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>步骤7</td>
+                    <td>设置本地仓</td>
+                    <td>设置本地仓个数及各个本地仓在地图中的位置和冷库类型（选择氟利昂冷库或者氨冷库，学生写出选择的理由即可）。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤8</td>
+                    <td>配置本地仓设备</td>
+                    <td>1、设置各个本地仓运输车辆个数、种类（单温或多温）、每辆车的载货量；2、对仓库温度传感器、运输车辆温湿度传感器进行选型（有备选型号，不同型号对应不同的灵敏度，灵敏度存在漏报温度变化的可能性，可以后台设置不同灵敏度对应不同的漏报率）；3、设置温度报警阈值、放置位置等。（可3D展示在仓库和冷藏车何处放置传感器，如放置错误，考虑预置几个地点，不同地点同样对应着不同的灵敏度）</td>
+                  </tr>
+                  <tr>
+                    <td>步骤9</td>
+                    <td>配置本地仓库存</td>
+                    <td>设置本地仓品项、初始库存、补货点、方式。
+                      1、补货方式是指：设置初始库存后，选择从产地仓发货是直达送货还是并单送货；若直达送货，补货时间为2天；若并单送货，补货时间为3天；不同的补货方式代表不同的补货成本 <br>
+                      2、补货点，指的是对于该品项，库存低于多少后，提示需要补货。
+                      （3D展示初始库存达到，入库、堆垛的情况。配送货物属性：默认在本地仓中货物新鲜度为满分10分，每多存放一天，新鲜度“-1”）</td>
+                  </tr>
+                  <tr>
+                    <td>步骤10</td>
+                    <td>设置前置仓</td>
+                    <td>设置前置仓个数、各个前置仓在地图中的位置、大小（不同大小对应成本，对应不同库存量）；</td>
+                  </tr>
+                  <tr>
+                    <td>步骤11</td>
+                    <td>配置前置仓设备</td>
+                    <td>1、设置各个前置仓配送人员个数，设置前置仓人员配送工作班次和时间，一般为两班倒，16小时；<br>
+                      2、设置购置哪种最后一公里设备，可以选择不同设备不同的购买量，如泡沫箱加冰袋、专业冷藏箱、冷藏电动车等，并给出个数，也可不够买。不同的设备，涉及不同的成本、配送时长对货物新鲜度的影响。
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>步骤12</td>
+                    <td>配置前置仓库存</td>
+                    <td>设置前置仓品项、初始库存、补货点、补货时间（从本地仓补货，默认1天）</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4">冷链物流配送模拟运营输入数据设置</td>
+                    <td>步骤13</td>
+                    <td>配送订单生成</td>
+                    <td>根据生鲜电商模块中，实际订单进行冷链物流配送订单的生成；可选择是否需要自动生成订单，若生鲜电商模块订单过少，选择“是”，则按比例自动生成订单。（订单信息包含订单号、订单商品、数量、收货地址）</td>
+                  </tr>
+                  <tr>
+                    <td>步骤14</td>
+                    <td>订单分配</td>
+                    <td>订单自动分配给周边的前置仓，若同时被两个及以上前置仓覆盖，则需要进行选择订单派给哪个前置仓；若缺货，则需要设置补货订单，见下一步。
+                      （订单信息  新增  送货仓库）
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>步骤15</td>
+                    <td>设置仓库补货</td>
+                    <td>根据现有库存和订单需求，提示有无缺货，对缺货物品进行补货及已经到达补货点商品补货（必须）和其他少量但认为需要补货商品进货（选做）。其中，本地仓至前置仓补货时间周期为1天，产地仓至本地仓补货时间为3天，必须补货的缺货商品，必须到货后才可开展仿真配送。
+                      </td>
+                  </tr>
+                  <tr>
+                    <td>步骤16</td>
+                    <td>配送线路规划</td>
+                    <td>对涉及到的本地仓和前置仓进行线路规划。
+                      1、对于本地仓，设置各车辆配送客户、客户前后配送顺序；
+                      2、对于前置仓，需要首先各订单需选用最后一公里设备，设置订单是否需要合并配送，如需要合并配送，则需要进行线路优化，指出合并配送的先后顺序；如不需要，则不需要进行线路规划设置。
+                      </td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">仿真模型的运行与管理</td>
+                    <td>步骤17</td>
+                    <td>仿真模型的运行</td>
+                    <td>仿真一个仿真周期（一批订单）运行仿真模型，该过程需要仿真体现，可设置仿真时间钟长度。步骤19之后，出仿真结果，成本（网络建设成本、配送成本）、配送时间、缺货频次、到货商品新鲜度等。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤18</td>
+                    <td>配送过程跟踪和管理</td>
+                    <td>体现实时监控运输货物的运输状态，包括货物的温度与路线定位，模拟故障数据，要求学生密切关注货物的运输情况，当温度超过阈值和线路偏移时，及时处理（处理手段为在一定时间内联系司机）。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤19</td>
+                    <td>全程温控与追溯管理</td>
+                    <td>运行完毕，将全程温度信息模拟反馈；模拟订单配送送达后，在订单配送保重上呈现二维码，模拟扫码仿真追溯的效果。扫码后，出现产品经历的仓库、温度、运输路径等关键信息。</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">仿真模型的优化</td>
+                    <td>步骤20</td>
+                    <td>冷链物流网络构建的优化</td>
+                    <td>优化前置仓、本地仓个数和选址地点；优化前置仓、本地仓车辆、人员、最后一公里设备的选择和个数；经过大量的仿真试验，找到最优的冷链物流网络建设方案。此优化订单不变，反复试验。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤21</td>
+                    <td>配送线路优化</td>
+                    <td>对本地仓和前置仓的配送线路进行重新设置。对本地仓，设置不同的车辆如何分配客户及配送地点的配送先后顺序。对前置仓，优化合并配送订单及线路。经过大量的仿真实验，找出较优的配送线路优化方案。此优化订单不变，反复试验。</td>
+                  </tr>
+                  <tr>
+                    <td>步骤22</td>
+                    <td>库存设置优化</td>
+                    <td>根据全部订单特性，优化初始库存品种和库存量；该初始库存不仅仅在该批订单中能够得到最少缺货量，还可以在其他仿真周期中（订单不固定，设置按比例自动生成订单）也获得较优的值。此优化需要在前期优化完成后，多批订单反复试验看优化结果。</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+           
+          </fieldset>
+        </div>
+        <!-- 2.8 实验结果与结论要求 -->
+        <div id="seven" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验结果与结论要求
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                是否记录每步实验结果：
+              </div>
+              <div class="p_cont">
+                是 否
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                实验结果与结论要求
+              </div>
+              <div class="p_cont">
+                实验报告 心得体会其他
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                其他描述
+              </div>
+              <div class="p_cont">
+                无
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2.9 考核要求 -->
+        <div id="eight" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              考核要求
+            </div>
+            <div class="part1">
+              <div class="p_cont">
+                <p class="text_s"> 本实验课程的考核内容包含学生的出勤情况、实验的完成情况、实验的总结与实验报告的编写等。</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+              </div>
+              <div class="p_cont">
+                <p class="text_s">（1）学生的出勤情况、学生实验的态度等占实验成绩的20%。其中，学生的出勤为15%；学生实验的态度的好坏为5%。</p>
+                <p class="text_s">学生出勤考核分为: ①缺勤，记0分；②迟到或早退，记5-10分；③完全出勤，记15分。</p>
+                <p class="text_s">学生做实验的态度考核：①能够听从老师的合理安排，遵守课堂纪律，认真做实验，记5分；②做实验较认真，记2-4分；③做实验不认真，并且造成一定的负面影响，记0-1分。</p>
+                <p class="text_s">（2）实验的过程完成情况的考核占50%。考核内容包含：实验所用设备、软件操作步骤的正确性、实验数据采集与计算的正确性和规范性等。</p>
+                <p class="text_s">设备、软件操作的正确性: ①完全正确且有一定的熟练程度,记30分; ②操作较正确,经过老师指导纠正,达到的程度记24分; ③经过老师反复指导能够基本掌握操作使用,记18分；④不能够完成实验，根据情况，记0-10分。</p>
+                <p class="text_s">实验数据采集与计算的正确性和规范性：①完全正确，记20分；②实验数据较正确,记16分; ③经过老师反复指导能够采集较正确的数据，结果较准确,记12分；④不能够采集正确数据和进行计算，根据情况，记0-8分。</p>
+                <p class="text_s">（3）实验报告的编写考核占30%。考核的内容有；实验报告提交情况、实验报告内容的正确性、完整性、规范性。</p>
+                <p class="text_s">①实验报告能够按规定提交记5分；不能提交实验报告考核项记0分。②实验报告的内容齐全，书写认真规范，结果正确，记25分；③书写认真，内容较齐全，结果基本正确，记20分；④书写较认真规范，内容缺失1/3，计算有错误，记15分；⑤报告编写不规范，条理不清，内容缺失1/3，计算错误较多，记0-10分。</p>
+                <p class="text_s">（4）实验课考核成绩满分为100分，整个课程考核成绩为该课程所有实验课的平均考核成绩。</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 2.10  面向学生要求-->
+        <div id="nine" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              面向学生要求
+            </div>
+            <div class="part1">
+              <div class="p_cont">
+                <p >（1）专业与年级要求</p>
+                <p class="text_s">电子商务、物流管理相关专业二、三年级学生。</p>
+                <p class="text_s">生鲜电商、冷链物流的相关从业人员。</p>
+                <p>（2）基本知识和能力要求</p>
+                <p class="text_s">①基本知识</p>
+                <p class="text_s">掌握电子商务以及生鲜电商的基本概念、电商店铺开设的基本方法及流程、电子商务营销的策略及方法、软文营销的概念及类型、软文的写作及发布、直播的概念及分类、直播的技巧及方法等。掌握冷链物流的相关基本概念、基本作业流程，了解冷链物流的特点；掌握冷链物流网络构建和配置的基本程序和相关方法，初步具备冷链物流网络规划建设的能力；了解冷链物流相关设施设备，会对设施设备开展正确的选型和应用；掌握配送线路优化和库存管理的基本方法；理解仿真的含义，会通过仿真系统开展配送网络、配送线路及库存管理的优化；</p>
+                <p class="text_s">②能力要求</p>
+                <p class="text_s">电子商务操作的基本能力；冷链网络规划和构建的能力；冷链物流组织与实施能力；物流成本控制能力；参与生鲜电商企业冷链物流配送管理能力；撰写专业报告能力。</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 3.2  网络条件要求 -->
+        <div id="ten" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              网络条件要求
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、说明客户端到服务器的带宽要求
+              </div>
+              <div class="p_cont">
+                <p class="text_s">①基于公有云服务器部署的系统，5M-10M带宽。</p>
+                <p class="text_s">②基于局域网服务器部署的系统，10M-50M带宽。</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、说明能够支持的同时在线人数
+              </div>
+              <div class="p_cont">
+                <p class="text_s">支持200个学生同时在线并发访问和请求，如果单个实验被占用，则提示后面进行在线等待，等待前面一个预约实验结束后，进入下一个预约队列。</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 3.3  用户操作系统要求（如Windows、Unix、IOS、Android等）-->
+        <div id="eleven" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              用户操作系统要求
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、计算机操作系统和版本要求
+              </div>
+              <div class="p_cont">
+                <p class="text_s">客户端操作系统： Windows7(64位)及以上</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、其他计算终端操作系统和版本要求
+              </div>
+              <div class="p_cont">
+                <p class="text_s">无</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 3.4  用户非操作系统软件配置要求-->
+        <div id="twelve" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              用户非操作系统软件配置要求
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、计算机非操作系统软件配置要求
+              </div>
+              <div class="p_cont">
+                <p class="text_s">①FireFox浏览器、Google Chrome浏览器。</p>
+                <p class="text_s">②下载地址：http://www.firefox.com.cn/ ;http://chrome.qevlife.cn/</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、其它计算终端非操作系统软件配置要求
+              </div>
+              <div class="p_cont">
+                <p class="text_s">无</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 3.5 用户硬件配置要求 -->
+        <div id="thirteen" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              用户硬件配置要求
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、计算机硬件配置要求
+              </div>
+              <div class="p_cont">
+                <table border="1">
+                 
+                  <thead>
+                    <td>序号</td>
+                    <td>硬件名称</td>
+                    <td>配置要求</td>
+                  </thead>
+                  <tr>
+                    <td>1</td>
+                    <td>CPU</td>
+                    <td>Intel-I3 5系及以上</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>操作系统</td>
+                    <td>Win7/8/10简体中文版</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>显存容量</td>
+                    <td>2GB及以上</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>内存容量</td>
+                    <td>8G+</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>硬盘容量</td>
+                    <td>1T</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>显示器分辨率</td>
+                    <td>1920×1080</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>输入设备</td>
+                    <td>鼠标、键盘</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                  二、其它计算终端硬件配置要求
+              </div>
+              <div class="p_cont">
+                无
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 3.6 用户特殊外置硬件要求（如可穿戴设备等）-->
+        <div id="fourteen" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              用户特殊外置硬件要求
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、计算机特殊外置硬件要求
+              </div>
+              <div class="p_cont">
+                无
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、其它计算终端特殊外置硬件要求
+              </div>
+              <div class="p_cont">
+               无
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 4.0 实验教学项目技术架构及主要研发技术 -->
+        <div id="fifteen" class="introduce ">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验教学项目技术架构及主要研发技术
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                项目技术架构及主要研发技术
+              </div>
+              <div class="p_cont">
+                <table border="1">
+                  <thead>
+                    <td colspan="2">指标</td>
+                    <td>内容</td>  
+                  </thead>
+                  <tr>
+                    <td colspan="2">系统架构图及简要说明</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" width="15%">实验教学项目</td>
+                    <td width ="55%">开发技术（如：3D仿真、VR技术、AR技术、动画技术、WebGL技术、OpenGL技术等）</td>
+                    <td width ="30%">√3D仿真 √二维动画 √HTML5 √其他</td>
+                  </tr>
+                  <tr>
+                    <td>开发工具（如：Unity3d、Virtools、Cult3D、Visual Studio、Adobe Flash、百度VR内容展示SDK等）</td>
+                    <td>Unity3d, Autodesk Maya,IDEA, Visual Studio, Eclipse</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3">管理平台
+                      </td>
+                    <td>开发语言（如：JAVA、.Net、PHP等）</td>
+                    <td>HTML, Java</td>
+                  </tr>
+                  <tr>
+                    <td>开发工具（如：Eclipse、Visual Studio、NetBeans、百度VR课堂SDK等）</td>
+                    <td>IDEA, Visual Studio, Eclipse</td>
+                  </tr>
+                  <tr>
+                    <td>采用的数据库（如：Mysql、SQL Server、Oracle等）</td>
+                    <td>Mysql</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 5.0 实验教学项目特色-->
+        <div id="sixteen" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              项目特色
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、实验方案设计思路
+              </div>
+              <div class="p_cont">
+                <p class="text_s">党的十九大报告提出了 “实现高等教育内涵式发展”的重大论断。在这一精神指引下，新时代的高校教学理念、教学模式、课程体系、人才培养模式都发生了重大变化。新商科、管工融合等新教育理念的提出，对大学教学方式提出了更高的要求。作为教学体系的重要组成部分，实验教学方式也在逐步向智能化、信息化转变。</p>
+                <p class="text_s">生鲜电商与冷链物流虚拟仿真实验室利用虚拟仿真技术，把生鲜电商项目流程和冷链物流结合起来，真实地模拟生鲜农产品的交易流程和注意事项。能够激发学生的学习兴趣、培养学生的实践动手能力，把生鲜电商和冷链物流仓储配送的整个过程展示出来，实现整个流程的智能化、可视化、可控化、网络化。</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、实验理念创新
+              </div>
+              <div class="p_cont">
+                <p class="text_s">通过理论实践一体化教学方法实现生鲜电商和冷链物流虚拟仿真实验教学一体化实践。通过在线操作、互动等方式，在线完成项目教学内容的学习，有效解决以往学生在进入实际工作前对相关理论与方法的感性认识不足、考核内容不全的局限，充分体现以学生为主体的教学理念。</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                三、实验评价体系创新
+              </div>
+              <div class="p_cont">
+                <p class="text_s">在线实验的评价体系由生鲜电商和冷链物流两部分构成，其中都有客观评价和主观评价两部分内容构成，根据实训项目的内容不同，采用不用的评价方式，比如网店装修部分，商品详情页的制作就是依靠老师的主管评价，而商品上架数量、以及冷链物流的标准化流程依靠的都是客观评价。主观评价和客观评价相结合，使评价体系更全面和灵活、贴近实际。学生既可以获得生鲜电商或者冷链物流的综合得分，也可以得到各个项目的单项得分，教师可以对学生的每一个实训过程都得到很好的把握。</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                四、实验内容创新
+              </div>
+              <div class="p_cont">
+                <p class="text_s">该实验项目中，生鲜电商部分融入了最新的直播电商内容体系，让学生既可以现场直播带货，也可以把自己以往制作的小视频上传至实训平台，学生之间可以相互打赏、点赞，增强趣味性，也是实验内容的一个创新。有效弥补了传统教学当中教材内容陈旧、跟不上时代变化等缺陷，也是对传统教学内容的一个拓展。</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- 6.0  实验教学项目持续建设服务计划-->
+        <div id="seventeen" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              实验教学项目持续建设服务计划
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                一、持续建设与更新
+              </div>
+              <div class="p_cont">
+                <p class="text_s">随着区块链、物联网等技术的飞速发展和设施设备的不断革新，原有的技术和工艺会逐渐落伍、淘汰，这就要求本实验项目也要与时俱进，持续进行建设和更新，主要包含三个方面：一是硬件的持续建设和更新，主要针对硬件的升级改造；二是软件的持续建设和更新，主要是软件的二次开发，根据生产的发展及实践教学需要，不断增加或升级原有虚拟仿真实验资源；三是加强与三全、思念、华夏易通、物通网等单位的学习合作与交流，推进虚拟仿真实验教学项目的发展。</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                二、面向高校的教学推广应用计划
+              </div>
+              <div class="p_cont">
+                <p class="text_s">在现有网络教学平台的基础上，建立统一的虚拟仿真实验教学平台，完善网络建设，面向河南省内设有电商及冷链物流专业的高校及培训机构，扩大开放，实现更大范围的资源共享。根据网络建设情况，所有实验项目将逐步向国内高校免费开放。</p>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                三、面向社会的推广与持续服务计划
+              </div>
+              <div class="p_cont">
+                <p class="text_s">在面向高校的教学推广应用的基础上，进一步与河南省物流学会等行业协会和冷链企业合作，吸收冷链物流行业最新技术革新成果，实现更大范围、更高水平的实验项目共享，共同开发生鲜产品追溯、冷藏保鲜、节能环保、冷链标准认证等新技术、新装备、新材料、新工艺的虚拟仿真实验项目，实现人才培养及企业技术研发的深度合作。同时，本实验项目也面向社会个人开放，最大范围实现虚拟仿真实验项目的资源共享。</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- <div id="eighteen" class="introduce">
+          <fieldset>
+            <div class="purpose">
+              <i></i>
+              测试六
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                知识点1 — 地质钻孔方法
+              </div>
+              <div class="p_cont">
+                松散堆积土滑坡滑体土和滑带土普遍由细粒土组成，每年雨季造成大量滑坡灾害。因此虚拟仿真实验用土数据采用细粒土数据。首先将实验土样进行筛分和液塑限实验，绘制土的颗粒级配曲线，并确定土的液塑限值和液塑性指数。根据实验结果进行土的工程分类。然后采用室内击实实验测定土的最大干密度和最优含水率。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                知识点2 — 泥浆护壁堵漏原理
+              </div>
+              <div class="p_cont">
+                泥浆护壁功能主要是泥浆具有造壁能形成泥皮保护孔壁，泥浆液柱的液静压力可以起到平衡地层压力的作用，通过调节泥浆相对密度和其它性能，可以起到护壁堵漏作用。一些有化学处理剂的泥浆可以抑制地层遇水膨胀，防止超径、缩径、孔壁坍塌、掉块。 泥浆的堵漏作用，主要是通过泥皮和填充物质的阻塞作用，来堵塞漏失通道。泥浆对于渗漏地层具有较好的堵漏效果。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                知识点3 — 岩芯采取方法
+              </div>
+              <div class="p_cont">
+                岩芯采取方法分为卡料卡取法、卡簧卡取法、干钻卡取法、沉淀卡取法、楔断器卡取法等。所用工具有单层岩心管钻具、双层岩心管钻具、绳索取芯钻具等。
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                知识点4 — 岩芯RQD值计算与质量等级评定方法
+              </div>
+              <div class="p_cont">
+                RQD值为长度在10cm以上的岩芯累计长度占钻孔总长度的百分比，称为岩石质量指标，按下式计算：
+                <div class="pic_cont">
+                  <img src="../img/formula.png" alt="">
+                </div>
+
+                根据RQD值大小可将岩石质量等级分为5类。实验用PVC管几何尺寸和物理性能如表 1。 </div>
+              <table border="1">
+                <caption>表 1 PVC几何尺寸和物理性能 / Table 1 Property of PVC pipe</caption>
+                <thead>
+                  <td>外径D/cm</td>
+                  <td>内径d/cm</td>
+                  <td>半径R/cm</td>
+                  <td>长度L/cm</td>
+                  <td>弹性模量E/GPa</td>
+                  <td>惯性矩l/(10xmm4)</td>
+                </thead>
+                <tr>
+                  <td>6</td>
+                  <td>3</td>
+                  <td>3</td>
+                  <td>200</td>
+                  <td>5</td>
+                  <td>59.65</td>
+                </tr>
+              </table>
+              现场踏勘，了解滑坡对道路和房屋造成的危害（图 5(a)、(b)）。
+              <div class="pic_list">
+                <p> 图 5 滑坡对道路和房屋造成的危害((a):房屋裂缝;(b):道路裂缝)</p>
+                <div>
+                  <div class="pic">
+                    <div class="lenged">
+                      (a):房屋裂缝
+                    </div>
+                    <img src="../img/img1.png" alt="">
+                  </div>
+                  <div class="pic">
+                    <div class="lenged">
+                      (b):道路裂缝
+                    </div>
+                    <img src="../img/img2.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="part1">
+              <div class="p_title">
+                <i></i>
+                知识点3 — 岩芯采取方法
+              </div>
+              <div class="p_cont">
+                <div class="pic" style="margin-top:20px">
+                  <div class="lenged">
+                    视频名称写在这里
+                  </div>
+                  <img src="../img/img2.png" alt="">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div> -->
+
+      </div>
+    </div>
+    <!-- 页脚 -->
+    <div class="center footer">
+      <span>
+        <span>©2012-2019 河南牧野经济学院</span>
+        <span>豫公网安备11010802017518</span>
+        <span>豫ICP备14061682号-1</span>
+      </span>
+    </div>
+  </div>
+  <script src="./js/jquery-1.12.4.js"></script>
+  <script src="./layui/layui.js"></script>
+  <script src="./js/introduceInfo.js"></script>
+  <script>
+    // window.location.href="#tp"
+    // window.onload=function(){
+    //   console.log(456);
+    //   location.href="#tp"
+	  // 	}
+    //1.获取点击对象。
+    $(".liat_a").click(function () {
+      //4.获取当前元素，先添加类名，在同级兄弟里在删除类名。这是添加标题的颜色。
+      $(this).addClass('a_active').siblings().removeClass('a_active');
+      var index = $(this).index(".liat_a"); //2.获取对象的元素位置。 //错误这里是不用加var index=$(this).index($(".normal-title>a"))所以获取不到、;
+      $(".introduce").hide().eq(index).show(); //3.确定要隐藏的对象，先隐藏，在匹配元素的位置，在隐藏。
+
+    })
+  </script>
+</body>
+</html>

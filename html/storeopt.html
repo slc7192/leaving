@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>店铺优化实验</title>
+  <!-- <link rel="stylesheet" href="./css/header.css"> -->
+  <link rel="shortcut icon" href="favicon.ico" >
+  <link rel="stylesheet" href="../css/storeopt.css">
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+    #app{
+      height:100%;
+    }
+  </style>
+</head>
+<body id="bod">
+  <div id="app" v-cloak> 
+    <div class="right">
+      <div class="right_p">
+        <p>当前模板可选择的配色方案</p>
+      </div>
+      <div class="right_point">
+        <div class="right_top" v-for="(value,index) of indexlist" >
+         <img :src="value.img" alt="" class="right_litter" @click="change(true)">
+         <p>{{value.name}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="left">
+      <div style="width: 1200px;margin: 0 auto;">
+        <img src="../img/index/head.png" alt="">
+      </div>
+      <div class="left_top">
+        <p>首页</p>
+        <p>免费推广</p>
+      </div>
+      <!-- <div class="left_k"></div> -->
+      <div class="left_sec">
+        <p>以上为页头区域</p>
+      </div>
+      <!-- banner轮播图 -->
+      <div class="left_top">
+        <p>图片轮播</p>
+      </div>
+      <div class="banner">
+        <div class="arrow_banner">
+          <span class="arrow_left">
+            <img src="../img/index/arrow-l.png" alt="上一张">
+          </span>
+          <span class="arrow_right">
+            <img src="../img/index/arrow-r.png" alt="下一张">
+          </span>
+        </div>
+        <div class="banner_list">
+          <ul>
+            <li>
+              <a href="javascript:;">
+                <img src="../img/index/banner (1).png" alt="banner1">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <img src="../img/index/banner (2).png" alt="banner2">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <img src="../img/index/banner (3).png" alt="banner3">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <img src="../img/index/banner (4).png" alt="banner4">
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;">
+                <img src="../img/index/banner (5).png" alt="banner5">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="clearfix"></div>
+        <!-- 轮播图下方圆点 -->
+        <ul class="banner_btn"></ul>
+        <div class="clearfix"></div>
+      </div>
+      <div class="left_shop left_main">
+        <div class="left_bottom">
+          <p>宝贝推荐</p>
+          <button class="show_hide" @click="editor(true)">编辑</button>
+        </div>
+        <div style="display: flex;justify-content: space-around; padding: 20px 0 25px;">
+          <div class="lb_left">
+            <img src="../img/index/2(1).png" alt="">
+          </div>
+          <div class="lb_right">
+            <img src="../img/index/1(1).png" alt="">
+            <img src="../img/index/1(1).png" alt="">
+            <img src="../img/index/1(1).png" alt="">
+            <img src="../img/index/1(1).png" alt="">
+            <img src="../img/index/1(1).png" alt="">
+            <img src="../img/index/1(1).png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zhe" :class="{ishow:isshow}">
+      <div class="model" :class="{ishow:isshow}" >
+        <img src="../img/index/ad_set.png" alt="">
+        <div class="ihide" @click="editor(false)"></div>
+      </div>
+    </div>
+
+    <div class="zhe" :class="{change:ischange}">
+      <div class="modela" :class="{change:ischange}">
+        <img src="../img/index/close.png" alt="" @click="change(false)">
+        <p>替换颜色成功！</p>
+      </div>
+    </div>
+
+   
+  </div>
+</body>
+<script src="../publicJs/vue.js"></script>
+<script src="../js/storeopt.js"></script>
+<script>
+  (function () {
+    var banner = document.querySelector('.banner');
+    var banner_list = document.querySelector('.banner_list ul');
+    var left = document.querySelector('.left');
+    var right = document.querySelector('.right');
+    var btn = document.querySelector('.banner_btn');
+    // 克隆第一张图片，并添加到元素的最后
+    var firstClone = banner_list.children[0].cloneNode(true);
+    banner_list.appendChild(firstClone);
+    // 设置图片盒子的总宽度
+    var len = banner_list.children.length;
+    console.log(len);
+    banner_list.style.width = 1200 * len + 'px';
+    // 创建图片对应的点的个数
+    for (var j = 0; j < len - 1; j++) {
+      var liNav = document.createElement('li')
+      btn.appendChild(liNav);
+    }
+    btn.children[0].className="active"
+
+    var btnli = document.querySelectorAll('.banner_btn li');
+    var n = 0; //用来记录banner_list的偏移量
+    var time; //计时器，控制图片的移动
+    var index = 0; //记录图片的个数，也就是图片的下标
+    var btnIndex = 0; //记录点的下标
+    var flag = true; //开关，控制用户的操作
+    right.onclick = nextImg;
+    function nextImg() {
+      if (flag) {
+        // 进入操作，直接flag赋值为false,相当于门被反锁了，其他的操作就无法进行
+        flag = false;
+        index++;
+        btnIndex++;
+     
+        if (btnIndex > btnli.length - 1) {
+          btnIndex = 0;
+        }
+        time = setInterval(moveLeft, 16.7)
+      }
+    }
+    // 下一张图片
+    function moveLeft() {
+      n += 100;
+      if (n >= 1200 * index) {
+        clearInterval(time);
+        flag = true;
+      }
+      if (n >= ((len - 1) * 1200)) {
+        n = 0;
+        index = 0;
+      }
+      banner_list.style.marginLeft = -n + 'px';
+      changeBtn();
+    }
+    // 控制点的样式
+    function changeBtn() {
+      // 重置点的样式
+      for (var i = 0; i < btnli.length; i++) {
+        btnli[i].className = '';
+      }
+      // 控制点的样式改变
+      btnli[btnIndex].className = "active";
+    }
+    // 点击左箭头，切换上一张图片
+    left.onclick = function () {
+      // 进行操作之前判断门是打开的还是关闭
+      if (flag) {
+        flag = false;
+        index--;
+        btnIndex--;
+        time = setInterval(moveRight, 16.7)
+      }
+    }
+    // 上一张
+    function moveRight() {
+      // 如果偏移量x = 0;则对应的图片是第一张，点击切换上一张，意味着看最后一张，最后一张图对应的下标为3；所以为len -2 ;此时x的偏移量应重置为3000，既移动到克隆的那张图片；然后过度到第四张图片
+      if (n <= 0) {
+        n = (len - 1) * 1200;
+        index = len - 2;
+        btnIndex = btnli.length - 1;
+      }
+      n -= 50;
+      if (n <= 1200 * index) {
+        clearInterval(time);
+        flag = true;
+      }
+      banner_list.style.marginLeft = -n + 'px';
+      changeBtn();
+    }
+    // 点击点切换图片，给点绑定上点击事件
+    for (var i = 0; i < btnli.length; i++) {
+      btnli[i].index = i;
+      btnli[i].onclick = function () {
+        if (flag) {
+          flag = false;
+          console.log(this.index, index)
+          if (this.index > index) {
+            // 意味看下一张
+            // 切换到我点击的点对应的图片
+            index = this.index;
+            // 记录点的下标和当前点击的点的下标对应一致
+            btnIndex = this.index;
+            time = setInterval(moveLeft, 16.7);
+          } else if (this.index < index) {
+            // 切换到我点击的点对应的图片
+            index = this.index;
+            // 记录点的下标和当前点击的点的下标对应一致
+            btnIndex = this.index;
+            // 意味看上一张
+            time = setInterval(moveRight, 16.7)
+          }
+        }
+
+      }
+    }
+    // 自动播放
+    var autoPlay = setInterval(nextImg, 3000);
+    // 清除自动播放
+    banner.onmouseover = function() {
+        clearInterval(autoPlay)
+    }
+    banner.onmouseout = function() {
+        autoPlay = setInterval(nextImg, 3000);
+    }
+  })()
+
+
+  // // top10轮播
+  // ! function () {
+  //   var banner_top10 = document.querySelector('.banner_top10');
+  //   var bannertop10 = document.querySelector('.banner_top10 ul');
+  //   var listtop10 = document.querySelector(".list_top10");
+  //   var pre = document.querySelector('.pre');
+  //   var next = document.querySelector('.next');
+  //   var time3, time4, autoPlay2;
+  //   var x = 0;
+  //   var index2 = 0;
+  //   var flag = true;
+  //   next.onclick = move;
+
+  //   function move() {
+  //     if (flag) {
+  //       flag = false;
+  //       index2++;
+  //       time3 = setInterval(nextImg, 16.7);
+  //     }
+  //   }
+  //   // 切换下一张图片函数
+  //   function nextImg() {
+  //     if (x == 2700) {
+  //       index2 = 0;
+  //       x = 0;
+  //     }
+  //     x += 25;
+  //     if (x >= index2 * 270) {
+  //       clearInterval(time3);
+  //       x = index2 * 270;
+  //       flag = true;
+  //     }
+  //     if (x == 2700) {
+  //       index2 = 0;
+  //       x = 0;
+  //     }
+  //     bannertop10.style.marginLeft = -x + 'px';
+  //   }
+  //   // 切换上一张图片函数
+  //   function previousImg() {
+  //     x -= 25;
+  //     if (x <= index2 * 270) {
+  //       clearInterval(time4);
+  //       x = index2 * 270;
+  //       flag = true;
+  //     }
+  //     if (index2 < 0) {
+  //       index2 = 10;
+  //       x = 2700;
+  //     }
+  //     bannertop10.style.marginLeft = -x + 'px';
+  //   }
+  //   pre.onclick = function () {
+  //     if (flag) {
+  //       flag = false;
+  //       index2--;
+  //       time4 = setInterval(previousImg, 16.7)
+
+  //     }
+  //   }
+  //   autoPlay2 = setInterval(move, 3000);
+  //   banner_top10.onmouseenter = function () {
+  //     clearInterval(autoPlay2);
+  //   }
+  //   banner_top10.onmouseleave = function () {
+  //     autoPlay2 = setInterval(move, 3000);
+  //   }
+  // }()
+</script>
+</html>

@@ -1,0 +1,369 @@
+body {
+    background-color: #f8f8f8;
+}
+
+.banner {
+    height: 600px;
+    position: relative;
+    background: url(../img/banner.png) no-repeat center center;
+}
+
+.banner .banner_cont {
+    width: 997px;
+    height: 100%;
+    background: url(../img/bannerbg.png) no-repeat right center;
+}
+
+.banner_cont>div {
+    width: 930px;
+    background-color: rgba(51, 51, 51, .95);
+    padding: 85px 50px 0 360px;
+    height: 100%;
+}
+
+.dv {
+    height: 126px;
+    border-left: 1px solid #8d6e63;
+    padding-left: 20px;
+    margin-bottom: 45px;
+}
+
+.dv h5 {
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 2px;
+    color: #dfaf89;
+    height: 40px;
+}
+
+.dv p {
+    font-size: 28px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 45px;
+    letter-spacing: 3px;
+    color: #ffffff;
+}
+
+.intro {
+    padding-left: 20px;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 27px;
+    letter-spacing: 2px;
+    color: #cccccc;
+    margin-bottom: 50px;
+}
+
+.btn_hand {
+    display: flex;
+    margin-bottom: 39px;
+    padding-left: 20px;
+}
+
+.btn_hand div {
+    height: 50px;
+    border-radius: 3px;
+    border: solid 1px #ffffff;
+    margin-right: 20px;
+    padding: 0 30px;
+    line-height: 50px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    font-size:16px;
+}
+
+.opcity_line {
+    width: 20px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, .1);
+    transform: rotate(45deg);
+    position: absolute;
+    top: -20px;
+    left: -34px;
+    visibility: hidden;
+    transition: left linear 1s;
+}
+
+.btn_hand div:last-child {
+    margin: 0;
+}
+
+.btn_hand div:hover {
+    background-color: #dfaf89;
+    border-color: #dfaf89;
+}
+
+.btn_hand div:hover .opcity_line {
+    visibility: visible;
+    left: 151px;
+}
+
+.btn_hand .mouseon {
+    background-color: #dfaf89;
+    border-color: #dfaf89;
+}
+
+.pot {
+    position: absolute;
+    left:386px;
+    bottom:52px;
+    display: flex;
+    justify-content: flex-start;
+    /* padding-left: 20px; */
+}
+
+.pot span {
+    margin-right: 20px;
+    width: 16px;
+    height: 16px;
+    background-color: #ffffff;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+
+.pot span:hover,
+.curPot {
+    background-color: #dfaf89;
+}
+
+.pot span:last-child {
+    margin: 0;
+}
+
+.main {
+    width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.m_left {
+    width: 296px;
+    margin-right: 13px;
+    box-shadow: 0px 2px 4px 0px rgba(75, 91, 138, 0.1);
+}
+
+.left_title {
+    height: 50px;
+    line-height: 50px;
+    background-color: #fff;
+    font-size:18px;
+    color: #333333;
+}
+
+.left_title span {
+    display: inline-block;
+    width: 2px;
+    height: 30px;
+    background-color: #dfaf89;
+    margin-right: 27px;
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 2px;
+    color: #333333;
+    vertical-align: middle;
+}
+
+.list .li_title {
+    width: 296px;
+    height: 41px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 41px;
+    letter-spacing: 2px;
+    color: #505050;
+    cursor: pointer;
+    padding-left: 50px;
+    background-color: #fff;
+}
+
+.layui-colla-title .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    width: 13px;
+    height: 13px;
+    background: url(../img/pic.png) no-repeat -6px -154px;
+    /* 展开-32，-151 */
+}
+
+.expand li {
+    height: 41px;
+    line-height: 41px;
+    padding-left: 55px;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 41px;
+    letter-spacing: 2px;
+    color: #505050;
+    background-color: #fff;
+}
+.a_active{
+    color:#505050;
+}
+
+.liat_a {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+}
+
+.m_right {
+    width: 943px;
+    padding: 0 35px;
+    box-shadow: 0px 0px 4px 0px rgba(75, 91, 138, 0.1);
+    background-color: #fff;
+}
+
+.purpose {
+    height: 50px;
+    border-bottom: 1px solid #f3f3f3;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 2px;
+    color: #333333;
+}
+
+.purpose i {
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    background: url(../img/pic.png) no-repeat -8px -174px;
+    margin-right: 8px;
+}
+
+.part1 {
+    margin-top: 40px;
+}
+
+.part1 i {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 3px solid #dfaf89;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.p_cont {
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 27px;
+    letter-spacing: 2px;
+    color: #757575;
+    padding: 10px 30px;
+}
+
+.pic_cont {
+    text-align: center;
+    padding: 5px;
+}
+
+table {
+    width: 852px;
+    line-height: 42px;
+    text-align: center;
+    border: 1px solid #ebebeb;
+}
+
+table caption {
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 27px;
+    letter-spacing: 1px;
+    color: #263238;
+    opacity: 0.54;
+}
+
+table thead {
+    background-color: #f9f9f9;
+    color: rgba(38, 50, 56, .54);
+}
+
+.pic_list>div {
+    display: flex;
+}
+
+.pic_list {
+    padding-top: 20px;
+}
+
+.pic_list p {
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 27px;
+    letter-spacing: 1px;
+    color: #263238;
+    opacity: 0.54;
+    text-align: center;
+    margin-bottom: 33px;
+}
+
+.pic {
+    width: 397px;
+    height: 302px;
+    background-color: #ffffff;
+    border: dashed 1px #263238;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.lenged {
+    width: 147px;
+    height: 29px;
+    background-color: #dfaf89;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 29px;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: -24px auto;
+    text-align: center;
+}
+
+.pic img {
+    margin-top: 27px;
+}
+
+/* 页脚 */
+
+.footer {
+    text-align: center;
+    margin-top: 48px;
+    height: 52px;
+    line-height: 52px;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 1px;
+    color: #000000;
+    opacity: 0.65;
+}
+
+.footer>span {
+    width: 680px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.center {
+    width: 1200px;
+    margin: 0 auto;
+}

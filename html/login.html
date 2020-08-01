@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/login_tr.css">
+    <link rel="stylesheet" href="../publicJs/element_ui/element.css">
+    <style>
+        /* [v-cloak]{
+            display: none
+        } */
+        .log_btn a{
+            color: #fff;
+        }
+        /*** 消除input元素 type="number" 时默认的 加减按钮*/
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        /*** 消除input元素 type="number" 时默认的 加减按钮---moz版*/
+        input[type=number] {
+            -moz-appearance:textfield;
+        }
+        .el-checkbox__input.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner {
+            background-color: #dfaf89!important;
+            border-color: #dfaf89!important;
+            margin-top: 2px;
+        }
+        .el-checkbox__input.is-checked+.el-checkbox__label{
+            color: #dfaf89!important;
+        }
+        .el-checkbox__inner:hover {
+            border-color: #dfaf89!important;
+        }
+        .marbt{
+            margin-bottom: 10px;
+        }
+        .mata{
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body" v-cloak id="app">
+        <div class="band">
+            <div class="left">
+                <!--<div class="log">
+                    <img src="../img/logo-golden.png" width="100%" alt="">
+                </div>-->
+                <h4 class="title">河南牧业经济学院</h4>
+                <div class="intro">
+                    河南牧业经济学院始建于1957年，由原郑州牧业工程高等专科学校和原河南商业高等专科学校合并组建而成，是经教育部批准设置、河南省人民政府举办的一所省属公办全日制普通本科院校，是河南省本科转型发展试点学校。学校坐落于九州之中、中华腹地的河南省省会郑州，地理位置优越，人文底蕴深厚，自然环境优美。
+                </div>
+                <a href="./reg.html"><div class="btn">注册</div></a>
+            </div>
+            <div class="right" style="display: none;">
+                <div class="login">密码登录</div>
+            
+                <div class="ipt">
+                    <div class="phone"></div>
+                    <input type="number" v-model="phone"  @input="animate" placeholder="请输入手机号">
+                </div>
+                <div class="ipt marbt">
+                    <div class="pwd"></div>
+                    <input type="password" v-model="pass" placeholder="请输入密码">
+                </div>
+                <div class="error" >
+                    <span v-show="show1">密码有误，请重新输入或找回密码</span>
+                    <!-- <span v-show="show2"></span> -->
+                </div>
+                <div class="ab_pwd mata">
+                    <el-checkbox v-model="checked">记住密码</el-checkbox>
+                    <div>忘记密码？</div>
+                </div>
+                <div class="log_btn" @click="loginr">
+                    <a href="#">登录</a>
+                </div>
+                <div class="ab_pwd">
+                    <div class="methods pd"></div>
+                    <!-- 短信验证码登录 -->
+                    <div>没有账号？<a href="./reg.html">立即注册</a></div>
+                </div>
+            </div>
+            <!-- 隐藏 -->
+            <div class="right"  style="display: none;">
+                <div class="login">验证码登录</div>
+                <div class="error">
+                    账号或密码有误，请重新输入或找回密码
+                </div>
+                <div class="ipt">
+                    <div class="phone"></div>
+                    <input type="number"  placeholder="请输入手机号">
+                    
+                </div>
+                <div class="ipt">
+                    <div class="pwd"></div>
+                    <input type="text" placeholder="请输入验证码">
+                    <div class="sendCode">获取验证码</div>
+                </div>
+                <div class="ab_pwd">
+                </div>
+                <div class="log_btn ">
+                    <a href="#">登录</a>
+                </div>
+                <div class="ab_pwd">
+                    <div class="methods code">账号密码登录</div>
+                    <div>没有账号？<a href="./reg.html">立即注册</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../publicJs/vue.js"></script>
+    <script src="../publicJs/element_ui/element.js"></script>
+    <script src="../publicJs/axios.js"></script>
+    <script src="../js/pub.js"></script>
+    <script src="../js/login.js"></script>
+    <script>
+        var body = document.querySelector('.body');
+		var logic = document.querySelector('.log_btn');
+		// logic.onclick = function(){
+		// 	console.log(456);
+		// 	window.location.href="./usecenter.html";
+		// }
+        body.style.height = window.innerHeight+'px'
+        var pwd = document.querySelector('.pd');
+        var code = document.querySelector('.code')
+        pwd.onclick = function(){
+            console.log(1)
+            tab('code')
+        }
+        code.onclick = function(){
+            tab('pwd')
+        }
+        function tab(tag){
+            var band = document.getElementsByClassName('right');
+            for(let i = 0 ; i< band.length; i ++){
+                band[i].style.display="none"
+            }
+            switch(tag){
+                case 'pwd':
+                band[0].style.display = 'block'
+                break;
+                case 'code':
+                band[1].style.display = 'block'
+            }
+        }
+        tab('pwd')
+        var check = document.querySelector('.ab_pwd span');
+        check.onclick = function(){
+            if(this.className =='check'){
+                this.className = ''
+            }else{
+                this.className ='check'
+            }
+        }
+    </script>
+</body>
+
+</html>

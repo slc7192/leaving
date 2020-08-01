@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/reg.css">
+    <style>
+       [v-cloak]{
+            display: none
+        }
+        .ipt{
+            height: 42px;
+        }
+        .ipt>div {
+            margin-top: 8px;
+        }
+        .sendCode {
+            top: -9px;
+        }
+        .login {
+            margin-top: 22px;
+            margin-bottom: 22px;
+        }
+        .log_btn{
+            margin-top: 6px;
+        }
+        .ipt {
+            width: 390px;
+            margin-bottom: 14px;
+        }
+        .ipt>.select {
+            padding-right: 39px;
+        }
+        .log_btn a {
+            width: 200px;
+            height: 48px;
+            line-height: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body" v-cloak id="reg">
+        <div class="band">
+            <div class="left">
+                <div class="log">
+                    <img src="../img/logo-golden.png" width="100%" alt="">
+                </div>
+                <h4 class="title">华北水利水电大学</h4>
+                <div class="intro">
+                    华北水利水电大学占地面积2335亩,学校建有花园校区(河南省郑州市北环路36号)和龙子湖校区(河南省郑州市金水东路136号)，是水利部与河南省共建、以河南省管理为主的高校，是河南省重点支持建设的骨干高校，是“金砖国家网络大学”中方高校牵头单位。
+                </div>
+                <a href="./login.html">
+                    <div class="btn">登录</div>
+                </a>
+            </div>
+            <div class="right">
+                <div class="login">注册</div>
+                <!-- <div class="error">
+                    账号或密码有误，请重新输入或找回密码
+                </div> -->
+                <div class="ipt">
+                    <div class="phone"></div>
+                    <input type="text" placeholder="请输入手机号">
+                </div>
+                <div class="ipt">
+                    <div class="name"></div>
+                    <input type="text" placeholder="请输入真实姓名">
+                </div>
+
+                <div class="ipt location">
+                    <div class="attr"></div>
+                    <div class="select">
+                        <div class="value">请选择学生属性</div>
+                        <div class="arrow"></div>
+                        <div class="select_content" style="display: none;">
+                            <span class="tringle"></span>
+                            <div>本校学生</div>
+                            <div>非本校学生</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="ipt">
+                    <div class="name"></div>
+                    <input type="text" placeholder="班级">
+                </div>
+                <div class="ipt">
+                    <div class="name"></div>
+                    <input type="text" placeholder="学号">
+                </div>
+                <div class="ipt">
+                    <div class="pwd"></div>
+                    <input type="password" placeholder="请设置登录密码">
+                </div>
+                <div class="ipt">
+                    <div class="pwd"></div>
+                    <input type="password" placeholder="请确认登录密码">
+                </div>
+                <div class="ipt">
+                    <div class="pwd"></div>
+                    <input type="text" placeholder="请输入验证码">
+                    <div class="sendCode">获取验证码</div>
+                </div>
+                <div class="ab_pwd">
+                    <div>
+                        点击“提交”，表示您已同意相关协议
+                    </div>
+                </div>
+                <div class="log_bottm">
+                    <div class="log_btn">
+                        <a href="./login.html">
+                            提交
+                        </a> 
+                    </div>
+                    <div class="log_btn">
+                        <a href="#">
+                            重置
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../publicJs/vue.js"></script>
+    <script src="../js/reg.js"></script>
+    <script>
+        var body = document.querySelector('.body');
+        body.style.height = window.innerHeight+'px'
+        var select = document.querySelector('.select');
+        var select_content = document.querySelector('.select_content');
+        select.onclick = function(){
+            var state = select_content.style.display;
+            if(state=='none'){
+                state = 'block'
+            }else if(state =='block'){
+                state = 'none'
+            }
+            select_content.style.display = state
+        }
+        var options = document.querySelector('.tringle').children;
+        var value = document.querySelector('.value')
+        for(var i = 0 ; i < options.length;i++){
+            options[i].onclick = function(e){
+                value.innerText = this.innerText;
+                // e.cancleBubble = true
+                e.stopProgatation()
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+.name {
+    background: url(../img/pic.png) no-repeat -74px -10px;
+}
+
+.attr {
+    background: url(../img/pic.png) no-repeat -106px -10px;
+}
+
+.ab_pwd>div {
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 1px;
+    color: #d0c2b7;
+}
+
+.arrow {
+    width: 14px;
+    height: 8px;
+    background: url(../img/pic.png) no-repeat -63px -46px;
+}
+
+.ipt>.select {
+    width: 348px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 20px;
+}
+
+.value {
+    color: #dfaf89;
+}
+
+.location {
+    position: relative;
+}
+
+.ipt .select_content {
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    background-color: #fff6ed;
+    box-shadow: 0px 2px 10px 0px rgba(223, 175, 137, 0.3);
+    bottom: -113px;
+    left: 0;
+    z-index: 10;
+}
+
+.select_content>div {
+    border-bottom: 1px solid #dfaf89;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    font-weight: normal;
+    font-stretch: normal;
+    letter-spacing: 2px;
+    color: #dfaf89;
+    cursor: pointer;
+}
+
+.select_content>div:last-child {
+    border: 0;
+}
+
+.tringle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fff6ed;
+    transform: rotate(135deg);
+    top: -6px;
+}

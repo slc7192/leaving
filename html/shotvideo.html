@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>短视频实验</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/shotvideo.css">
+  <link rel="stylesheet" href="../publicJs/element_ui/element.css">
+  <style>
+    .el-pagination {
+      padding: 2px 270px!important;
+    }
+    [v-cloak]{
+      display: none;
+    }
+   
+.top{
+    width: 100%;
+    min-width: 1200px;
+    height: 81px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    overflow: hidden;
+}
+.top::before{
+    content: "";
+    position: absolute;
+    left: 35%;
+    width: 215px;
+    height: 100px;
+    background-color: #fff;
+    transform: translate(-52px,40px) rotate(30deg);
+}
+.top::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 81px;
+    background-color: #fff;
+}
+.use_handler{
+    /* margin-left: 600px; */
+    display: flex;
+    margin-top: 25px;
+}
+.arrow_banner {
+      display: flex;
+      justify-content: space-between;
+      width: 1200px;
+      height: 80px;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      margin-top: -40px;
+      left: 19%;
+    }
+
+    .arrow_banner span {
+      /* display: block; */
+      width: 45px;
+      height: 80px;
+      background-color: rgba(0, 0, 0, 0.3);
+      line-height: 80px;
+      text-align: center;
+      cursor: pointer;
+      display: none;
+      transition: all 1s;
+    }
+
+    .arrow_banner span img {
+      vertical-align: middle;
+      border-style: none;
+    }
+
+    .banner:hover .arrow_left {
+      display: block;
+
+    }
+
+    .banner:hover .arrow_right {
+      display: block;
+    }
+
+    .arrow_left:hover,
+    .arrow_left:active {
+      background-color: rgba(0, 0, 0, 1);
+    }
+    /* 顶 */
+    .con{
+      width:1200px;
+      margin:0 auto;
+      display: flex;
+      justify-content: space-between;
+      z-index: 999;
+    }
+    .con .left{
+      padding-top: 16px;
+    }
+    .avatar-uploader{
+      width: 120px; height: 120px;text-align: center;border: 1px solid #ccc;line-height: 110px;position: absolute;top: 126px;left: 115px;font-size: 35px;color: #ccc;
+    }
+    .disn{
+      border: 0px solid #ccc;
+    }
+    .el-button {
+    border: 0px solid #DCDFE6;
+    padding:5px 12px;
+    }
+    .el-popover { 
+    height: 5px;
+    min-width: 37px;
+    /* border: 1px solid #EBEEF5; */
+    padding: 12px;
+    line-height: 0.2;
+    font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="shotvideo" v-cloak>
+    <div class="top">
+      <div class="con">
+        <div class="left">
+          <img src="../img/logo.png" alt="">
+        </div>
+        <div class="use_handler">
+          <div class="btn_black">
+            <a :href=`../index.html?student_id=${studentid}`>返回首页</a>
+          </div>
+            <div class="btn_white">
+              <a :href=`usecenter.html?student_id=${studentid}`>个人中心</a>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="locate">
+      <div class="center">
+          <i class="icon"></i>
+          <span>短视频实验</span>
+      </div>
+    </div>
+    <div class="center band">
+      <div class="navCont" id="p1" >
+            <div class="cont">
+              <div class="cont_l">
+                <!-- 主要的页面内容 -->
+                <div class="line">
+                  <div class="line_video" v-if="shifow">
+                    <img src="../img/add.png"  class="vide_img" @click="add">
+                  </div>
+                  <div class="line_video" v-for="(item,index) of videoList">
+                    <!-- <img :src="item.img" alt=""> -->
+                    <!-- <p class="first_p">时长：{{item.time}}</p> -->
+                    <video :src="video_url+item.video_url" style="width: 283px;height: 160px;"  controls="controls"></video>
+                    <p class="sec_P">
+                      <el-popover
+                        placement="bottom-start"
+                        height="50"
+                        trigger="hover"
+                        :content=`${item.video_name}`>
+                        <el-button slot="reference"> {{item.video_name.length>6?`${item.video_name.substring(0,6)}`:`${item.video_name}`}}</el-button>
+                      </el-popover>
+                    
+                    </p>
+                    <div class="delpho"  @click="dele(item.video_url)"></div>
+                    <!-- <span class="zhe" ></span> -->
+                    <!-- <div class="zhe"></div>
+                    <div class="zhezhao" @click="dele()"></div>-->
+                    <!-- <div class="zhezhao2" @click="openvideo()"></div>  -->
+                  </div>
+                </div>
+                <!-- 分页 -->
+                <div class="block" style="margin-top: 25px;text-align: center;">
+                  <el-pagination
+                    background
+                    layout="prev, pager, next"
+                    :total="1000"
+                    @current-change="handleCurrentChange">
+                  </el-pagination>
+                </div>
+                <!-- 保存与取消 -->
+                <!-- <div class="newline">
+                    <div class="lineTitle"></div>
+                    <div>
+                        <div class="btn_save">
+                          <a href="./usecenter.html">提交</a>
+                        </div>
+                        <div class="btn_cancel">
+                          <a href="./usecenter.html">取消</a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+          </div>
+      </div>
+    </div>
+    <div :class="{show:isshow}" class="again common">
+    </div>
+    <div class="again show_edi" :class="{show:isshow}">
+      <img src="../img/shut.png" alt="" style="margin: 15px 15px 0 310px;cursor: pointer;" @click="shue(false)">
+      <div class="show_top">
+        <p>上传视频</p>
+      </div>
+      <div class="show_shang">
+        视频名称：<input type="text" v-model="video_name">
+      </div>
+      <div class="show_shang">
+        上传视频：
+        <el-upload 
+            class="avatar-uploader"
+            action="http://192.168.2.105:81/CCL/api/fileUp"
+            :on-success="handleVideoSuccess"
+            :before-upload="beforeUploadVideo"
+            :show-file-list="false"
+            :class="{disn:sa}"
+            >
+              <video  v-if="videoForm.showVideoPath !='' && !videoFlag"
+               :src="videoForm.showVideoPath"
+                class="avatar video-avatar"
+                controls="controls" style="position: absolute;top:25px;left: -95px;width: 300px;">
+                您的浏览器不支持视频播放
+              </video>
+              <i v-else class="el-icon-plus avatar-uploader-icon" style="width:36px;height: 25px;"></i>
+          </el-upload>
+      </div>
+      <div class="show_bottom">
+        <el-button type="primary" @click="shue(true)">确定</el-button>
+        <el-button type="info" @click="shue(false)">取消</el-button>
+      </div>
+      </div>
+     
+    </div>
+  </div>
+  <script src="../publicJs/element_ui/vue.js"></script>
+  <script src="../publicJs/element_ui/element.js"></script>
+  <script src="../publicJs/axios.js"></script>
+  <script src="../js/pub.js"></script>
+  <script src="../js/shotvideo.js"></script>
+</body>
+</html>
