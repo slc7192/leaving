@@ -107,16 +107,16 @@
       border: 0px solid #ccc;
     }
     .el-button {
-    border: 0px solid #DCDFE6;
-    padding:5px 12px;
+      border: 0px solid #DCDFE6;
+      padding:5px 12px;
     }
     .el-popover { 
-    height: 5px;
-    min-width: 37px;
-    /* border: 1px solid #EBEEF5; */
-    padding: 12px;
-    line-height: 0.2;
-    font-size: 12px;
+      height: 5px;
+      min-width: 37px;
+      /* border: 1px solid #EBEEF5; */
+      padding: 12px;
+      line-height: 0.2;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -153,8 +153,6 @@
                     <img src="../img/add.png"  class="vide_img" @click="add">
                   </div>
                   <div class="line_video" v-for="(item,index) of videoList">
-                    <!-- <img :src="item.img" alt=""> -->
-                    <!-- <p class="first_p">时长：{{item.time}}</p> -->
                     <video :src="video_url+item.video_url" style="width: 283px;height: 160px;"  controls="controls"></video>
                     <p class="sec_P">
                       <el-popover
@@ -164,13 +162,8 @@
                         :content=`${item.video_name}`>
                         <el-button slot="reference"> {{item.video_name.length>6?`${item.video_name.substring(0,6)}`:`${item.video_name}`}}</el-button>
                       </el-popover>
-                    
                     </p>
-                    <div class="delpho"  @click="dele(item.video_url)"></div>
-                    <!-- <span class="zhe" ></span> -->
-                    <!-- <div class="zhe"></div>
-                    <div class="zhezhao" @click="dele()"></div>-->
-                    <!-- <div class="zhezhao2" @click="openvideo()"></div>  -->
+                    <div class="delpho"  @click="dele(item.id)"></div>
                   </div>
                 </div>
                 <!-- 分页 -->
@@ -182,18 +175,6 @@
                     @current-change="handleCurrentChange">
                   </el-pagination>
                 </div>
-                <!-- 保存与取消 -->
-                <!-- <div class="newline">
-                    <div class="lineTitle"></div>
-                    <div>
-                        <div class="btn_save">
-                          <a href="./usecenter.html">提交</a>
-                        </div>
-                        <div class="btn_cancel">
-                          <a href="./usecenter.html">取消</a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
           </div>
       </div>
@@ -212,7 +193,7 @@
         上传视频：
         <el-upload 
             class="avatar-uploader"
-            action="http://192.168.2.105:81/CCL/api/fileUp"
+            :action="imgurl"
             :on-success="handleVideoSuccess"
             :before-upload="beforeUploadVideo"
             :show-file-list="false"

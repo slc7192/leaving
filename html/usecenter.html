@@ -127,6 +127,14 @@
         }
         .el-pagination {
            text-align: center;
+           margin: 0 auto;
+        }
+        .el-table .warning-row {
+            background: oldlace;
+        }
+
+        .el-table .success-row {
+            background: #f0f9eb;
         }
     </style>
 </head>
@@ -177,9 +185,9 @@
             <div class="navItem">
                 <a href="#p2">修改账号</a>
             </div>
-            <!-- <div class="navItem">
-                <a href="#p3">修改手机</a>
-            </div> -->
+            <div class="navItem">
+                <a href="#p3">积分详情</a>
+            </div>
         </div>
         <!-- 修改个人信息 -->
         <div class="navCont" id="p1" >
@@ -276,13 +284,40 @@
             
         </div>
         <!-- 修改绑定手机 -->
-        <!-- <div class="navCont" id="p3" >
+        <div class="navCont" id="p3" >
             <div class="contTitle">
-                修改手机
+                积分详情
             </div>
-            <div class="cont" style="display: none;">
+            <div class="cont" >
                 
-                <div> -->
+                <div style="width: 960px;">
+                    <el-table
+                        :data="tables"
+                        style="width: 100%"
+                        :row-class-name="tableRowClassName">
+                        <el-table-column
+                        prop="date"
+                        label="项目名称"
+                        width="180">
+                        </el-table-column>
+                        <el-table-column
+                        prop="name" 
+                        label="项目类型"
+                        width="180">
+                        </el-table-column>
+                        <el-table-column
+                        prop="address"
+                        label="姓名">
+                        </el-table-column>
+                        <el-table-column
+                        prop="address"
+                        label="积分">
+                        </el-table-column>
+                        <el-table-column
+                        prop="address"
+                        label="时间">
+                        </el-table-column>
+                    </el-table>
                     <!-- 第一步：验证原手机号 -->
                     <!-- <div class="cont_l phone" style="display: none;">
                         <div class="line">
@@ -335,9 +370,17 @@
                                 <div class="btn_cancel">取消</div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-            </div> -->
+                <div class="block" style="margin-top: 25px;text-align: center;height: 2px;">
+                    <el-pagination
+                      :page-size="PAgesize"
+                      layout="prev, pager, next"
+                      :total="taol" 
+                      @current-change="handleChange">
+                    </el-pagination>
+                </div>
+            </div>
             <!-- 第三步：修改结果 -->
             <!-- <div class="cont p_result">
                 <div>
@@ -347,8 +390,8 @@
                     </div>
                     <div class="btn_relog">重新登录</div>
                 </div>
-            </div>
-        </div>  -->
+            </div> -->
+        </div> 
         <!-- 学生成绩 -->
         <div class="navCont" id="p4" >
             <div class="contTitle">
@@ -418,6 +461,7 @@
                 <el-pagination
                     layout="prev, pager, next"
                     :total="50"
+                    :page-size="pagesize"
                     @current-change="handleCurrentChange">
                 </el-pagination>
               </div>         
@@ -479,22 +523,27 @@
                 电商平台
             </div>
             <div class="cont p_result">
-                <div>
+                <div style="height: 20px;margin-bottom: 40px;">
                     <!-- <div class="btn_relog">功能尚在完善中...</div> -->
-                    <el-input v-model="input" placeholder="请输入内容" style="display: inline;"></el-input>
-                    <el-button type="primary" icon="el-icon-search" style="height: 40px;margin-left: 15px;">搜索</el-button>   
+                    <el-input v-model="input_dian" placeholder="请输入内容" style="display: inline;"></el-input>
+                    <el-button type="primary" icon="el-icon-search" style="height: 40px;margin-left: 15px;" @click="getcount">搜索</el-button>   
                 </div>
-                <div class="cont_list">
-                    <ul>
-                        <li>能开就开</li>
-                        <li>能开就开</li>
-                        <li>能开就开</li>
-                        <li>能开就开</li>
-                        <li>能开就开</li>
-                        <li>能开就开</li>
-                        <li>能开就开</li>
+                <!-- <div class="cont_list"> -->
+                    <ul style="padding-left: 34px;">
+                        <li v-for="(item,ia) of navlist" :key="ia" class="jis" @click="contList(item.id,item.student_id)">
+                            {{item.dept_name}}
+                        </li>
                     </ul>
-                </div>
+                    
+                <!-- </div> -->
+                <div class="block" style="text-align: center;height: 20px;">
+                    <el-pagination
+                      @current-change="handleCurrent"
+                      :page-size="PageSize"
+                      layout="prev, pager, next"
+                      :total="alunt">
+                    </el-pagination>
+                  </div>
             </div>
         </div>
         <!-- 直播视频 -->

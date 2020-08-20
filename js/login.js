@@ -60,7 +60,7 @@ var app = new Vue({
               }
               window.localStorage.setItem('msg',JSON.stringify(loginParams))
               that.show1=false;
-               window.location.href="../html/usecenter.html?student_id="+studentId;
+               window.location.href="../html/usecenter.html?student_id="+studentId+'#p4';
             }else{
               that.show1=true;
             }

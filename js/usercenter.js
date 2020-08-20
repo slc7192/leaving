@@ -28,12 +28,41 @@ var app =new Vue({
     sav1:true,
     pagesize:2,//一页几个
     pagenum:1,//第几页
-    total:0,
+    total:0,//总页数
     search_name:'',
     visible: false,
+    PageSize:9,//一页10个
+    Pagenum:1,
+    alunt:0,//总页数
+    navlist:[],
+    PAgesize:5,
+    PAgenum:1,
+    taol:0,
+    input_dian:'',//电商搜索
+    tables:[
+      {
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄',
+      }, {
+        date: '2016-05-04',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }, {
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄',
+      }, {
+        date: '2016-05-03',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+      }
+    ]
   },
   created(){
     this.getinit();
+    this.getcount();
+    this.getnovcount();
   },
   methods:{
     getinit(){
@@ -55,10 +84,53 @@ var app =new Vue({
          }
         })
     },
+    getcount(){
+      var _this=this;
+      pub._InitAxios({
+        _url:pub._url,
+        ur:pub._DetailApi.listShop,
+        data:{
+          "pageSize":_this.PageSize,
+          "pageNum":_this.Pagenum,
+          "param_remarks":_this.input_dian,
+          },
+        cbk: function cbk(res){
+          _this.alunt=res.data.totalCount;
+          _this.navlist=res.data.list;
+         }
+        })
+    },
+
+    getnovcount(){
+      var _this=this;
+      pub._InitAxios({
+        _url:pub._url,
+        ur:pub._DetailApi.listShop,
+        data:{
+          "pageSize":_this.PAgesize,
+          "pageNum":_this.PAgenum,
+          },
+        cbk: function cbk(res){
+          
+         }
+      })
+    },
+    // 电商平台搜索
+    // seca(){
+    //   this.getcount();
+    // },
+    //学生成绩分页
     handleCurrentChange(val){
       console.log(val);
       this.pagenum=val;
       this.listest();
+    },
+   
+    //学生店铺分页  换页
+    handleCurrent(val){
+      console.log(val);
+      this.Pagenum=val;
+      this.getcount();
     },
     Times(val){
       this.team_id=val.value;//小组id
@@ -172,6 +244,8 @@ var app =new Vue({
             console.log(res);
             if(res.stateCode=="200" && res.stateMsg == "success"){
               _this.textunt();
+            }else{
+              _this.$message.error(res.stateMsg);
             }
           }
         })     
@@ -230,7 +304,7 @@ var app =new Vue({
         break;
         case 'goods':url='../html/commdetails.html';
         break;
-        case 'soft':url='../html/editor.html';
+        case 'soft':url='../html/editor_list.html';
         break;
         case 'short_video':url='../html/shotvideo.html';
         break;
@@ -242,8 +316,8 @@ var app =new Vue({
       }
       this.openurl=url+'?student_id=' + studentid;
       console.log(this.openurl);
-      location.reload();
-      window.open(this.openurl);
+      // location.reload();
+      window.location.href=this.openurl
     },
     listest(){
       var that=this;
@@ -265,6 +339,22 @@ var app =new Vue({
           }
         }
       })
-    }
+    },
+    contList(t,s){
+      window.location.href='../index/index.html?id='+t +'&'+'student_id='+s+'&'+'dw='+1;
+    },
+    tableRowClassName({row, rowIndex}) {
+      
+      if (rowIndex === 1) {
+        return 'warning-row';
+      } else if (rowIndex === 3) {
+        return 'success-row';
+      }
+      return '';
+    },
+    handleChange(val){
+      this.PAgenum=val;
+      this.getnovcount();
+    },
   }
 })

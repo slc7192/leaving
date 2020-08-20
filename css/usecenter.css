@@ -53,6 +53,7 @@
     width: 280px;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05), inset 0px 4px 0px 0px #dfaf89;
     border-top: 4px solid #dfaf89;
+    margin-right: 15px;
 }
 
 .navItem {
@@ -77,7 +78,7 @@
 }
 
 .navCont {
-    width: 900px;
+    width: 1200px;
     background-color: #ffffff;
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.05), inset 0px 4px 0px 0px #dfaf89;
 }
@@ -98,11 +99,12 @@
 }
 .cont>div{
     width: 663px;
-    /* height: 260px; */
+    height: 260px;
     margin: 45px auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
+
 
 .cont_l{
     /* width: 376px; */
@@ -263,10 +265,26 @@ line-height: 0;
     margin-top: 20px;
 }
 .cont_list{
+    width: 675px!important;
+    height: 210px!important;
     border: 2px dotted #eee;
+    display: flex!important;
+    justify-content: flex-start!important;
 }
-.cont_list li{
-    margin: 5px;
+.jis{
+    width: 255px!important;
+    height: 40px!important;
+    line-height: 35px;
+    padding-left: 25px;
+    margin: 15px 20px!important;
+    display: inline-block;
+    border: 2px dotted #eee;
+    text-align: center;
+}
+.jis:hover{
+    cursor: pointer;
+    background-color: #dfaf89;
+    color: #fff;
 }
 .btn_relog{
     width: 300px;

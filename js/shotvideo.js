@@ -26,18 +26,21 @@ var shotvideo = new Vue({
     she:[],
     shifow:true,
     video_url:'',
+    imgurl:''
     
   },
   created(){
+    this.lastname = localStorage.getItem("msg");
+      this.lasna = localStorage.getItem("dept_id");
+      console.log(this.lasna)
+      this.studentid=pub._LinkParm('student_id');//学生学号
+      this.imgurl=pub._url+'api/fileUp';
     this.getinit();
   },
   methods:{
     getinit(){
       this.video_url=pub._url;
-
-      this.lastname = localStorage.getItem("msg");
-      this.lasna = localStorage.getItem("dept_id");
-      this.studentid=pub._LinkParm('student_id');//学生学号
+      
       var _this=this;
       pub._InitAxios({
         _url:pub._url,
@@ -57,6 +60,12 @@ var shotvideo = new Vue({
     },
     add(){
       this.isshow=true;
+      if(this.lasna==null || this.lasna=='' || this.lasna==undefined){
+        this.isshow=false;
+        this.$message.error('已退出登录，请返回首页重新登录！');
+        return;
+      }
+     
     },
     //上传前回调
     beforeUploadVideo(file) {
@@ -97,17 +106,27 @@ var shotvideo = new Vue({
   //删除视频
     dele(str){
       console.log('删除')
-      var sct=[];
-      sct.push(str);
+      // var sct=[];
+      // sct.push(str);
+      if(this.lasna==null || this.lasna=='' || this.lasna==undefined){
+       
+        this.$message.error('已退出登录，请返回首页重新登录！');
+        return;
+      }
+      var _this=this;
       pub._InitAxios({
         _url:pub._url,
         ur:pub._DetailApi.deleteVideo,
         data:
-          sct
+         {'id':str}
         ,
         cbk:function cbk(res){
           if(res.stateCode=="200"){
-           console.log(res);
+            _this.$message({
+              message: '删除成功',
+              type: 'success'
+            });
+            _this.getinit();
           }
         }
       })

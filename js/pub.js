@@ -29,7 +29,7 @@ function _axios() {
 }
 // var baseURL = "http://192.168.3.123:82/medicalcare/";
 //oracle版本
-var baseURL = "http://192.168.2.104:81/CCL/";
+var baseURL = "http://192.168.2.107:81/CCL/";
 
 var webSocket_url = "ws://192.168.35.246:80/medicalcare/";
 var playURL = "http://192.168.2.124:8080/play-control/";
@@ -55,7 +55,17 @@ var pub = {
     videoFile:"api/fileUp",//上传视频
     studentVideo:"api/makeShortVideo",//上传视频
     videoList:"api/listShortVideoPage",//视频列表
-    deleteVideo:"api/deleteFile",//删除视频
+    deleteVideo:"api/delExperimentRecords",//删除视频
+    makeSoftArticle:"api/makeSoftArticle",//富文本编辑器提交内容
+    flieup:"api/fileUpload",
+    listSoftArticle:"api/listSoftArticlePage",//查询学生实验软文记录分页
+    findSoftArticle:"api/findSoftArticle",//查询学生实验软文记录
+    listGoods:"api/listGoodsDictionary",//商品列表
+    saveShop:"api/makeShopStatic",//保存首页配置
+    findShop:"api/findShopConfigure",//查询配置
+    findShopDetail:"api/findShopDetails",//首页预览获取数据
+    listShop:"api/listShopPage",//学生实验分页列表
+    saveBonus:"api/saveBonusPoints",//新增 or 减少 点赞
   },
   /**
    * op 形参

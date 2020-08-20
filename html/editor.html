@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <title>软文推广实验</title>
   <link rel="stylesheet" href="../css/common.css">
   <link rel="stylesheet" href="../css/usecenter.css">
@@ -19,7 +20,7 @@
     .line{
       position: absolute;
       top: 18%;
-      left: 16%;
+      left: 10%;
     }
     #content{
       width: 840px!important;
@@ -152,12 +153,30 @@
     .con .left{
       padding-top: 16px;
     }
+    .cont>div {
+      width:863px;
+      height: 39px;
+      margin: 45px auto;
+    }
+    .cont div:first-child input{
+      width: 505px;
+      height: 35px;
+      margin-right: 266px;
+      padding-left: 5px;
+    }
+    .cont div:first-child input:focus{
+      border-color: #dfaf89;
+    }
+    .cke_contents{
+      max-height: 258px!important;
+      min-height: 258px!important;
+    }
   </style>
-    <script type="text/javascript" charset="gbk" src="../utf/utf8-php/ueditor.config.js"></script>
-    <script type="text/javascript" charset="gbk" src="../utf/utf8-php/ueditor.all.js"></script>
-    <!-- <script type="text/javascript" src="<%=request.getContextPath()%>/js/lang/zh-cn/zh-cn.js" charset="utf-8" ></script> -->
+    
 </head>
-<body>
+<script src="./ckeditor4-major/ckeditor.js"></script>
+
+<body >
   <div id="editor" v-cloak>
     <div class="top">
       <div class="con">
@@ -193,24 +212,27 @@
             软文推广
           </div> -->
           <div class="cont">
+              <div style="font-size: 18px;">
+                文章标题：<input type="text" placeholder="请输入文章标题" v-model="artname">
+                <!-- <el-button type="primary" @click="GoArtList">文章列表</el-button> -->
+              </div>
               <div>
                   <div class="cont_l">
                       <div class="line" >
-                        <form action="<%=request.getContextPath() %>/main/contractServlet.action" method="post">
-                          <div id="jnl">
-                            <script id="content" name="content" type="text/plain" style="width:100%;" v-model="jsn">
-                            </script>
-                          </div>    
-                        </form>
+                        <form>
+                          <textarea name="editor1" id="editor1" rows="10" cols="80">
+                              This is my textarea to be replaced with CKEditor 4.
+                          </textarea>
+                      </form>
                       </div>
                       <div class="newline">
                           <div class="lineTitle"></div>
                           <div>
                               <div class="btn_save">
-                                <a href="./usecenter.html">保存</a>
+                                <a href="#" @click="getContent">提交</a>
                               </div>
                               <div class="btn_cancel">
-                                <a href="./usecenter.html">取消</a>
+                                <a href="#" @click="goback">取消</a>
                               </div>
                           </div>
                       </div>
@@ -222,44 +244,118 @@
   </div>
   <script src="../publicJs/vue.js"></script>
   <script src="../publicJs/element_ui/element.js"></script>
-  <script type="text/javascript">
-        var ue = UE.getEditor('content', {
-            toolbars: [[
-                    'fullscreen', 'source', 'undo', 'redo', '|',
-                    'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc'
-                ]],
-            autoHeightEnabled: false,
-            initialFrameHeight: 300,
-            serverUrl: 'http://' + '192.168.2.104:81/CCL'+ '/upload.php',  //此处请求服务器的地址
-            imageFieldName: "file",
-            imageUrlPrefix: '',
-            imageActionName: 'ajaxUpload',
-            imageAllowFiles: [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
-            catcherActionName: 'catchimage', //在编辑器中粘贴图片，会调用此配置的方法，
-            catcherFieldName: "source",  //回调时的表单字段名称，可自定义
-            catcherUrlPrefix: '',
-        });   
-   </script>
-<script>
-  // setInterval(function(){
-    var view=document.querySelector('.line>form');
-  console.log(view);
-  // },10000)
-</script>
+  <script src="../publicJs/axios.js"></script>
+  <script src="../js/pub.js"></script>
+
 <script>
   var app= new Vue({
     el:"#editor",
     data:{
-      jsn:''
+      jsn:'',
+      artname:'',
+      lastname:'',
+      lasna:'',
+      studentid:'',
+      form_name:''
     },
     created(){
-      console.log(this.jsn);
-      console.log(document.querySelector('#jnl>#content'));
+      this.lastname = localStorage.getItem("msg");
+      this.lasna = localStorage.getItem("dept_id");
+      this.studentid=pub._LinkParm('student_id');//学生学号
+      console.log(this.lasna,this.studentid)
     },
     methods:{
+        getContent() {
+          var data = CKEDITOR.instances.editor1.getData();//获取编辑器内容，带标签
+          console.log(data);
+          var lastName=JSON.parse(this.lastname);
+          var testReport_sign=lastName.testReport_sign;
+          var _this=this;
+          if(_this.artname=='' || _this.data==''){
+            _this.$message.error("请完善标题或内容")
+          }else{
+                pub._InitAxios({
+              _url:pub._url,
+              ur:pub._DetailApi.makeSoftArticle,
+              data:{
+                "student_id":_this.studentid,
+                "dept_id":_this.lasna,
+                "testReport_sign":testReport_sign,
+                "experiment_module_data":{
+                "softArticle_name":_this.artname,
+                "softArticle_content":data
+                } },
+              cbk: function cbk(res){
+                console.log(res);
 
+                if(res.stateCode == '200'){
+                  _this.$message({
+                    message: '提交成功',
+                    type: 'success'
+                  });
+                  _this.softArticle_name='';
+                  _this.data='';
+                  window.location.href="./editor_list.html?student_id="+_this.studentid
+                  }else{
+                    _this.$message.error('保存失败，请在此尝试');
+                  }
+              }
+            })
+          } 
+      },
+
+      goback(){
+        window.location.href="./editor_list.html?student_id="+this.studentid
+      }
     }
   })
+</script>
+<script>
+  CKEDITOR.replace( 'editor1' );
+  CKEDITOR.on('instanceReady', function(e) {
+      // console.log('CKEDITOR初始化', e.editor)
+      e.editor.widgets.on('instanceCreated', function(params) {
+        // console.log('editor创建', params)
+      })
+      var upload = e.editor.uploadRepository
+      upload.on('instanceCreated', function(eve) {
+        // alert('112233')
+      })
+      e.editor.on('change', function(change) {
+        // console.log('change', change)
+      })
+      e.editor.on( 'fileUploadRequest', function( evt ) {
+        // console.log(789,evt);
+        var fileLoader = evt.data.fileLoader,
+        formData = new FormData(),
+        xhr = fileLoader.xhr;
+        xhr.open( 'post', fileLoader.uploadUrl, true );
+        formData.append( 'file', fileLoader.file, fileLoader.fileName );
+        // console.log(formData)
+
+        fileLoader.xhr.send( formData );
+        // Prevented the default behavior.
+        evt.stop();
+      })
+      e.editor.on( 'fileUploadResponse', function( evt ) {
+        //  console.log(456,evt);
+          // Prevent the default response handler.
+            evt.stop();
+        // Get XHR and response.
+            var data = evt.data,
+            xhr = data.fileLoader.xhr;
+            // console.log(456254,xhr);
+            response = xhr.responseText.split( '|' );
+            var respon=JSON.parse(response[0]).data.files[0];
+        if ( response[ 1 ] ) {
+            // An error occurred during upload.
+            data.message = response[ 1 ];
+            evt.cancel();
+        } else {
+            data.url ='http://192.168.2.104:81/CCL/'+ respon;
+        }
+      })
+})
 </script>
 </body>
 </html>
