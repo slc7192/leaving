@@ -73,7 +73,7 @@
       <div></div>
       <div class="again_sec">
         <a href="#" v-show="show==1">
-          <div  @click="shouYe(true)">首页配置</div>
+          <div  @click="shouYe(true)">内容配置</div>
         </a>
         <a href="#">
           <div  @click="shouYe(false)">个人中心</div>
@@ -85,12 +85,15 @@
           <div></div>
       </a> -->
       <span class="usechange" v-show="show==1">
-              <a href="../html/login.html">
+              <!-- <a href="../html/login.html">
                   <div>登录</div>
               </a>
               <div>|</div>
               <a href="../html/login.html">
                   <div>注册</div>
+              </a> -->
+              <a href="#">
+                <div>返回首页</div>
               </a>
       </span>
       </div>
@@ -100,7 +103,7 @@
 
     <div class="again_tom">
         <div>
-          <img :src="logoimg" alt="" > 
+          <img :src="imurl+logoimg" alt="" > 
           <p class="again_font">{{step_name}}</p>
         </div>
         <div class="search">
@@ -128,9 +131,10 @@
               </div>
               <p class="side_p"></p>
               <div class="side_sec">
-                <span @click="showYe" :class="{actise:isacs==1}">首页</span>
-                <span @click="edit" :class="{actise:isacs==2}">软文推广</span>
-                <span @click="video" :class="{actise:isacs==3}">短视频</span>
+                <span @click="shop(1)" :class="{actise:isacs==1}">首页</span>
+                <span @click="shop(2)" :class="{actise:isacs==2}">软文推广</span>
+                <span @click="shop(3)" :class="{actise:isacs==3}">短视频</span>
+                <span @click="shop(4)" :class="{actise:isacs==4}">商品列表</span>
               </div>
               <div class="clearfix"></div>
           </div>
@@ -153,7 +157,7 @@
             <ul>
               <li v-for="(value,index) of lunboimglist">
                 <a href="javascript:;">
-                  <img :src="value" alt="#">
+                  <img :src="imurl+value" alt="#">
                 </a>
               </li> 
             </ul>
@@ -179,14 +183,14 @@
 
             <div class="hot_last">
               <div class="hot_last_one" v-for="(item,ind) of goods_list" :key="ind">
-                <img :src="item.goods_img" alt="" style="width: 350px;height: 548px;">
+                <img :src="imurl+item.goods_img" alt="" style="width: 350px;height: 548px;">
                 <p class="lastone">【{{item.goods_name}}】</p>
                 <div class="lastdiv">
                   <p>活动价：</p>
                   <p>￥</p>
                   <p>399</p>
                   <div class="cart">
-                    <p>加入购物车</p>
+                    <p>商品购买</p>
                     <div class="pic">
                       <div class="img"><img src="../index/img/gowuche.png" alt=""></div></div>
                   </div>
@@ -196,14 +200,14 @@
 
             <div class="hot_last">
               <div class="hot_last_one" v-for="(item,ind) of tgoods_list" :key="ind">
-                <img :src="item.goods_img" alt="" style="width: 350px;height: 548px;">
+                <img :src="imurl+item.goods_img" alt="" style="width: 350px;height: 548px;">
                 <p class="lastone">【{{item.goods_name}}】</p>
                 <div class="lastdiv">
                   <p>活动价：</p>
                   <p>￥</p>
                   <p>399</p>
                   <div class="cart">
-                    <p>加入购物车</p>
+                    <p>商品购买</p>
                     <div class="pic">
                       <div class="img"><img src="../index/img/gowuche.png" alt=""></div></div>
                   </div>
@@ -341,7 +345,7 @@
 
       <!-- 软文列表 -->
       <div id="edit" :class="{ashow:isacs==2}" class="nose">
-        <div class="center band">
+        <div class="center band" style="height: 650px;">
           <div class="navCont atc" id="p1" :style="{'border-top':objStyles}">
               <div class="contTitle" :style="{'border-bottom':objStyles}">
                 <span  @click="goback">软文列表</span>
@@ -375,7 +379,7 @@
                       </div>
                   </a>
                 </div>
-                <div v-else class="none_list">
+                <div v-else class="none_list" >
                   没有多余数据....
                 </div>
                 <div class="block">
@@ -417,9 +421,10 @@
                 <span  @click="goback">视频列表</span>
                 <span v-show="show2" >/视频内容</span>
               </div>
-              <div class="line">
+              <div class="line" v-if="videoList.length != 0 " >
+                
                 <div class="line_video" v-for="(item,index) of videoList">
-                  <video :src="video_url+item.video_url" style="width: 283px;height: 160px;"  controls="controls"></video>
+                  <video :src="visurl+item.video_url" style="width: 283px;height: 160px;"  controls="controls"></video>
                   <p class="sec_P">
                     <el-popover
                       placement="bottom-start"
@@ -445,6 +450,10 @@
                   
                   </div>
                 </div>
+                
+              </div>
+              <div v-else class="none_list" style="margin-top:25px">
+                没有多余数据....
               </div>
                <!-- 分页 -->
                <div class="block" style="margin-top: 25px;text-align: center;">
@@ -453,6 +462,60 @@
                   layout="prev, pager, next"
                   :total="taol" 
                   @current-change="handleCurrentChange">
+                </el-pagination>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 商品列表 -->
+      <div id="video" :class="{ashow:isacs==4}" class="nose">
+        <div class="center band" style="height: 650px;margin-top: 30px;">
+          <div class="navCont atc" id="p1" :style="{'border-top':objStyles}">
+              <div class="contTitle" :style="{'border-bottom':objStyles}">
+                <span  @click="goback">商品列表</span>
+               
+              </div>
+              <div class="line" v-if="shoplist.length != 0 " >
+                
+                <div class=" goods_list" v-for="(item,index) of shoplist" style="width: 224px;height: 350px;">
+                  <div class="jh">
+                    <img :src="imurl+item.goods_pic" style="width: 100%;height: 100%;"  controls="controls" ></img>
+                    <div class="price p_left">
+                      ￥
+                    <span class="num">{{item.goods_price}}</span></div>
+                    <div class="goods p_left">{{item.goods_name}}</div>
+                    <!-- 商品店铺名 -->
+                    <div class="shop_name"></div>
+                  </div>
+                  <!-- <div class="delpho"  @click="dele(item.id)"></div> -->
+                  <!-- <div class="opera">
+                    <span id="btn" @click="niceIn(3,item.id,item.video_name,item.fabulous_state)" :class="{'num':isniceIn==item.id}" class="brey" style="height: 25px;display: flex;justify-content: space-around;width: 33px;margin: 6px 0 0 15px;" v-if="item.fabulous_state % 2 == 0">
+                  
+                      <i class="iconfont" :class="{'niceIn':isniceIn==item.id}" style="display: inline;padding: 0px;">&#xe602;</i> 
+                      <p>{{item.bonus_points}}</p>
+                    </span>
+
+                    <span id="btn" @click="niceIn(3,item.id,item.video_name,item.fabulous_state)" :class="{'num':isniceIn==item.id}" style="height: 25px;display: flex;justify-content: space-around;width: 33px;margin: 6px 0 0 15px;" class="trumb" v-else>
+                  
+                      <i class="iconfont" :class="{'niceIn':isniceIn==item.id}" style="display: inline;padding: 0px;">&#xe602;</i> 
+                      <p>{{item.bonus_points}}</p>
+                    </span>
+                  
+                  </div> -->
+                </div>
+                
+              </div>
+              <div v-else class="none_list" style="margin-top:25px">
+                没有多余数据....
+              </div>
+               <!-- 分页 -->
+               <div class="block" style="margin-top: 25px;text-align: center;">
+                <el-pagination
+                  :page-size="PAgesize"
+                  layout="prev, pager, next"
+                  :total="totalCount" 
+                  @current-change="haurrentChange">
                 </el-pagination>
               </div>
           </div>

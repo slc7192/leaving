@@ -2092,6 +2092,52 @@ border-radius: 3px;
   background-repeat: no-repeat;
   z-index: 10000;
 }
+.price{
+  color: #ff0000;
+  font-size: 16px;
+}
+.num{
+  font-size: 20px;
+font-weight: bold;
+}
+.goods{
+  font-size: 13px;
+  color: #666;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: 22px;
+  text-overflow:ellipsis; 
+}
+.goods_list{
+  width: 1220px;
+  margin-top: 20px;
+  margin: 40px 19px 15px 55px;
+}
+.goods_list .jh{
+  width: 204px;
+  height: 257px;
+  
+}
+.goods_list .jh div{
+  text-align: left;
+}
+.goods_list .jh img{
+  display: block;
+  width:204px;
+  height: 257px;
+  margin: 0 auto;
+}
+.goods_list:hover{
+  border: 1px solid #ff0003;
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.1);
+  /* padding: 9px; */
+}
+.goods_list .jh:hover .goods{
+  white-space: pre-wrap;
+}
+.p_left{
+  padding-left: 10px;
+}
 .delpho{
   width: 32px;
   height: 40px;

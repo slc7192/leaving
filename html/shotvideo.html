@@ -153,7 +153,7 @@
                     <img src="../img/add.png"  class="vide_img" @click="add">
                   </div>
                   <div class="line_video" v-for="(item,index) of videoList">
-                    <video :src="video_url+item.video_url" style="width: 283px;height: 160px;"  controls="controls"></video>
+                    <video :src="vidurl+item.video_url" style="width: 283px;height: 160px;"  controls="controls"></video>
                     <p class="sec_P">
                       <el-popover
                         placement="bottom-start"
@@ -169,9 +169,10 @@
                 <!-- 分页 -->
                 <div class="block" style="margin-top: 25px;text-align: center;">
                   <el-pagination
-                    background
+                    
+                    :page-size="pageSize"
                     layout="prev, pager, next"
-                    :total="1000"
+                    :total="towtal"
                     @current-change="handleCurrentChange">
                   </el-pagination>
                 </div>

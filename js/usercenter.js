@@ -57,26 +57,37 @@ var app =new Vue({
         name: '王小虎',
         address: '上海市普陀区金沙江路 1518 弄'
       }
-    ]
+    ],
+    studentid:'',
+    imgurl:'',//上传地址
+    imageUrl: '',//上传图片
   },
   created(){
-    this.getinit();
-    this.getcount();
-    this.getnovcount();
+    this.studentid=pub._LinkParm('student_id');
+    this.imgurl=pub._url+'api/fileUp';
+    var stname=JSON.parse(localStorage.getItem("msg"));
+		 if(stname!=null){
+      this.getinit();
+      this.getcount();
+      this.getnovcount();
+		 }else{
+			 window.location.href="../html/login.html";
+		 }
   },
   methods:{
     getinit(){
-      var studentid=pub._LinkParm('student_id');
+      console.log(this.studentid);
       var _this=this;
       pub._InitAxios({
         _url:pub._url,
         ur:pub._DetailApi.studentInfo,
         data:{
-          student_id : studentid
+          "student_id" : _this.studentid
           },
         cbk: function cbk(res){
           console.log(res);
           _this.tabe= res.data;
+          _this.imageUrl=res.data.files;
           console.log(_this.tabe);
           _this.textcount=res.data.experiment;
           _this.search_name=res.data.student_name;
@@ -105,13 +116,16 @@ var app =new Vue({
       var _this=this;
       pub._InitAxios({
         _url:pub._url,
-        ur:pub._DetailApi.listShop,
+        ur:pub._DetailApi.listBonus,
         data:{
           "pageSize":_this.PAgesize,
           "pageNum":_this.PAgenum,
+          // "student_id" : _this.studentid
           },
         cbk: function cbk(res){
-          
+          console.log(res);
+          _this.tables=res.data.list;
+          _this.taol=res.data.totalCount;
          }
       })
     },
@@ -125,7 +139,40 @@ var app =new Vue({
       this.pagenum=val;
       this.listest();
     },
-   
+    //上传头像、
+    handleAvatarSuccess(res, file) {
+      this.imageUrl =pub._url+res.data.files[0];
+      var _this=this;
+      pub._InitAxios({
+        _url:pub._url,
+        ur:pub._DetailApi.studentEdit,
+        data:{
+        "student_id":_this.studentid,
+        "files":_this.imageUrl,
+        },
+        cbk:function cbk(res){
+          console.log(res);
+          if(res.stateCode=="200" ){
+            _this.$message({
+              message: `头像上传成功`, 
+              type: 'success'
+            });
+          }
+        }
+      })
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg' || 'image/png';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG / PNG格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+      return isJPG && isLt2M;
+    },
     //学生店铺分页  换页
     handleCurrent(val){
       console.log(val);
@@ -155,8 +202,9 @@ var app =new Vue({
         return false;
       }
     },
+
     makesure(){
-      var studentid=pub._LinkParm('student_id');//学生学号
+     
       var _this=this;
       // console.log(_this.newphone)
       if(_this.newagainpass!==_this.newpass){
@@ -166,7 +214,7 @@ var app =new Vue({
           _url:pub._url,
           ur:pub._DetailApi.studentEdit,
           data:{
-          "student_id":studentid,
+          "student_id":_this.studentid,
           "phone":_this.nphone,
           "files":"no",
           "password":_this.newagainpass,
@@ -217,7 +265,7 @@ var app =new Vue({
       this.save();
     },
     save(){
-      var studentid=pub._LinkParm('student_id');//学生学号
+     
       let _this=this;
       if(_this.team_id==''){
         this.$message.error("小组不能为空");
@@ -235,14 +283,14 @@ var app =new Vue({
           data:{"dept_name":_this.dept_name,
           "dept_type_id":_this.dept_type_id,
           "dept_type_name":_this.dept_type_name,
-          "student_id":studentid,
+          "student_id":_this.studentid,
           "team_id":_this.team_id,
           "experiment":_this.experiment,
           "team_name":_this.team_name
           },
           cbk:function cbk(res){
             console.log(res);
-            if(res.stateCode=="200" && res.stateMsg == "success"){
+            if(res.stateCode=="200"){
               _this.textunt();
             }else{
               _this.$message.error(res.stateMsg);
@@ -298,7 +346,7 @@ var app =new Vue({
     },
     pusha(index,obj){
       // console.log(index,obj);
-      var studentid=pub._LinkParm('student_id');//学生学号
+     
       switch(obj){
         case 'shop':url='../html/storeopt.html';
         break;
@@ -314,27 +362,27 @@ var app =new Vue({
         // href="#p7"
         break;
       }
-      this.openurl=url+'?student_id=' + studentid;
+      this.openurl=url+'?student_id=' + this.studentid;
       console.log(this.openurl);
       // location.reload();
       window.location.href=this.openurl
     },
     listest(){
       var that=this;
-      var studentid=pub._LinkParm('student_id');//学生学号
+      
       pub._InitAxios({
         _url:pub._url,
         ur:pub._DetailApi.studentListTest,
         data:{
-          "pageSize":this.pagesize,
-        "pageNum":this.pagenum,
-        "student_id":studentid
+          "pageSize":that.pagesize,
+        "pageNum":that.pagenum,
+        "student_id":that.studentid
         },
         cbk:function cbk(res){
           if(res.stateCode=="200"){
-            console.log(res,res.data.totalCount)
+            console.log(res)
             that.tableData=res.data.list;
-            // that.total=res.data.totalCount;
+            that.total=res.data.totalCount;
             console.log(that.total)
           }
         }

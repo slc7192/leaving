@@ -184,13 +184,13 @@
           <img src="../img/logo.png" alt="">
         </div>
         <div class="use_handler">
-          <div class="btn_black">
-            <a href="../index.html">返回首页</a>
+          <div class="btn_black"  @click="goover(true)">
+            <a>返回首页</a>
           </div>
-            <div class="btn_white">
-              <a href="./usecenter.html">个人中心</a>
-            </div>
+          <div class="btn_white"  @click="goover(false)">
+            <a >个人中心</a>
           </div>
+        </div>
       </div>
     </div>
     <div class="head">
@@ -221,7 +221,7 @@
                       <div class="line" >
                         <form>
                           <textarea name="editor1" id="editor1" rows="10" cols="80">
-                              This is my textarea to be replaced with CKEditor 4.
+                              
                           </textarea>
                       </form>
                       </div>
@@ -260,16 +260,19 @@
     },
     created(){
       this.lastname = localStorage.getItem("msg");
-      this.lasna = localStorage.getItem("dept_id");
-      this.studentid=pub._LinkParm('student_id');//学生学号
-      console.log(this.lasna,this.studentid)
+      
+      if(this.lastname!=null){
+        this.lasna = localStorage.getItem("dept_id");
+        this.studentid=pub._LinkParm('student_id');//学生学号
+      }else{
+        window.location.href="../html/login.html"
+      }
     },
     methods:{
         getContent() {
+          var timestamp = (new Date()).getTime()/1000;
           var data = CKEDITOR.instances.editor1.getData();//获取编辑器内容，带标签
           console.log(data);
-          var lastName=JSON.parse(this.lastname);
-          var testReport_sign=lastName.testReport_sign;
           var _this=this;
           if(_this.artname=='' || _this.data==''){
             _this.$message.error("请完善标题或内容")
@@ -280,7 +283,7 @@
               data:{
                 "student_id":_this.studentid,
                 "dept_id":_this.lasna,
-                "testReport_sign":testReport_sign,
+                "testReport_sign":timestamp,
                 "experiment_module_data":{
                 "softArticle_name":_this.artname,
                 "softArticle_content":data
@@ -295,7 +298,9 @@
                   });
                   _this.softArticle_name='';
                   _this.data='';
-                  window.location.href="./editor_list.html?student_id="+_this.studentid
+                  setTimeout(()=>{
+                    window.location.href="./editor_list.html?student_id="+_this.studentid
+                  },1000)
                   }else{
                     _this.$message.error('保存失败，请在此尝试');
                   }
@@ -303,7 +308,17 @@
             })
           } 
       },
-
+      goover(tag){
+        console.log(tag)
+        var url
+        if(tag){
+          url='../index.html'
+        }else{
+          url="./usecenter.html?student_id="+this.studentid
+        }
+        console.log(url)
+        window.location.href=url;
+      },
       goback(){
         window.location.href="./editor_list.html?student_id="+this.studentid
       }
@@ -313,9 +328,7 @@
 <script>
   CKEDITOR.replace( 'editor1' );
   CKEDITOR.on('instanceReady', function(e) {
-      // console.log('CKEDITOR初始化', e.editor)
       e.editor.widgets.on('instanceCreated', function(params) {
-        // console.log('editor创建', params)
       })
       var upload = e.editor.uploadRepository
       upload.on('instanceCreated', function(eve) {

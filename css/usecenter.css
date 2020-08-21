@@ -99,7 +99,7 @@
 }
 .cont>div{
     width: 663px;
-    height: 260px;
+    height:300px;
     margin: 45px auto;
     display: flex;
     justify-content: flex-start;
@@ -137,6 +137,7 @@
     text-align: center;
     margin-left: 24px;
     cursor: pointer;
+    margin-top: 10px;
 }
 .line i {
     display: inline-block;
@@ -272,6 +273,10 @@ line-height: 0;
     justify-content: flex-start!important;
 }
 .jis{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    overflow: hidden;
     width: 255px!important;
     height: 40px!important;
     line-height: 35px;

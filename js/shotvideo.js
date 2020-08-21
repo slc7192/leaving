@@ -25,21 +25,30 @@ var shotvideo = new Vue({
     studentid:'',
     she:[],
     shifow:true,
-    video_url:'',
-    imgurl:''
+    vidurl:'',
+    imgurl:'',
+    towtal:0,
+    testReport_sign:''
     
   },
   created(){
-    this.lastname = localStorage.getItem("msg");
+      this.lastname = localStorage.getItem("msg");
       this.lasna = localStorage.getItem("dept_id");
-      console.log(this.lasna)
+     
+      this.testReport_sign=JSON.parse(this.lastname).testReport_sign;
+      
       this.studentid=pub._LinkParm('student_id');//学生学号
       this.imgurl=pub._url+'api/fileUp';
-    this.getinit();
+      if(this.lastname){
+        this.getinit();
+      }else{
+        window.location.href="../html/login.html"
+      }
+    
   },
   methods:{
     getinit(){
-      this.video_url=pub._url;
+      this.vidurl=pub._url;
       
       var _this=this;
       pub._InitAxios({
@@ -54,18 +63,13 @@ var shotvideo = new Vue({
           if(res.stateCode=="200"){
             console.log(res);
             _this.videoList=res.data.list;
+            _this.towtal=res.data.totalCount
           }
         }
       })
     },
     add(){
       this.isshow=true;
-      if(this.lasna==null || this.lasna=='' || this.lasna==undefined){
-        this.isshow=false;
-        this.$message.error('已退出登录，请返回首页重新登录！');
-        return;
-      }
-     
     },
     //上传前回调
     beforeUploadVideo(file) {
@@ -105,14 +109,6 @@ var shotvideo = new Vue({
   },
   //删除视频
     dele(str){
-      console.log('删除')
-      // var sct=[];
-      // sct.push(str);
-      if(this.lasna==null || this.lasna=='' || this.lasna==undefined){
-       
-        this.$message.error('已退出登录，请返回首页重新登录！');
-        return;
-      }
       var _this=this;
       pub._InitAxios({
         _url:pub._url,
@@ -133,16 +129,10 @@ var shotvideo = new Vue({
     },
    //确定上传视频
     shue(bol){
-      var sk=localStorage.getItem("depId");
-      // console.log(sk,sk == null ? true : false)
-      var lastName=JSON.parse(this.lastname);
-      var testReport_sign=lastName.testReport_sign;
+      var timestamp = (new Date()).getTime()/1000;
+      console.log(timestamp)
       if(bol){
-        if(sk == null? false : true){
-          this.$message.error("本次实验已结束，请返回首页，重新登录")
-        }else if(this.lastname==null || testReport_sign==undefined){
-          this.$message.error("查询不到账号信息，请返回首页，退出重新登陆")
-        }else if(this.video_name==''){
+         if(this.video_name==''){
           // console.log(455)
           this.$message.error('请填写视频名称');
         }else if(this.video_url==''){
@@ -159,7 +149,7 @@ var shotvideo = new Vue({
             ur:pub._DetailApi.studentVideo,
             data:{
                "student_id":_this.studentid,
-                "testReport_sign":testReport_sign,
+                "testReport_sign":timestamp,
                 "dept_id" :_this.lasna,
                 "experiment_module_data":experiment
             },
@@ -169,7 +159,7 @@ var shotvideo = new Vue({
                   message: '视频上传成功',
                   type: 'success'
                 });
-                window.localStorage.setItem('depId',JSON.stringify(testReport_sign));
+                
                 _this.isshow=false;
                 _this.getinit()
               }

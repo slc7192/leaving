@@ -66,6 +66,15 @@ var pub = {
     findShopDetail:"api/findShopDetails",//首页预览获取数据
     listShop:"api/listShopPage",//学生实验分页列表
     saveBonus:"api/saveBonusPoints",//新增 or 减少 点赞
+    listBonus:"api/listBonusPointsPage",//点赞积分榜
+    departmentList: "student/createMessage", //创建留言
+    getList: "student/listMessagePage", //留言分页列表
+    listNewMessagePage: "student/listNewMessagePage", //查看留言消息分页列表
+    removeNewMessage: "student/removeNewMessage", //解除留言提醒
+    findReplyList: "student/findReplyList", //查询评论详情
+    listReply: "student/listReply", //留言回复详情列表
+    userReply: "student/userReply", //用户回复
+    shoplist:"api/listExperimentRecordsGoodsPage"
   },
   /**
    * op 形参

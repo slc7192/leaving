@@ -136,6 +136,32 @@
         .el-table .success-row {
             background: #f0f9eb;
         }
+        .el-table .cell {
+            padding-left: 15px;
+        }
+        .avatar-uploader .el-upload {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+        }
+        .avatar-uploader-icon {
+            font-size: 28px;
+            color: #8c939d;
+            width: 178px;
+            height: 178px;
+            line-height: 178px;
+            text-align: center;
+        }
+        .avatar {
+            width: 178px;
+            height: 178px;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -188,6 +214,9 @@
             <div class="navItem">
                 <a href="#p3">积分详情</a>
             </div>
+            <div class="navItem">
+                <a href="./messageList.html">消息中心</a>
+            </div>
         </div>
         <!-- 修改个人信息 -->
         <div class="navCont" id="p1" >
@@ -195,11 +224,13 @@
                 基本信息
             </div>
             <div class="cont">
-                <div>
+                <div style="width: 900px;display: flex;justify-content: space-around;">
                     <div class="cont_l">
                         <div class="line">
                             <div class="lineTitle">手机号码:</div>
-                            <div><span>{{tabe.phone}}</span><div class="btn_change">修改手机</div></div>
+                            <div><span>{{tabe.phone}}</span>
+                                <div class="btn_change"><a href="#p2">修改手机</a></div>
+                            </div>
                         </div>
                         <div class="line">
                             <div class="lineTitle">真实姓名:</div>
@@ -213,16 +244,25 @@
                             <div class="lineTitle">所在班级:</div>
                             <div><span>{{tabe.grade}}</span></div>
                         </div>
-                        <div class="line">
+                        <!-- <div class="line">
                             <div class="lineTitle"></div>
                             <div>
                                 <div class="btn_save">保存</div>
                                 <div class="btn_cancel">取消</div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="cont_r">
-                        <img src="../img/head-img.png" width="100%" alt="">
+                    <div class="cont_r" style="width: 180px;">
+                        <!-- <img src="../img/head-img.png" width="100%" alt=""> -->
+                        <el-upload
+                            class="avatar-uploader"
+                            :action="imgurl"
+                            :show-file-list="false"
+                            :on-success="handleAvatarSuccess"
+                            :before-upload="beforeAvatarUpload">
+                            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                            </el-upload>
                         <div class="btn_edit">修改头像</div>
                     </div>
                 </div>
@@ -255,12 +295,12 @@
                                 <input type="password" v-model="newagainpass"placeholder="请确认新密码">
                             </div>
                         </div>
-                        <div class="line">
+                        <!-- <div class="line">
                             <div class="lineTitle"></div>
-                            <!-- <div>
+                            <div>
                                 <div class="tip">密码6-20个字符，由字母、数字和符号的两种以上组合</div>
-                            </div> -->
-                        </div>
+                            </div>
+                        </div> -->
                         <div class="line">
                             <div class="lineTitle"></div>
                             <div>
@@ -290,31 +330,38 @@
             </div>
             <div class="cont" >
                 
-                <div style="width: 960px;">
+                <div style="width: 900px;height: auto;text-align: center;">
                     <el-table
                         :data="tables"
                         style="width: 100%"
                         :row-class-name="tableRowClassName">
                         <el-table-column
-                        prop="date"
+                        prop="points_name"
                         label="项目名称"
-                        width="180">
+                        width="180" 
+                        show-overflow-tooltip
+                        style="padding-left: 15px;">
                         </el-table-column>
                         <el-table-column
-                        prop="name" 
+                        prop="type_name" 
                         label="项目类型"
                         width="180">
                         </el-table-column>
                         <el-table-column
-                        prop="address"
+                        prop="student_name"
                         label="姓名">
                         </el-table-column>
                         <el-table-column
-                        prop="address"
-                        label="积分">
+                        prop="points_score"
+                        label="积分"
+                       >
+                            <template slot-scope="scope">
+                                <p v-if="scope.row.bonusPointsType=='add'">+{{scope.row.points_score}}</p>
+                                <p v-else>-{{scope.row.points_score}}</p>
+                            </template>
                         </el-table-column>
                         <el-table-column
-                        prop="address"
+                        prop="add_time"
                         label="时间">
                         </el-table-column>
                     </el-table>
@@ -460,7 +507,7 @@
             <div class="block">
                 <el-pagination
                     layout="prev, pager, next"
-                    :total="50"
+                    :total="total"
                     :page-size="pagesize"
                     @current-change="handleCurrentChange">
                 </el-pagination>
