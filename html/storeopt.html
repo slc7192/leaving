@@ -389,7 +389,7 @@
     <!-- 编辑弹出框 -->
     <!-- 宝贝推荐 -->
     <div class="zhe " :class="{ishow:isshow}">
-      <div class="model zhecommon" :class="{ishow:isshow}" style="height:620px;top:19.3%">
+      <div class="model zhecommon" :class="{ishow:isshow}" style="height:620px;">
 
         <div class=zhe_head >
           <p>宝贝推荐</p>
@@ -556,7 +556,7 @@
 
     <!-- 轮播 -->
     <div class="zhe " :class="{ishow2:isshow4}">
-      <div class="model zhecommon" :class="{ishow2:isshow4}" style="width: 846px;height: 560px;top: 23.3%;">
+      <div class="model zhecommon" :class="{ishow2:isshow4}" style="width: 846px;height: 560px;">
 
         <div class=zhe_head>
           <p>轮播</p>
@@ -569,18 +569,19 @@
             <el-tab-pane label="图片设置" name="first">
               <template slot-scope="scope">
                 
-                <div style="display: flex; margin-bottom: 40px;">
+                <div style="display: flex; margin-bottom: 10px;">
 
                   <p style="display:inline ;">摸板尺寸：</p>
                   <p style="color:#999999;">此模块图片设计尺寸最佳为1920*670px，小于或大于时首页图片将会变形</p>
-
+                 
                 </div>
-
+                <p class="ckca" style="color: #ccc;margin: 0px 70px 20px;">为了保证图片的正常使用，仅支持3M以内jpg、jpeg、png格式图片上传,最少3张最多6张。</p>
                 <div style="display: flex;" style="width: 860px;">
 
                   <p style="display:inline; width : 250px;">内容设置：</p>
 
                   <el-upload 
+                    ref="upload" 
                     :action="imgurl"           
                     list-type="picture-card"
                     :on-preview="handlePictureCardPreview"
@@ -591,6 +592,8 @@
                     :show-file-list="true"
                     :class="{hide:hideUpload}"
                     style="width: 1430px;"
+                    
+                    
                    >
                     <i class="el-icon-plus"  v-if="Lunboimage.length<6"></i>
                   </el-upload>
@@ -611,20 +614,16 @@
                   <el-dialog :visible.sync="dialogVisible">
                     <img width="100%" :src="dialogImageUrl" alt="">
                   </el-dialog> -->
-                  <p class="ckca" style="color: #ccc;">为了保证图片的正常使用，仅支持3M以内jpg、jpeg、png格式图片上传,最少3张最多6张。</p>
-
                 </div>
 
-                <div>
-                  <div class="right_but" style="width: 214px;margin: 0px auto; position: fixed;
-                  top:74.5%;
-                  left: 52%;">
-                    <button @click="savelength(true)">保存</button>
-                    <button @click="editor(0)">取消</button>
-                  </div>
+                <div class="right_but" style="width: 214px;margin: 0px auto; position: fixed;
+                top: 85.5%;left: 42%;">
+                  <button @click="savelength(true)">保存</button>
+                  <button @click="editor(0)">取消</button>
                 </div>
 
               </template>
+              
             </el-tab-pane>
           </el-tabs>
         </div>

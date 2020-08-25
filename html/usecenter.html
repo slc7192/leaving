@@ -175,9 +175,9 @@
               <div class="btn_black">
                   <a href="../index.html">返回首页</a>
               </div>
-              <!-- <div class="btn_white">
-                 <a href="./reg.html" >注册</a>
-              </div> -->
+              <div class="btn_white">
+                 <a href="#" @click="exit" >退出</a>
+              </div>
             </div>
         </div>
       </div>
@@ -263,7 +263,8 @@
                             <img v-if="imageUrl" :src="imageUrl" class="avatar">
                             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                             </el-upload>
-                        <div class="btn_edit">修改头像</div>
+                        <div class="btn_edit" v-if="imageUrl">修改头像</div>
+                        <div class="btn_edit" v-else>上传头像</div>
                     </div>
                 </div>
             </div>
@@ -612,7 +613,7 @@
     <script src="../js/pub.js"></script>
     <script src="../js/usercenter.js"></script>
     <script>
-        window.location.href="#p6";
+        window.location.href="#p1";
         // var guding=document.querySelectorAll('.bandNav>.navItem');
         // if(guding){
         //     for(var i =0 ; i<guding.length; i++){

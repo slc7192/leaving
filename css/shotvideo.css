@@ -383,7 +383,7 @@ letter-spacing: 0px;
   border: 1px solid #eee;
 	background-color: #fff;
   border-radius: 3px 3px 0px 0px;
-  margin: 7px -4px 7px 15px;
+  margin:25px -4px 7px 15px;
   position: relative;
   cursor: pointer;
 }
@@ -453,7 +453,7 @@ letter-spacing: 0px;
   position: absolute;
   top: 80%;
   left: 84%;
-  background: url(../img/delete.png) no-repeat center;
+  background: url(../img/detil.png) no-repeat center;
 }
 .line_video:hover .zhezhao2{
   width: 64px;
@@ -478,25 +478,39 @@ letter-spacing: 0px;
   display: none;
 }
 .show{
+  z-index: 10000;
   display:block;
 }
 #shotvideo{
   position: relative;
 }
 .show_edi{
-  width: 340px;
-  height: 390px;
+  width: 725px;
+  height: 484px;
   background-color: #fff;
-  z-index: 99999;
+  z-index: 99999;   
   position: absolute;
-  top: 27%;
-  left: 42%;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .show_top{
-  margin:-20px auto 15px;
+  margin: 18px auto 15px;
   color: #2e2e35;
   font-size: 18px;
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+.show_top img{
+  width: 12px;
+    margin: 6px -80px 0px 10px;
+    cursor: pointer;
+    height: 12px;
 }
 .show_shang{
   margin: 10px auto;
@@ -507,10 +521,11 @@ letter-spacing: 0px;
 .show_shang input{
   height: 33px;
   border: 1px solid #ccc;
+  width: 500px;
 }
 .show_bottom{
   width: 150px;
-  margin: 182px auto 0;
+  margin: 273px auto 0;
   display: flex;
   justify-content: space-around;
 }

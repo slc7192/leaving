@@ -274,7 +274,7 @@
           var data = CKEDITOR.instances.editor1.getData();//获取编辑器内容，带标签
           console.log(data);
           var _this=this;
-          if(_this.artname=='' || _this.data==''){
+          if(_this.artname=='' || data==''){
             _this.$message.error("请完善标题或内容")
           }else{
                 pub._InitAxios({
@@ -326,6 +326,8 @@
   })
 </script>
 <script>
+  var url=pub._url+'api/fileUp';
+  
   CKEDITOR.replace( 'editor1' );
   CKEDITOR.on('instanceReady', function(e) {
       e.editor.widgets.on('instanceCreated', function(params) {
@@ -339,19 +341,20 @@
       })
       e.editor.on( 'fileUploadRequest', function( evt ) {
         // console.log(789,evt);
+        // console.log(url)
         var fileLoader = evt.data.fileLoader,
         formData = new FormData(),
         xhr = fileLoader.xhr;
-        xhr.open( 'post', fileLoader.uploadUrl, true );
+        xhr.open( 'post', url, true );
         formData.append( 'file', fileLoader.file, fileLoader.fileName );
-        // console.log(formData)
+        console.log(formData)
 
         fileLoader.xhr.send( formData );
         // Prevented the default behavior.
         evt.stop();
       })
       e.editor.on( 'fileUploadResponse', function( evt ) {
-        //  console.log(456,evt);
+         console.log(456,evt);
           // Prevent the default response handler.
             evt.stop();
         // Get XHR and response.
@@ -365,7 +368,7 @@
             data.message = response[ 1 ];
             evt.cancel();
         } else {
-            data.url ='http://192.168.2.104:81/CCL/'+ respon;
+            data.url =pub._url+ respon;
         }
       })
 })

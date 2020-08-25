@@ -95,28 +95,29 @@ var index = new Vue({
               },
               cbk:function cbk(res){
                 if(res.stateCode=="200"){
+                    _this.setid=res.data.id;
                     _this.goods_list=res.data.goods_list;//宝贝内容配置
                     _this.input_cou=res.data.Logo.step_name;//店铺logo名称
                     _this.didialogImageUrl=res.data.Logo.dialogImage;//店铺logo图片
                     _this.value_shang=res.data.Navigation.value_shang;//导航
                     _this.value_shang==1?_this.value_shang=true : _this.value_shang=false;
-                    
+                    _this.Lunboimage=res.data.Lunboimage;
+                   
+                    //图片回显
                     var suvl=res.data.Contractlist;
-
                     for(var i = 0 ;i <suvl.length; i++){
                       _this.contractlist.push({name:suvl[i].uid,url:suvl[i].url});
-                      _this.Lunboimage.push(suvl[i].url);
                     }
-
+                    //判断是否显示新增图片按钮
                     if(res.data.Lunboimage.length>=6){
                       _this.hideUpload=true;
                     }
-
+                    //修改颜色
                     if(res.data.color==2){
                       _this.activeColor='#0365C6';
                     }
 
-                    _this.setid=res.data.id
+                   
                 }
               }
             })
@@ -211,15 +212,18 @@ var index = new Vue({
     },
     //轮播图  图片成功回调
     handlelunSuccess(res, file){
+      console.log('888888888============',this.Lunboimage)
       console.log(res, file);
       this.dialogImageUrl=file.response.data.files[0];
-      var imgu=file.response.data.files[0];
-      this.Lunboimage.push(imgu);
-      this.contractlist.push({name:file.uid,url:pub._url+imgu})
+      console.log(this.dialogImageUrl)
+      this.Lunboimage.push(this.dialogImageUrl);
+      this.contractlist.push({name:file.uid,url:pub._url+this.dialogImageUrl})
     },
     onlunch(file,filelist){
+      console.log(this.Lunboimage)
       this.hideUpload = this.Lunboimage.length >= this.limitCount;
     },
+ 
     //移除轮播图的图片
     handleRemove(file, fileList) {
       console.log(fileList)

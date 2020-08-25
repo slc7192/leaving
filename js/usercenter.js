@@ -95,6 +95,10 @@ var app =new Vue({
          }
         })
     },
+    exit(){
+      localStorage.clear();
+      window.location.href="../index.html";
+    },
     getcount(){
       var _this=this;
       pub._InitAxios({

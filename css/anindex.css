@@ -1,0 +1,57 @@
+/* CSS Document */
+
+/* body
+
+{
+
+	margin: 0;
+
+	padding: 0;
+
+	font: 12px/1.5 arial;
+
+	color: #3E3E3E;
+
+	background:#fff;
+
+} */
+
+
+
+
+
+.opera{
+
+  position: absolute;
+  top: 162px;
+  left: 216px;
+
+}
+
+#btn
+
+{
+
+  width: 58px;
+  height: 58px;
+  color: #000;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+
+}
+
+#btn i{
+
+	display: block;
+   
+    padding: 7px 0 0;
+
+}
+
+#btn i:hover{
+  cursor: pointer;
+}
+

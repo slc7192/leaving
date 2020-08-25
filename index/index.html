@@ -73,10 +73,10 @@
       <div></div>
       <div class="again_sec">
         <a href="#" v-show="show==1">
-          <div  @click="shouYe(true)">内容配置</div>
+          <div  @click="shouYe(1,true)">内容配置</div>
         </a>
         <a href="#">
-          <div  @click="shouYe(false)">个人中心</div>
+          <div  @click="shouYe(2,false)">个人中心</div>
         </a>
       <!-- <a href="javascript:;" class="message_c">
           <div></div>
@@ -92,8 +92,9 @@
               <a href="../html/login.html">
                   <div>注册</div>
               </a> -->
+          
               <a href="#">
-                <div>返回首页</div>
+                <div @click="shouYe(3,false)">返回首页</div>
               </a>
       </span>
       </div>

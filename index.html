@@ -1367,7 +1367,10 @@
       },
       created(){
         var stname=JSON.parse(localStorage.getItem("msg"));
-        this.magName=stname.student_id;
+        console.log(stname)
+        if(stname!=null){
+          this.magName=stname.student_id;
+        }
       },
       methods:{
         use(obj){

@@ -28,7 +28,8 @@ var shotvideo = new Vue({
     vidurl:'',
     imgurl:'',
     towtal:0,
-    testReport_sign:''
+    testReport_sign:'',
+    hideUpload: false,
     
   },
   created(){
@@ -88,6 +89,9 @@ var shotvideo = new Vue({
   uploadVideoProcess(event, file, fileList) {
       this.videoFlag = true;
       this.videoUploadPercent = file.percentage.toFixed(0) * 1;
+  },
+  onlunch(file,filelist){
+    this.hideUpload = this.videoUploadPercent.length >= 1;
   },
   //上传成功回调
   handleVideoSuccess(res, file) {

@@ -8,9 +8,9 @@
   <link rel="stylesheet" href="../css/shotvideo.css">
   <link rel="stylesheet" href="../publicJs/element_ui/element.css">
   <style>
-    .el-pagination {
+    /* .el-pagination {
       padding: 2px 270px!important;
-    }
+    } */
     [v-cloak]{
       display: none;
     }
@@ -118,6 +118,9 @@
       line-height: 0.2;
       font-size: 12px;
     }
+    .hide .el-upload--picture-card {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -145,7 +148,7 @@
     </div>
     <div class="center band">
       <div class="navCont" id="p1" >
-            <div class="cont">
+          <div class="cont">
               <div class="cont_l">
                 <!-- 主要的页面内容 -->
                 <div class="line">
@@ -166,26 +169,28 @@
                     <div class="delpho"  @click="dele(item.id)"></div>
                   </div>
                 </div>
-                <!-- 分页 -->
-                <div class="block" style="margin-top: 25px;text-align: center;">
-                  <el-pagination
-                    
-                    :page-size="pageSize"
-                    layout="prev, pager, next"
-                    :total="towtal"
-                    @current-change="handleCurrentChange">
-                  </el-pagination>
-                </div>
             </div>
+          </div>
+          <!-- 分页 -->
+          <div class="block" style="margin-top: 25px;text-align: center;">
+            <el-pagination
+              
+              :page-size="pageSize"
+              layout="prev, pager, next"
+              :total="towtal"
+              @current-change="handleCurrentChange">
+            </el-pagination>
           </div>
       </div>
     </div>
     <div :class="{show:isshow}" class="again common">
     </div>
     <div class="again show_edi" :class="{show:isshow}">
-      <img src="../img/shut.png" alt="" style="margin: 15px 15px 0 310px;cursor: pointer;" @click="shue(false)">
+     
       <div class="show_top">
+        <p></p>
         <p>上传视频</p>
+        <img src="../img/shut.png" alt=""  @click="shue(false)">
       </div>
       <div class="show_shang">
         视频名称：<input type="text" v-model="video_name">
@@ -198,12 +203,17 @@
             :on-success="handleVideoSuccess"
             :before-upload="beforeUploadVideo"
             :show-file-list="false"
-            :class="{disn:sa}"
+            :on-change="onlunch"
+            :class="{disn:sa,hide:hideUpload}"
             >
               <video  v-if="videoForm.showVideoPath !='' && !videoFlag"
                :src="videoForm.showVideoPath"
                 class="avatar video-avatar"
-                controls="controls" style="position: absolute;top:25px;left: -95px;width: 300px;">
+                controls="controls" 
+                style="position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 500px;">
                 您的浏览器不支持视频播放
               </video>
               <i v-else class="el-icon-plus avatar-uploader-icon" style="width:36px;height: 25px;"></i>
