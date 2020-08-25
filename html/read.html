@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阅读全文</title>
+  <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
+      <link rel="stylesheet" href="../css/liu/reset.css" />
+     <link rel="stylesheet" href="../publicJs/element_ui/element.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../css/liu/read.css">
+    <link rel="stylesheet" href="../css/liu/headers.css">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    .el-dropdown-link {
+      cursor: pointer;
+      color: #dfaf89;
+    }
+    .el-breadcrumb__inner a:hover{
+    color: #dfaf89;
+    cursor: pointer;
+    }
+    .el-icon-arrow-down {
+      font-size: 12px;
+    }
+
+    .el-dropdown {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+    }
+
+    .el-textarea__inner {
+      border: solid 1px #eeeeee;
+    }
+
+    .el-textarea__inner:hover {
+      border-color: #e2d8d0;
+    }
+
+    .el-textarea__inner:focus {
+      border-color: #d4baa4;
+    }
+
+    .el-textarea__inner {
+      color: #b0a8a3;
+    }
+
+    .el-textarea__inner::-webkit-input-placeholder {
+      color: #b4b4b4;
+    }
+
+    /* 展开收起效果 */
+    #check {
+      height: 0;
+    }
+
+    .main_src {
+      max-height: 52px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      transition: all .3s;
+    }
+
+    :checked~.main_src {
+      max-height: 666px;
+      white-space: normal;
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      clip: rect(0 0 0 0);
+    }
+
+    :checked~.check-in {
+      display: none;
+    }
+
+    :checked~.check-out {
+      display: inline-block;
+    }
+
+    .check-out {
+      display: none;
+    }
+
+    .check-in,
+    .check-out {
+      color: #dfaf89;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- nav_start -->
+  <div id="app" v-cloak>
+    <!-- 顶部 -->
+  
+   
+
+
+      <div class="top_h">
+        <div class="con_h">
+          <div class="left_h">
+            <img src="../img/logo.png" alt="">
+          </div>
+          <div class="user">
+       
+						<div  v-if="magName!=''" class="btn_black" @click="use(true)">个人中心</div>
+                        <div  v-if="magName!=''" class="btn_white " @click="use(false)">退出</div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    <!-- 上部实验标题开始 -->
+    <div class="head_h">
+      <div class="center_h">
+        消息留言
+      </div>
+    </div>
+    <div class="locate_h">
+      <div class="center_h">
+        <i class="icon_h"></i>
+        <div v-if="!onLogin">
+          <el-breadcrumb separator="/">
+            <el-breadcrumb-item><a href="../index.html">首页</a></el-breadcrumb-item>
+            <el-breadcrumb-item><a href="./leaving.html">留言列表</a></el-breadcrumb-item>
+            <el-breadcrumb-item>留言详情</el-breadcrumb-item>
+          </el-breadcrumb>
+        </div>
+        <div v-if="onLogin">
+          <el-breadcrumb separator="/" v-if="!from_leaving">
+            <el-breadcrumb-item><a href="../index.html">首页</a></el-breadcrumb-item>
+            <el-breadcrumb-item><a href="./usecenter.html">个人中心</a></el-breadcrumb-item>
+            <el-breadcrumb-item><a href="./messageList.html">留言列表</a></el-breadcrumb-item>
+            <el-breadcrumb-item>留言详情</el-breadcrumb-item>
+          </el-breadcrumb>
+          <el-breadcrumb separator="/" v-if="from_leaving">
+            <el-breadcrumb-item><a href="../index.html">首页</a></el-breadcrumb-item>
+            <el-breadcrumb-item><a href="./leaving.html">留言列表</a></el-breadcrumb-item>
+            <el-breadcrumb-item>留言详情</el-breadcrumb-item>
+          </el-breadcrumb>
+        </div>
+
+      </div>
+    </div>
+    <!-- 上部实验标题结束 -->
+
+    <!-- nav_end -->
+    <div class="main_sec">
+      <div class="center band">
+        <!-- 左侧导航栏 -->
+        <div class="bandNav" v-if="!downLogin">
+          <!-- <div class="navItem" class="message_item">
+                        <a href="#p1">消息</a>
+                    </div> -->
+          <div class="navItem first">
+            <a href="#p4">留言详情</a>
+          </div>
+          <!-- <div class="navItem">
+                        <a href="#p1">点赞</a>
+                    </div> -->
+        </div>
+        <!-- 消息列表 -->
+        <div class="navCont" id="p1" v-if="title!=''">
+          <div class="contTitle">
+            <div class="tit">消息详情</div>
+           
+          </div>
+          <div class="main_top">
+            <!-- 消息内容 -->
+            <div class="main">
+              <!-- 最开始留言内容 -->
+              <div class="first_con">
+                <div class="main_left">
+                  
+                  <img :src="files" :onerror="this.src='../img/head-img.png'" alt="">
+                </div>
+                <div class="ly">
+                  <div class="main_mang">
+                    <div class="tit" style="display: inline-block; max-width: 680px;vertical-align: middle; text-align: left; white-space: nowrap;
+                                            text-overflow: ellipsis;
+                                            overflow: hidden;">{{title}}</div>
+                    <div>{{create_time}}</div>
+                  </div>
+                  <div class="main_right_three">
+                    <input id="check" type="checkbox">
+                    <div class="main_src">{{content}}</div>
+                    
+                      <label for="check" class="check-in">更多↓</label>
+                      <label for="check" class="check-out">收起↑</label>
+                    
+                    
+                    <!-- <div class="ud" onclick="showCon()">
+                                                <div class="main_to_s active" style="display:block;">
+                                                    展开                       
+                                                    <div class="main_img icon">
+                                                        <i class="icon icon-del"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="main_to_s hide" style="display:none;">
+                                                    收起                       
+                                                    <div class="main_imgs icon">
+                                                        <i class="icon icon-del"></i>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                  </div>
+                </div>
+              </div>
+              <!-- 对话内容 -->
+              <div class="main_right">
+                <div class="title">
+                  <!-- <div class="line"></div> -->
+                  <div class="main_all">全部问答</div>
+                </div>
+
+                <!-- 管理员回复 -->
+                <div class="gl">
+                  <div class="main_reply" v-for="(item,index) of replyInfoList">
+                    <!-- 第一个样式 -->
+                    <div class="peo" v-if="item.user_id==null">
+                      <div class="head">
+                        <div class="l">
+                          <div class="peo_one">管理员</div>
+                          <div class="peo_two">回复</div>
+                          <div class="peo_three">{{message_student_name}}</div>
+                        </div>
+                        <div class="ti">
+                          {{create_time}}
+                        </div>
+                      </div>
+                      <div class="textarea">
+                        <p class="peo_four">{{item.content}}</p>
+                        <div class="hidden">
+                          <div class="inquiry">
+                            <div class="icon">
+                              <!-- <i class="icons icons-del"></i> -->
+                            </div>
+                            <div class="t" @click="show()" style="display: block;">
+                              询问
+                            </div>
+                          </div>
+                          <div class="iqb" style="display: none;">
+                            <div class="txt_h">
+                              <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容"
+                                v-model="textarea2">
+                              </el-input>
+                            </div>
+                            <div class="btn">
+                              <div class="suc" @click="userReply(true)" :plain="true">
+                                发布
+                              </div>
+
+                              <div class="fal" @click=userReply(false)>
+                                取消
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- 第二个样式 -->
+                    <div v-if="item.user_id" class="main_con">
+                      <div class="d_t">
+                        <div class="lg">
+                          
+                          <div class="pic"><img :src="files" :onerror="this.src='../img/head-img.png'" alt=""></div>
+                          <div class="name">{{message_student_name}}</div>
+                        </div>
+                        <div class="main_time">{{item.create_time}}</div>
+                      </div>
+                      <div class="t_con">{{item.content}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="demo2-2" class="main_foe"></div>
+          <div class="block main_foe" style="text-align: center;">
+            <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
+              :current-page.sync="currentPage3" :page-size="5" layout="prev, pager, next, jumper" :total="5*totalPage">
+            </el-pagination>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- 页脚 -->
+    <div class="footer">
+      <div>
+        <span>
+          <a href="javascript:;">郑州航空工业管理学院1999-2019 版权所有</a>
+          <a href="http://www.miit.gov.cn/">豫ICP备05002444号-1</a>
+        </span>
+      </div>
+    </div>
+  </div>
+  <!-- 提出新留言 -->
+
+      <script src="../publicJs/element_ui/vue.js"></script>
+  <script src="../publicJs/element_ui/element.js"></script>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../layui/layui.js"></script>
+    <script src="../publicJs/axios.js"></script>
+    <script src="../js/pub.js"></script>
+   <script src="../js/show.js"></script>
+   <script src="../js/read.js"></script>
+  
+
+
+  
+  
+  <script>
+        // window.setTimeout(() => {
+        //     $(".main_src").each(function() {
+        //         // 获取内容
+        //         var mstr = $(this).html(); //显示
+        //         // console.log(mstr);//全部内容
+        //         //截取内容5个字符
+        //         var msubStr = mstr.substring(0, 72);
+        //         // console.log(msubStr);//省略内容
+        //         // console.log(msubStr);
+        //         //如果长度大于140就添加省略号否则就添加空
+        //         var data = msubStr + (mstr.length > 72 ? '...' : ''); //省略
+        //         $(this).html(data);
+        //         var oA = document.getElementsByClassName('main_to_s')[0];//切换
+
+        //         if(mstr.length <=72){
+        //             $(".active").hide();
+        //             $(".hide").hide() 
+        //         }
+
+        //         showCon=function(){
+        //             // 省略到显示
+        //             if(document.querySelector(".main_src").innerHTML==data){
+        //                 document.querySelector(".main_src").innerHTML=mstr;
+        //                 // oA.innerHTML='收起︿'
+        //                 console.log(123);
+
+        //                 $(".ud").css("position","static")
+        //                 $(".active").hide();
+        //                 $(".hide").show() 
+        //             // 显示到省略
+        //             }else if(document.querySelector(".main_src").innerHTML==mstr){
+        //                 document.querySelector(".main_src").innerHTML=data;
+        //                     $(".ud").css("position","absolute")
+        //                     $(".hide").hide();
+        //                     $(".active").show()
+        //             }
+        //         }
+        //     })
+        // }, 5000);
+
+
+  </script>
+  <script>
+
+        // function show(){//点击询问控制回复框的显示隐藏
+        //     if(user_id == ""){
+        //         this.$confirm('请先登录, 是否继续?', '提示', {
+        //             confirmButtonText: '去登录',
+        //             cancelButtonText: '取消',
+        //             type: 'warning'
+        //         }).then(() => {
+        //             window.location.href = '../html/log.html';
+        //         }).catch(() => {
+
+        //         });
+        //     }
+        //     if(document.querySelector(".iqb").style.display=="block"){
+        //         document.querySelector(".iqb").style.display='none';
+        //     }else{
+        //         document.querySelector(".iqb").style.display="block";
+        //     }
+        // }
+  </script>
+  <script>
+    // 左侧导航栏选择
+    $(document).ready(function () {
+      $(".navItem").each(function (index) {
+        $(this).click(function () {
+          $(".navItem").removeClass("first");
+          $(".navItem").eq(index).addClass("first");
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>软文推广实验</title>
+  <!-- <script type="text/javascript" charset="utf-8" src="../utf/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../utf/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="../utf/lang/zh-cn/zh-cn.js"></script> -->
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/usecenter.css">
+  <link rel="stylesheet" href="../publicJs/element_ui/element.css">
+  <style>
+    #p1{
+      display: block!important;
+      height: 580px;
+    }
+    .navCont {
+      width: 1200px;
+      position: relative;
+    }
+    .line{
+      position: absolute;
+      top: 18%;
+      left: 16%;
+    }
+    #content{
+      width: 840px!important;
+    }
+    .newline{
+      height: 50px;
+      line-height: 50px;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      letter-spacing: 0px;
+      color: #333333;
+      display: flex;
+      margin-bottom: 20px;
+      position: absolute;
+      top: 90%;
+      left: 35%;
+    }
+    .newline lineTitle{
+      text-align: right;
+      width: 61px;
+      margin-right: 15px;
+    }
+    .newline .btn_save,.btn_cancel{
+      width: 100px;
+      height: 40px;
+      border-radius: 2px;
+      font-size: 14px;
+      font-weight: normal;
+      font-stretch: normal;
+      line-height: 40px;
+      letter-spacing: 0px;
+      color: #55595c;
+      text-align: center;
+      cursor: pointer;
+      display: inline-block;
+      margin-right: 20px;
+    }
+    .newline .btn_save a{
+      color: #fff;
+      background-color: #dfaf89;
+    }
+    .newline .btn_cancel {
+      border: solid 1px #e8e8e8;
+    }
+
+.top{
+    width: 100%;
+    min-width: 1200px;
+    height: 81px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    position: relative;
+    overflow: hidden;
+}
+.top::before{
+    content: "";
+    position: absolute;
+    left: 35%;
+    width: 215px;
+    height: 100px;
+    background-color: #fff;
+    transform: translate(-52px,40px) rotate(30deg);
+}
+.top::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 81px;
+    background-color: #fff;
+}
+.use_handler{
+    /* margin-left: 600px; */
+    display: flex;
+    margin-top: 25px;
+}
+.arrow_banner {
+      display: flex;
+      justify-content: space-between;
+      width: 1200px;
+      height: 80px;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      margin-top: -40px;
+      left: 19%;
+    }
+
+    .arrow_banner span {
+      /* display: block; */
+      width: 45px;
+      height: 80px;
+      background-color: rgba(0, 0, 0, 0.3);
+      line-height: 80px;
+      text-align: center;
+      cursor: pointer;
+      display: none;
+      transition: all 1s;
+    }
+
+    .arrow_banner span img {
+      vertical-align: middle;
+      border-style: none;
+    }
+
+    .banner:hover .arrow_left {
+      display: block;
+
+    }
+
+    .banner:hover .arrow_right {
+      display: block;
+    }
+
+    .arrow_left:hover,
+    .arrow_left:active {
+      background-color: rgba(0, 0, 0, 1);
+    }
+    /* 顶 */
+    .con{
+      width:1200px;
+      margin:0 auto;
+      display: flex;
+      justify-content: space-between;
+      z-index: 999;
+    }
+    .con .left{
+      padding-top: 16px;
+    }
+    .cont>div {
+      width: 796px;
+      height: 39px;
+      margin: 45px auto;
+    }
+    .cont div:first-child input{
+      width: 505px;
+      height: 35px;
+      margin-right: 201px;
+      padding-left: 5px;
+    }
+    .cont div:first-child input:focus{
+      border-color: #dfaf89;
+    }
+
+  </style>
+    
+</head>
+<!-- <script src="../kindeditor/lang/zh-CN.js"></script> -->
+<!-- <script charset="utf-8" src="../kindeditor/kindeditor-all.js"
+type="text/javascript"></script>
+<script type="text/javascript" charset="utf-8">
+var callBackPath = './kinder.html';
+//redirect.html的请求路径 例如 http://www.abc.com/redirect.html
+KindEditor.ready(function(K) {
+editor = K.create('#txtContent', {
+    filePostName: 'file',//跟服务端参数对应
+    allowFileManager: true,
+    uploadJson:pub._url+pub._DetailApi.flieup,
+    // uploadJson: 'XXX/common/kindEditorUpload?callBackPath='+callBackPath,
+    items : [ 'source', 'image']
+});
+});
+
+</script> -->
+<body >
+  <div id="editor" v-cloak>
+    <div class="top">
+      <div class="con">
+        <div class="left">
+          <img src="../img/logo.png" alt="">
+        </div>
+        <div class="use_handler">
+          <div class="btn_black">
+            <a href="../index.html">返回首页</a>
+          </div>
+            <div class="btn_white">
+              <a href="./usecenter.html">个人中心</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="head">
+        <div class="center">
+          软文推广实验
+        </div>
+    </div>
+    <div class="locate">
+      <div class="center">
+          <i class="icon"></i>
+          <span>软文推广实验</span>
+          <i>/</i>
+          <span >内容编辑</span>
+      </div>
+    </div>
+    <div class="center band">
+      <div class="navCont" id="p1" >
+          <!-- <div class="contTitle">
+            软文推广
+          </div> -->
+          <div class="cont">
+              <div style="font-size: 18px;">
+                文章标题：<input type="text" placeholder="请输入文章标题" v-model="artname">
+              </div>
+              <div>
+                  <div class="cont_l">
+                      <div class="line" >
+                        <!-- <script id="editor" type="text/plain" style="width:1024px;height:200px;"></script> -->
+                        <el-form>
+                          <textarea id="editor_id" name="content" style="width:700px;height:300px;" v-model="form_name">
+                          </textarea>
+                        </el-form>
+                        <!-- <form id="form1" runat="server">
+                   
+                          <textarea cols="60" id="txtContent" style="width: 600px; height: 300px;" runat="server"
+                                    readonly="readonly"></textarea>
+                      </form> -->
+                      </div>
+                      <div class="newline">
+                          <div class="lineTitle"></div>
+                          <div>
+                              <div class="btn_save">
+                                <a href="#" @click="getContent">保存</a>
+                              </div>
+                              <div class="btn_cancel">
+                                <a href="#">取消</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <script src="../publicJs/vue.js"></script>
+  <script src="../publicJs/element_ui/element.js"></script>
+  <script src="../publicJs/axios.js"></script>
+  <script src="../js/pub.js"></script>
+  <script src="../kindeditor/kindeditor-all.js"></script>
+  <script type="text/javascript">
+//   // var ue = UE.getEditor('editor');
+//         var ue = UE.getEditor('editor', {
+//             toolbars: [[
+//                     'fullscreen', 'source', 'undo', 'redo', '|',
+//                     'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc'
+//                 ]],
+//             autoHeightEnabled: false,
+//             initialFrameHeight: 300,
+//             serverUrl: 'http://' + '192.168.2.104:81/CCL',  //此处请求服务器的地址
+//             imageFieldName: "file",
+//             imageUrlPrefix: '',
+//             imageActionName: 'ajaxUpload',
+//             imageAllowFiles: [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
+//             catcherActionName: 'catchimage', //在编辑器中粘贴图片，会调用此配置的方法，
+//             catcherFieldName: "source",  //回调时的表单字段名称，可自定义
+//             catcherUrlPrefix: '',
+//         });   
+      
+//    </script>
+<script>
+  KindEditor.ready(function (K) {
+    window.editor = K.create("#editor_id", {
+      /*设置上传接口*/
+      // filePostName: "/kindeditor/fileUpload",
+      width:'150px',
+      height:'300px',
+      formatUploadUrl: false,
+      urlType: "domain",
+      uploadJson: pub._url+pub._DetailApi.flieup,
+      /*设置按钮*/
+      items: [
+        "source",
+        "|",
+        "undo",
+        "redo",
+        "|",
+        "preview",
+        "print",
+        "template",
+        "code",
+        "cut",
+        "copy",
+        "paste",
+        "plainpaste",
+        "wordpaste",
+        "|",
+        "justifyleft",
+        "justifycenter",
+        "justifyright",
+        "justifyfull",
+        "insertorderedlist",
+        "insertunorderedlist",
+        "indent",
+        "outdent",
+        "subscript",
+        "superscript",
+        "clearhtml",
+        "quickformat",
+        "selectall",
+        "|",
+        "fullscreen",
+        "/",
+        "formatblock",
+        "fontname",
+        "fontsize",
+        "|",
+        "forecolor",
+        "hilitecolor",
+        "bold",
+        "italic",
+        "underline",
+        "strikethrough",
+        "lineheight",
+        "removeformat",
+        "|",
+        "image",
+        "multiimage",
+        "flash",
+        "media",
+        "insertfile",
+        "table",
+        "hr",
+        "emoticons",
+        "baidumap",
+        "pagebreak",
+        "anchor",
+        "link",
+        "unlink",
+        "|",
+        "about"
+      ]
+    });
+  });
+
+ </script>
+<script>
+  var app= new Vue({
+    el:"#editor",
+    data:{
+      jsn:'',
+      artname:'',
+      lastname:'',
+      lasna:'',
+      studentid:'',
+      form_name:''
+    },
+    created(){
+      this.lastname = localStorage.getItem("msg");
+      this.lasna = localStorage.getItem("dept_id");
+      this.studentid=pub._LinkParm('student_id');//学生学号
+      console.log(this.lasna,this.studentid)
+    },
+    methods:{
+        getContent() {
+          var lastName=JSON.parse(this.lastname);
+          var testReport_sign=lastName.testReport_sign;
+          var ue = UE.getEditor('editor');
+          var arr = [];
+          var count=UE.getEditor('editor').getContent();
+          arr.push(count);
+          var sorftArt=arr.join("\n");
+          var _this=this;
+          if(_this.artname=='' || _this.sorftArt==''){
+            _this.$message.error("请完善标题或内容")
+          }else{
+                pub._InitAxios({
+              _url:pub._url,
+              ur:pub._DetailApi.makeSoftArticle,
+              data:{
+                "student_id":_this.studentid,
+                "dept_id":_this.lasna,
+                "testReport_sign":testReport_sign,
+                "experiment_module_data":{
+                "softArticle_name":_this.artname,
+                "softArticle_content":sorftArt
+                } },
+              cbk: function cbk(res){
+                console.log(res);
+
+                // if(res.stateCode == '200'){
+                //   }else{
+                //   }
+              }
+            })
+          }
+          
+      }
+    }
+  })
+</script>
+</body>
+</html>

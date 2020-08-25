@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>商城首页</title>
+  <link rel="stylesheet" href="./css/header.css">
+  <!-- <link rel="shortcut icon" href="favicon.ico" > -->
+  <link rel="stylesheet" href="../publicJs/element_ui/element.css">
+  <style>
+    .part_con a:hover {
+      color: #ff1e32;
+    }
+    .usechange{
+      width: 108px;
+      text-align: center;
+      display: inline-block;
+    }
+    .usechange div{
+      display: inline-block;
+    }
+    
+  </style>
+</head>
+
+<body>
+ <div id="app">
+  <header class="index_header">
+    <div class="self_login">
+      <div class="self_con">
+        <!-- <a href="../html/useCenter.html#order_msg">
+            <div>我的订单</div>
+        </a> -->
+        <a href="../html/useCenter.html">
+            <div>个人中心</div>
+        </a>
+        <!-- <a href="javascript:;" class="message_c">
+            <div></div>
+        </a>
+        <a href="../html/ShoppingCart.html" class="shop_cart">
+            <div></div>
+        </a>
+        <span class="usechange">
+                <a href="../html/login.html">
+                    <div>登录</div>
+                </a>
+                <div>|</div>
+                <a href="../html/login.html">
+                    <div>注册</div>
+                </a>
+        </span> -->
+      </div>
+    </div>
+    <p class="self_p"></p>
+    <nav class="nav w1200">
+      <div class="logo">
+        <a href="#">
+          <img src="./img/logo (2).png" alt=""> 
+        </a>  
+      </div>
+      <div class="login_pic">
+        <p>卡乐芙+海外专营店</p>
+        <p>在售商品1182个</p>
+      </div>
+      <div class="search">
+        <div class="search_input">
+          <input maxlength="20" type="text" placeholder="搜索商品关键词" value="">
+          <a href="javascript:;">搜索</a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </nav>
+  </header>
+  <div class="navigation">
+    <div class="nav_c w1200">
+      <!-- <div class="header_nav"> -->
+      <div class="side_nav">
+        <div class="all_nav">
+         全部商品分类
+         <img src="./img/classify.png" alt="" class="nav_list"> 
+          <ul class="nav_classfity">
+            <li>
+              <div class="nav_iteam">
+                <span class="txt">商品分类一</span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_al">
+                    <span>二级分类商品一</span>
+                    <span>二级分类商品二</span>
+                    <span>二级分类商品三</span>
+                    <span>二级分类商品四</span>
+                    <span>二级分类商品五</span>
+                    <span>二级分类商品六</span>
+                  </div>
+                  <!-- <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>护肤</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">洁面</a>
+                          <a href="javascript:;" target="_blank">卸妆</a>
+                          <a href="javascript:;" target="_blank">爽肤水</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>面膜</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>彩妆</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>防晒修复</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>香水/香氛</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div> -->
+            
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="nav_iteam">
+                <span class="txt">商品分类二</span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <!-- <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>奶粉</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>尿裤/湿巾</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>营养辅食</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>妈妈专区</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>童车/童床</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div> -->
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="nav_iteam">
+                <span class="txt">商品分类三</span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <!-- <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>中西药品</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>营养健康</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>营养成分</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>滋补养生</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>计生情趣</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>保健器械</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>护理护具</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>隐形眼镜</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div> -->
+                </li>
+              </ul>
+            </li>
+            <!-- <li>
+              <div class="nav_iteam">
+                <span class="img">
+                  <img src="./img/shuma.png" alt="">
+                </span>
+                <span class="txt">数码家电</span>
+                <span class="arrow">
+                  <img src="./img/arrow.png" alt="">
+                </span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>电视</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>空调</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>洗衣机</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>冰箱</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <div class="nav_iteam">
+                <span class="img">
+                  <img src="./img/xihu.png" alt="">
+                </span>
+                <span class="txt">个人洗护</span>
+                <span class="arrow">
+                  <img src="./img/arrow.png" alt="">
+                </span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>电视</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>空调</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>洗衣机</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>冰箱</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="nav_iteam">
+                <span class="img">
+                  <img src="./img/fushi.png" alt="">
+                </span>
+                <span class="txt">服饰鞋靴</span>
+                <span class="arrow">
+                  <img src="./img/arrow.png" alt="">
+                </span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>电视</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>空调</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>洗衣机</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>冰箱</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="nav_iteam">
+                <span class="img">
+                  <img src="./img/yundong.png" alt="">
+                </span>
+                <span class="txt">运动户外</span>
+                <span class="arrow">
+                  <img src="./img/arrow.png" alt="">
+                </span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>电视</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>空调</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>洗衣机</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>冰箱</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="nav_iteam">
+                <span class="img">
+                  <img src="./img/peishi.png" alt="">
+                </span>
+                <span class="txt">手表配饰</span>
+                <span class="arrow">
+                  <img src="./img/arrow.png" alt="">
+                </span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>电视</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>空调</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>洗衣机</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>冰箱</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="nav_iteam">
+                <span class="img">
+                  <img src="./img/jiaju.png" alt="">
+                </span>
+                <span class="txt">家居生活</span>
+                <span class="arrow">
+                  <img src="./img/arrow.png" alt="">
+                </span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>电视</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>空调</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>洗衣机</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>冰箱</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <div class="nav_iteam">
+                <span class="img">
+                  <img src="./img/meishi.png" alt="">
+                </span>
+                <span class="txt">环球美食</span>
+                <span class="arrow">
+                  <img src="./img/arrow.png" alt="">
+                </span>
+              </div>
+              <ul class="goods_list">
+                <li>
+                  <div class="goods_con">
+                    <div class="goods_part">
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>电视</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>手机/配件</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>空调</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>洗衣机</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+
+                      <dl>
+                        <dt class="part_title">
+                          <a href="javascript:;">
+                            <span>冰箱</span>
+                            <span class="nav_con">
+                              <img src="./img/arrow_nav.png" alt="">
+                            </span>
+                          </a>
+                        </dt>
+                        <dd class="part_con">
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                          <a href="javascript:;" target="_blank">超薄电视</a>
+                        </dd>
+                      </dl>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </li> -->
+          </ul>
+        </div>
+        <p class="side_p"></p>
+        <div class="side_sec">
+          <span>首页</span>
+          <span>2019冬季新款</span>
+          <span>商场同款</span>
+          <span>爆款清单</span>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <!-- banner轮播图 -->
+  <div class="banner">
+    <div class="arrow_banner">
+      <span class="left">
+        <img src="img/arrow-l.png" alt="上一张">
+      </span>
+      <span class="right">
+        <img src="img/arrow-r.png" alt="下一张">
+      </span>
+    </div>
+    <div class="banner_list">
+      <ul>
+        <li>
+          <a href="javascript:;">
+            <img src="img/banner (1).png" alt="banner1">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="img/banner (2).png" alt="banner2">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="img/banner (3).png" alt="banner3">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="img/banner (4).png" alt="banner4">
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="img/banner (5).png" alt="banner5">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+    <!-- 轮播图下方圆点 -->
+    <ul class="banner_btn">
+
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+  <!-- 上新内容 -->
+  <!-- <div class="gonew">
+    <div class="new_grey">
+    </div>
+    <div class="new_creen">
+      <p class="p1">
+        <span>KAUI</span>
+        <span>LAIBA</span>
+      </p>
+      <p class="p3">NEW </p>
+      <p class="p4">新品发布</p>
+      <p class="p5">
+        <span>2019 NEW WOMEN'S CLOTHING RELEASE</span>
+        <span>ALL THE DISTINGUISHED GUESTS ARE WELCOME TO ATTEND</span>
+      </p>
+      <p class="p7"></p>
+      <p class="p8">01</p>
+    </div>
+    <div class="new_ph1">
+      <img src="./img/1-img1.png" alt="">
+    </div>
+    <div class="new_ph2">
+      <img src="./img/1-img2.png" alt="">
+    </div>
+    <div class="new_ph3">
+      <img src="./img/1-img3.png" alt="">
+    </div>
+  </div> -->
+  <!-- 02热销导航条 -->
+  <!-- <div class="hotsel">
+    <div class="hot_bar">
+      <div class="hot_bat_left">
+        <div style="margin-top: 33px;">
+          <p>02</p>
+        </div>
+        <div class="hot_p">
+          <p>POPULAR</p>
+          <p>热售导航</p>
+        </div>
+      </div>
+      <div class="hot_bat_right">
+        <p>2019</p>
+        <p>RECOMMENDATION</p>
+      </div>
+    </div>
+  </div> -->
+  <!-- 02热销内容 -->
+  <!-- <div class="hot_count">
+    <div class="hot_count_one">
+      <div class="hot_one_top">
+        <div>
+          <p class="p1">秋季新品</p>
+          <p class="p2"></p>
+          <p class="p3">New fashion navigation Click to view more 
+            stylish new autumn</p>
+          <p class="p4">V       I        E       W</p>
+        </div>
+      </div>
+      
+        <img src="./img/2-img1.png" alt="">
+      
+    </div>
+    <div style="width: 1105px;
+    display: flex;
+    margin: 0 auto;">
+      <div class="hot_count_two">
+        <img src="./img/2-img2.png" alt="">
+        <div class="hot_one_top">
+          <div>
+            <p class="p1">夏款清仓</p>
+            <p class="p2"></p>
+            <p class="p3">New fashion navigation Click to view more 
+              stylish new autumn</p>
+            <p class="p4">V       I        E       W</p>
+          </div>
+        </div>      
+      </div>
+      <div class="hot_count_two">
+        <div class="hot_one_top">
+          <div>
+            <p class="p1">热卖商品</p>
+            <p class="p2"></p>
+            <p class="p3">New fashion navigation Click to view more 
+              stylish new autumn</p>
+            <p class="p4">V       I        E       W</p>
+          </div>
+        </div> 
+        <img src="./img/2-img4.png" alt="">
+      </div>
+      <div class="hot_count_two">
+        <img src="./img/2-img3.png" alt="">
+
+        <div class="hot_one_top">
+          <div>
+            <p class="p1">时尚搭配</p>
+            <p class="p2"></p>
+            <p class="p3">New fashion navigation Click to view more 
+              stylish new autumn</p>
+            <p class="p4">V       I        E       W</p>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div> -->
+   <!-- 03限时促销导航条 -->
+   <!-- <div class="hotsel">
+    <div class="hot_bar">
+      <div class="hot_bat_right" style="text-align: start;">
+        <p>2019</p>
+        <p>RECOMMENDATION</p>
+      </div>
+      <div class="hot_bat_left">
+        <div style="margin-top: 33px;">
+          <p>03</p>
+        </div>
+        <div class="hot_p">
+          <p>PROMOTION</p>
+          <p>限时促销</p>
+        </div>
+      </div>
+      
+    </div>
+  </div> -->
+  <!-- 03限时促销内荣 -->
+  <!-- <div class="hot_last" style="margin-top: 50px;">
+    <div class="hot_last_one">
+      <img src="./img/3-img9.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="hot_last_one" style="margin-top: 76px;">
+      <img src="./img/3-img7.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="hot_last_one">
+      <img src="./img/3-img8.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hot_last">
+    <div class="hot_last_one">
+      <img src="./img/3-img2.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="hot_last_one" style="margin-top: 76px;">
+      <img src="./img/3-img3.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="hot_last_one">
+      <img src="./img/3-img4.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hot_last">
+    <div class="hot_last_one">
+      <img src="./img/3-img5.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="hot_last_one" style="margin-top: 76px;">
+      <img src="./img/3-img6.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+    <div class="hot_last_one">
+      <img src="./img/3-img7.png" alt="">
+      <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+      <div class="lastdiv">
+        <p>活动价：</p>
+        <p>￥399</p>
+        <div>
+          <p>加入购物车</p>
+          <img src="./img/购物车.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="left_shop left_main">
+    <div class="left_bottom " >
+      <p >宝贝推荐</p>
+      <!-- <button class="show_hide" @click="editor(2)">编辑</button> -->
+    </div>
+    <div style=" padding: 20px 0 25px;">
+      <div class="hot_last" style="margin-top: 50px;">
+        <div class="hot_last_one">
+          <img src="../index/img/3-img9.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hot_last_one" style="margin-top: 76px;">
+          <img src="../index/img/3-img7.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hot_last_one">
+          <img src="../index/img/3-img8.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hot_last">
+        <div class="hot_last_one">
+          <img src="../index/img/3-img2.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hot_last_one" style="margin-top: 76px;">
+          <img src="../index/img/3-img3.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hot_last_one">
+          <img src="../index/img/3-img4.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hot_last">
+        <div class="hot_last_one">
+          <img src="../index/img/3-img5.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hot_last_one" style="margin-top: 76px;">
+          <img src="../index/img/3-img6.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="hot_last_one">
+          <img src="../index/img/3-img7.png" alt="">
+          <p class="lastone">【休闲风宽松直筒九分西装裤】</p>
+          <div class="lastdiv">
+            <p>活动价：</p>
+            <p>￥</p>
+            <p>399</p>
+            <div class="cart">
+              <p>加入购物车</p>
+              <div class="pic">
+                <div class="img"><img src="../index/img/购物车.png" alt=""></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 底部、售后 -->
+  <div class="bottom">
+    <div class="After_sale">
+      <!-- 品质保障 -->
+      <div class="good">
+        <img src="img/you.png" alt="品质保障">
+        <p class="p1">品质保障</p>
+        <p class="p2">品质护航 购物无忧</p>
+      </div>
+      <div class="good">
+        <img src="img/qi.png" alt="品质保障">
+        <p class="p1">七天无理由退换货</p>
+        <p class="p2">为您提供售后无忧保障</p>
+      </div>
+      <div class="good">
+        <img src="img/te.png" alt="品质保障">
+        <p class="p1">特色服务体验</p>
+        <p class="p2">为您呈现不一样的服务</p>
+      </div>
+      <div class="good good2">
+        <img src="img/help.png" alt="品质保障">
+        <p class="p1">帮助中心</p>
+        <p class="p2">您的购物指南</p>
+      </div>
+    </div>
+  </div>
+  <!-- 底部菜单 -->
+  <div class="bottom_list">
+    <div class="bottom_text">
+      <div class="bottom_item">
+        <div class="text_item">
+          <p>购物指南</p>
+          <ul>
+            <li>
+              <a href="javascript:;">购物流程</a>
+            </li>
+            <li>
+              <a href="javascript:;">会员介绍</a>
+            </li>
+            <li>
+              <a href="javascript:;">生活旅行/团购</a>
+            </li>
+            <li>
+              <a href="javascript:;">常见问题</a>
+            </li>
+            <li>
+              <a href="javascript:;">大家点</a>
+            </li>
+            <li>
+              <a href="javascript:;">联系客服</a>
+            </li>
+          </ul>
+        </div>
+        <div class="text_item">
+          <p>配送方式</p>
+          <ul>
+            <li>
+              <a href="javascript:;">上门自提</a>
+            </li>
+            <li>
+              <a href="javascript:;">211限时达</a>
+            </li>
+            <li>
+              <a href="javascript:;">配送服务查询</a>
+            </li>
+            <li>
+              <a href="javascript:;">配送费收取标准</a>
+            </li>
+            <li>
+              <a href="javascript:;">海外配送</a>
+            </li>
+          </ul>
+        </div>
+        <div class="text_item">
+          <p>支付方式</p>
+          <ul>
+            <li>
+              <a href="javascript:;">货到付款</a>
+            </li>
+            <li>
+              <a href="javascript:;">在线支付</a>
+            </li>
+            <li>
+              <a href="javascript:;">分期付款</a>
+            </li>
+            <li>
+              <a href="javascript:;">邮局付款</a>
+            </li>
+            <li>
+              <a href="javascript:;">公司转账</a>
+            </li>
+          </ul>
+        </div>
+        <div class="text_item">
+          <p>售后服务</p>
+          <ul>
+            <li>
+              <a href="javascript:;">售后服务</a>
+            </li>
+            <li>
+              <a href="javascript:;">价格保护</a>
+            </li>
+            <li>
+              <a href="javascript:;">退款说明</a>
+            </li>
+            <li>
+              <a href="javascript:;">返修/退换货</a>
+            </li>
+            <li>
+              <a href="javascript:;">取消订单</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 版权所有 -->
+      <div class="cop_tech">
+        <p class="cop">版权所有:某某某服装有限公司</p>
+        <p class="tech">技术支持：某某某</p>
+      </div>
+    </div>
+  </div>
+ </div>
+
+
+  <script src="../publicJs/vue.js"></script>
+  <script src="../publicJs/axios.js"></script>
+  <script src="../js/pub.js"></script>
+  <script src="../publicJs/jquery.js"></script>
+  <script src="../publicJs/element_ui/element.js"></script>
+  <script src="../js/shoupei.js"></script>
+  <script>
+    (function () {
+      var banner = document.querySelector('.banner');
+      var banner_list = document.querySelector('.banner_list ul');
+      var left = document.querySelector('.left');
+      var right = document.querySelector('.right');
+      var btn = document.querySelector('.banner_btn');
+      // 克隆第一张图片，并添加到元素的最后
+      var firstClone = banner_list.children[0].cloneNode(true);
+      banner_list.appendChild(firstClone);
+      // 设置图片盒子的总宽度
+      var len = banner_list.children.length;
+      banner_list.style.width = 1903 * len + 'px';
+      // console.log(len)
+      // 创建图片对应的点的个数
+      for (var j = 0; j < len - 1; j++) {
+        var liNav = document.createElement('li')
+        btn.appendChild(liNav);
+      }
+      btn.children[0].className="active"
+
+      var btnli = document.querySelectorAll('.banner_btn li');
+      var n = 0; //用来记录banner_list的偏移量
+      var time; //计时器，控制图片的移动
+      var index = 0; //记录图片的个数，也就是图片的下标
+      var btnIndex = 0; //记录点的下标
+      var flag = true; //开关，控制用户的操作
+      right.onclick = nextImg;
+      function nextImg() {
+        if (flag) {
+          // 进入操作，直接flag赋值为false,相当于门被反锁了，其他的操作就无法进行
+          flag = false;
+          index++;
+          btnIndex++;
+       
+          if (btnIndex > btnli.length - 1) {
+            btnIndex = 0;
+          }
+          time = setInterval(moveLeft, 16.7)
+        }
+      }
+      // 下一张图片
+      function moveLeft() {
+        n += 50;
+        // console.log(n,index)
+        if (n >= 1903 * index) {
+          clearInterval(time);
+          flag = true;
+          
+        }
+        if (n >= ((len - 1) * 1903)) {
+          n = 0;
+          index = 0;
+        }
+        // console.log(n)
+        banner_list.style.marginLeft = -n + 'px';
+        changeBtn();
+      }
+      // 控制点的样式
+      function changeBtn() {
+        // 重置点的样式
+        for (var i = 0; i < btnli.length; i++) {
+          btnli[i].className = '';
+        }
+        // 控制点的样式改变
+        btnli[btnIndex].className = "active";
+      }
+      // 点击左箭头，切换上一张图片
+      left.onclick = function () {
+        // 进行操作之前判断门是打开的还是关闭
+        if (flag) {
+          flag = false;
+          index--;
+          btnIndex--;
+          time = setInterval(moveRight, 16.7)
+        }
+      }
+      // 上一张
+      function moveRight() {
+        // 如果偏移量x = 0;则对应的图片是第一张，点击切换上一张，意味着看最后一张，最后一张图对应的下标为3；所以为len -2 ;此时x的偏移量应重置为3000，既移动到克隆的那张图片；然后过度到第四张图片
+        if (n <= 0) {
+          n = (len - 1) * 1903;
+          index = len - 2;
+          btnIndex = btnli.length - 1;
+        }
+        n -= 50;
+        if (n <= 1903 * index) {
+          clearInterval(time);
+          flag = true;
+        }
+        banner_list.style.marginLeft = -n + 'px';
+        changeBtn();
+      }
+      // 点击点切换图片，给点绑定上点击事件
+      for (var i = 0; i < btnli.length; i++) {
+        btnli[i].index = i;
+        btnli[i].onclick = function () {
+          if (flag) {
+            flag = false;
+            console.log(this.index, index)
+            if (this.index > index) {
+              // 意味看下一张
+              // 切换到我点击的点对应的图片
+              index = this.index;
+              // 记录点的下标和当前点击的点的下标对应一致
+              btnIndex = this.index;
+              time = setInterval(moveLeft, 16.7);
+            } else if (this.index < index) {
+              // 切换到我点击的点对应的图片
+              index = this.index;
+              // 记录点的下标和当前点击的点的下标对应一致
+              btnIndex = this.index;
+              // 意味看上一张
+              time = setInterval(moveRight, 16.7)
+            }
+          }
+
+        }
+      }
+      // 自动播放
+      var autoPlay = setInterval(nextImg, 5000);
+      // 清除自动播放
+      banner.onmouseover = function() {
+          clearInterval(autoPlay)
+      }
+      banner.onmouseout = function() {
+          autoPlay = setInterval(nextImg, 5000);
+      }
+    })()
+
+
+    // top10轮播
+    ! function () {
+      var banner_top10 = document.querySelector('.banner_top10');
+      var bannertop10 = document.querySelector('.banner_top10 ul');
+      var listtop10 = document.querySelector(".list_top10");
+      var pre = document.querySelector('.pre');
+      var next = document.querySelector('.next');
+      var time3, time4, autoPlay2;
+      var x = 0;
+      var index2 = 0;
+      var flag = true;
+      next.onclick = move;
+
+      function move() {
+        if (flag) {
+          flag = false;
+          index2++;
+          time3 = setInterval(nextImg, 16.7);
+        }
+      }
+      // 切换下一张图片函数
+      function nextImg() {
+        if (x == 2700) {
+          index2 = 0;
+          x = 0;
+        }
+        x += 25;
+        if (x >= index2 * 270) {
+          clearInterval(time3);
+          x = index2 * 270;
+          flag = true;
+        }
+        if (x == 2700) {
+          index2 = 0;
+          x = 0;
+        }
+        bannertop10.style.marginLeft = -x + 'px';
+      }
+      // 切换上一张图片函数
+      function previousImg() {
+        x -= 25;
+        if (x <= index2 * 270) {
+          clearInterval(time4);
+          x = index2 * 270;
+          flag = true;
+        }
+        if (index2 < 0) {
+          index2 = 10;
+          x = 2700;
+        }
+        bannertop10.style.marginLeft = -x + 'px';
+      }
+      pre.onclick = function () {
+        if (flag) {
+          flag = false;
+          index2--;
+          time4 = setInterval(previousImg, 16.7)
+
+        }
+      }
+      autoPlay2 = setInterval(move, 3000);
+      banner_top10.onmouseenter = function () {
+        clearInterval(autoPlay2);
+      }
+      banner_top10.onmouseleave = function () {
+        autoPlay2 = setInterval(move, 3000);
+      }
+    }()
+  </script>
+  <script src="../publicJs/axios.js"></script>
+  <script src="../js/publink.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>

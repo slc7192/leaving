@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息列表</title>
+    <link rel="shortcut icon" href="../img/logo.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../css/liu/reset.css" />
+     <link rel="stylesheet" href="../publicJs/element_ui/element.css">
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <link rel="stylesheet" href="../css/liu/messageList.css">
+    <link rel="stylesheet" href="../css/liu/headers.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .el-dropdown-link {
+        cursor: pointer;
+        color: #409EFF;
+      }
+      .el-icon-arrow-down {
+        font-size: 12px;
+      }
+      .el-dropdown {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+        </style>
+</head>
+
+<body>
+
+    <div id="message" v-cloak>
+        <!-- 顶部 -->
+      <!-- 登录状态 -->
+    
+
+
+       
+            <div class="top_h">
+                <div class="con_h">
+                    <div class="left_h">
+                        <img src="../img/logo.png" alt="">
+                    </div>
+                    <div class="user ">
+                        <!--<div class="btn_black sjg">
+                         
+							<a href="http://192.168.2.116/alt/login.html" target="_blank">教师登录</a>
+                        </div>-->
+                       
+					   
+						
+						<div  v-if="magName!=''" class="btn_black" @click="use(true)">个人中心</div>
+                        <div  v-if="magName!=''" class="btn_white " @click="use(false)">退出</div>
+				
+                    </div>
+                </div>
+            </div>
+
+      
+      <!-- 上部实验标题开始 -->
+    <div class="head_h">
+        <div class="center_h">
+            消息中心
+        </div>
+    </div>
+    <div class="locate_h">
+        <div class="center_h">
+            <i class="icon_h"></i>
+            <el-breadcrumb separator="/" v-if="onLogin">
+                <el-breadcrumb-item><a href="../index.html">首页</a></el-breadcrumb-item>
+                <el-breadcrumb-item><a href="./usecenter.html">个人中心</a></el-breadcrumb-item>
+                <el-breadcrumb-item>留言列表</el-breadcrumb-item>
+             </el-breadcrumb>
+             <el-breadcrumb separator="/" v-if="!onLogin">
+                <el-breadcrumb-item><a href="../index.html">首页</a></el-breadcrumb-item>
+                <!-- <el-breadcrumb-item><a href="./usecenter.html">个人中心</a></el-breadcrumb-item> -->
+                <el-breadcrumb-item>留言列表</el-breadcrumb-item>
+             </el-breadcrumb>
+        </div>
+    </div>
+    <!-- 上部实验标题结束 -->
+        <!-- 左侧导航栏 -->
+        <div class="center band">
+            <div class="bandNav">
+                <div class="navItem first">
+                    <a href="messageList.html">我的留言</a>
+                </div>
+                <!-- <div class="navItem">
+                    <a href="read.html">留言消息</a>
+                </div> -->
+                <!-- <div class="navItem">
+                    <a href="">点赞</a>
+                </div> -->
+            </div>
+            <!-- 消息列表 -->
+            <div class="navCont" id="p1" >
+                <div class="contTitle">
+                    消息列表
+                </div>
+                <div class="main_top">
+                    <!-- 消息内容 -->
+                    <div class="main">
+                        <div class="main_zh ma_bo" v-for="(item,index) of tabledata" v-if="tabledata">
+
+                            <div class="main_left">
+                                <el-badge :is-dot="item.new_message_status" class="item" style="width: 100%;height: 100%;">
+                                    <img :src="item.files" :onerror="this.src='../img/head-img.png'" alt="">
+                                </el-badge>
+                            </div>
+
+                            <div class="main_right">
+                                <div class="main_right_sec main_mang">
+                                    <span class="main_ris" style="display: inline-block; max-width: 600px;vertical-align: middle; text-align: left; white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;">{{item.title}}</span>
+                                    <span class="main_time">{{item.create_time}}</span>
+                                </div>
+                                <div class="main_right_three ">
+                                    <span class="main_src" style="display: inline-block; max-width: 680px;vertical-align: middle; text-align: left; white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    overflow: hidden;">
+                                        {{item.content}}
+                                    </span>
+                                    <div class="main_to_s">
+                                        <span @click="remove(item.message_id)">
+                                            阅读全文
+                                        </span>
+                                        <div class="main_img icon">
+                                            <i class="icon icon-del"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="main_right_foot">
+                                    <div class="main_fi_one">
+                                        <div class="main_di"></div>
+                                        <span style="margin-right: 10px;">{{item.reply_num}} 条回复</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="demo2-2" class="main_foe"></div>
+                        <div class="block main_foe" style="text-align: center;">
+                            <el-pagination 
+                                @size-change="handleSizeChange" 
+                                @current-change="handleCurrentChange" 
+                                :current-page.sync="currentPage3" 
+                                :page-size="10" 
+                                layout="prev, pager, next, jumper" 
+                                :total="10*totalPage">
+                            </el-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+        <!-- <div class="pagenation">
+            <div class="page_btn">上一页</div>
+            <div class="page_btn">1</div>
+            <div class="page_btn">2</div>
+            <div class="page_btn">下一页</div>
+            <div class="pagemsg">共{{totalCount}}条信息/{{totalPage}}页</div>
+            <input type="text">
+            <div class="page_btn">跳转</div>
+        </div> -->
+         <!-- 页脚 -->
+         <div class="footer">
+            <div>
+                <span>
+                    <a href="javascript:;">xxxxxxx学院1999-2019 版权所有</a>
+                    <a href="http://www.miit.gov.cn/">豫xxx备xxxxxxx号-x</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    
+
+ 	
+      <script src="../publicJs/element_ui/vue.js"></script>
+    <script src="../publicJs/element_ui/element.js"></script>
+    <script src="../js/jquery-1.12.4.js"></script>
+    <script src="../publicJs/axios.js"></script>
+    <script src="../js/pub.js"></script>
+    <script src="../js/messageList.js"></script>
+    <script>
+        // window.setTimeout(() => {
+        //     // function view(){
+        //     $(".main_src").each(function() {
+                
+        //         //获取内容
+        //         console.log(123)
+        //         var str = $(this).html();
+        //         //截取内容5个字符
+        //         // console.log(str);
+        //         var subStr = str.substring(7, 100);
+        //         // console.log(subStr);
+        //         //如果长度大于140就添加省略号否则就添加空
+        //         var data = subStr + (str.length > 140 ? '...' : '');
+        //         $(this).html(data);
+        //     });
+        //     $(".main_ris").each(function() {
+        //         //获取内容
+        //         var mstr = $(this).html();
+        //         //截取内容5个字符
+        //         var msubStr = mstr.substring(0, 55);
+        //         console.log(msubStr);
+        //         //如果长度大于140就添加省略号否则就添加空
+        //         var data = msubStr + (mstr.length > 55 ? '...' : '');
+        //         $(this).html(data);
+        //     });
+        // // }
+        // }, 50);
+    </script>
+
+<script>
+    // 左侧导航栏选择
+    $(document).ready(function (){
+        $(".navItem").each(function(index){
+            $(this).click(function(){ 
+            $(".navItem").removeClass("first");
+            $(".navItem").eq(index).addClass("first");
+            });
+        });
+    });
+</script>
+</body>
+
+</html>
