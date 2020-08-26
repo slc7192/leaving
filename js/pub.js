@@ -74,7 +74,13 @@ var pub = {
     findReplyList: "student/findReplyList", //查询评论详情
     listReply: "student/listReply", //留言回复详情列表
     userReply: "student/userReply", //用户回复
-    shoplist:"api/listExperimentRecordsGoodsPage"
+    shoplist:"api/listExperimentRecordsGoodsPage",
+    makeGoodsDetailsStatic:"api/makeGoodsDetailsStatic",//商品详情放
+    listDictionary:"api/listDictionary",//商品详情静态化
+    listGoodsDictionary:"api/listGoodsDictionary",//商品字典列表
+    findGoodsConfigure:"api/findGoodsConfigure", //商品详情配置
+    findGoodsDetails:"api/findGoodsDetails",//商品详情
+    listExperimentRecordsGoodsPage:"api/listExperimentRecordsGoodsPage",//商品列表
   },
   /**
    * op 形参

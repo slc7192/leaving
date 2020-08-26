@@ -1,58 +1,727 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品详情实验</title>
+  <title>商品预览页</title>
   <!-- <link rel="stylesheet" href="./css/header.css"> -->
-  <link rel="shortcut icon" href="favicon.ico" >
-  <link rel="stylesheet" href="../css/storeopt.css">
+  <link rel="shortcut icon" href="favicon.ico">
+  <!-- <link rel="stylesheet" title="details1" href="../css/details1.css"> -->
+  <link rel="stylesheet" title="details" href="../css/details.css">
+  <link rel="stylesheet" href="../publicJs/element_ui/element.css">
   <style>
-    [v-cloak]{
+    [v-cloak] {
       display: none;
     }
-    #app{
-      height:100%;
+
+    #app {
+      height: 100%;
     }
-  </style>
+
+    .arrow_img {
+      /* width: 11px;
+      height: 7px; */
+      /* background-color: #a3a29e; */
+    }
+
+    .item_wrap {
+      display: none;
+    }
+
+    .right_point li {
+      width: 160px;
+      /* height: 40px; */
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .right_point li:first-child {
+      margin-top: 30px;
+    }
+
+    .el-tabs__content {
+      padding-left: 0px;
+    }
+
+    .avatar-uploader .el-upload {
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar-uploader .el-upload:hover {
+      border-color: #409EFF;
+    }
+
+    .avatar-uploader-icon {
+      font-size: 28px;
+      color: #8c939d;
+      width: 178px;
+      height: 178px;
+      line-height: 178px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 178px;
+      height: 178px;
+      display: block;
+    }
+
+    /* reset */
+
+body{font:12px/18px "宋体",arial,sans-serif;color:#585858;}
+
+body,div,p,span,form,iframe,table,td,th,input,textarea,button,label,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+
+h1,h2,h3,h4,h5,h6{font-size:100%; }
+
+ul,ol,li,dl{list-style-type:none;}
+
+em,i,dfn,cite,strong,small{font-style:normal;} 
+
+img{border:0;}
+
+fieldset,button,input,select,option{vertical-align:middle;font:12px/18px "宋体",arial,sans-serif;}
+
+table{border-collapse:collapse;border-spacing:0}
+
+textarea{resize:none}
+
+/* color */
+
+a:link,a:visited{color:#fff;text-decoration:none;}
+
+a:hover{color:#ef4165;text-decoration:none;}
+
+a:active{color:#1d7400;}
+
+/* clearfix */
+
+.clearfix:after{ visibility:hidden; display:block; font-size:0; content:" "; clear:both; height:0;}
+
+*html .clearfix{ zoom:1;}
+
+
+
+.preview{width:400px; height:465px; margin:10px 0px 0px 150px;float: right;}
+
+/* smallImg */
+
+.smallImg{position:relative; height:52px; margin-top:10px; background-color:#F1F0F0; padding:6px 5px; width:340px; overflow:hidden;float:left;}
+
+.scrollbutton{width:14px; height:50px; overflow:hidden; position:relative; float:left; cursor:pointer; }
+
+.scrollbutton.smallImgUp , .scrollbutton.smallImgUp.disabled{background:url(../img/details//箭头左可交互.png) no-repeat;
+  background-color: #F1F0F0;
+  width: 20px;
+  margin-right: 5px;
+  height: 64px;
+  margin-top: 10px;
+  background-position: 6px 25px;}
+
+.scrollbutton.smallImgDown , .scrollbutton.smallImgDown.disabled{background:url(../img/details/箭头右可交互.png) no-repeat; 
+  margin-left: 380px;
+  margin-top: -65px;
+  background-color: #F1F0F0;
+  width: 20px;
+  height: 64px;
+  background-position: 7px 25px;}
+
+
+
+#imageMenu {height:50px; width:360px; overflow:hidden; margin-left:0; float:left;}
+
+#imageMenu li {height:50px; width:60px; overflow:hidden; float:left; text-align:center;}
+
+#imageMenu li img{width:50px; height:50px;cursor:pointer;}
+
+#imageMenu li#onlickImg img, #imageMenu li:hover img{ width:44px; height:44px; border:3px solid #959595;}
+
+/* bigImg */
+
+.bigImg{position:relative; float:left; width:400px; height:400px; overflow:hidden;}
+
+.bigImg #midimg{width:400px; height:400px;}
+
+.bigImg #winSelector{width:235px; height:210px;}
+
+#winSelector{position:absolute; cursor:crosshair; filter:alpha(opacity=15); -moz-opacity:0.15; opacity:0.15; background-color:#000; border:1px solid #fff;}
+
+/* bigView */
+
+#bigView{position:absolute;border: 1px solid #959595; overflow: hidden; z-index:999;top: 115px!important;width: 470px;height: 420px;left: 765px!important;margin-left: 50px;}
+
+#bigView img{position:absolute;}
+
+</style>
 </head>
 <body id="bod">
-  <div id="app" v-cloak> 
-    <div class="right">
-      <div class="right_p">
-        <p>当前模板可选择的配色方案</p>
+  <div id="app" v-cloak>
+    <!-- 右侧内容 -->
+    <div  class="addcp">
+      <div style="width: 20px;height: 30px;display: inline-block;"></div>
+      <div class="again_sec">
+        <a href="#" >
+          <div  @click="shouYe(1,true)">内容配置</div>
+        </a>
+        <a href="#">
+          <div  @click="shouYe(2,false)">个人中心</div>
+        </a>
       </div>
-      <div class="right_point">
-        <div class="right_top" v-for="(value,index) of indexlist">
-         <img :src="value.img" alt="" class="right_litter" @click="change(true)">
-         <p>{{value.name}}</p>
+    </div>
+    <div class="again_tom">
+      <div>
+        <!-- <img :src="imurl+logoimg" alt="" >  -->
+        <p class="again_font">环保科技萨哈</p>
+      </div>
+      <div class="search">
+        <div class="search_input" :style="{'border-color':activeColor}">
+          <input maxlength="20" type="text" placeholder="搜索商品关键词" value="">
+          <a href="javascript:;" :style="{'background':activeColor}">搜索</a>
+        </div> 
+      </div> 
+    </div>
+    <!-- <div class="left">
+      
+      
+      <div style="width: 1200px;margin: 0 auto;display: flex;justify-content: space-around;">
+        
+        <div class="login_t">
+          <img src="../index/img/logo (2).png" alt="">
+          <div class="login_pic">
+            <a>卡乐芙+海外专营店</a>
+            <p>在售商品1182个</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="left">
-      <div style="width: 1200px;margin: 0 auto;">
-        <img src="../img/index/head.png" alt="">
-      </div>
-      <div class="left_top">
-        <p>首页</p>
-        <p>免费推广</p>
-      </div>
-      <!-- <div class="left_k"></div> -->
-      <div class="left_sec">
-        <p>以上为页头区域</p>
-      </div>
-      <div style="width: 1200px; margin: 0 auto;"> 
-        <img src="../img/index/xq.png" alt="" style="padding: 20px 0;">
+    </div> -->
+    <!-- 导航条 -->
+  <div class="left_top" v-bind:style="{'background':activeColor}">
+      <div class="left_dao">
+        <div class="left_1"><a href="">首页</a></div>
+        <div class="left_2"><a href="">个人中心</a></div>
       </div>
     </div>
-    <div class="zhe" :class="{change:ischange}">
-      <div class="modela" :class="{change:ischange}">
-        <img src="../img/index/close.png" alt="" @click="change(false)">
-        <p>替换颜色成功！</p>
+    <!-- 宝贝详情上部 -->
+    <div class="cent ban">
+      <!-- 详情左侧 -->
+      <div class="bandN">
+          <!-- 详情小图切换大图 -->
+          <div class="preview">
+
+              <div id="vertical" class="bigImg">
+          
+                  <img :src="baseUrl+goods_picture_list[0]" width="400" height="400" alt="" id="midimg" />
+          
+                  <div style="display:none;" id="winSelector"></div>
+          
+              </div><!--bigImg end-->	
+          
+              <div class="scrollbutton smallImgUp disabled"></div> 
+              <div class="smallImg">
+          
+          
+                  <div id="imageMenu">
+          
+                      <ul>
+          
+                          <li id="onlickImg"><img :src="baseUrl+goods_picture_list[0]" width="68" height="68" alt="洋妞"/></li>
+                            
+                          <li  v-for="(item,index) of goods_picture_list" >
+                            <img :src="baseUrl+item" width="68" height="68" alt="洋妞"/>
+                          </li>
+          
+                      </ul>
+          
+                  </div>
+          
+                  
+                </div><!--smallImg end-->	
+                
+                <div id="bigView" style="display:none"><img width="800" height="800" alt="" src="" /></div>
+                
+                <div class="scrollbutton smallImgDown"></div>
+          
+          </div>
       </div>
+      <!-- 详情右侧 -->
+      <div class="navCo">
+          <div class="nav_title">
+              <span>{{shop_category_name}}</span>
+          </div>
+          <div class="nav_price" id="nav_price" style="display: block;">
+              <div class="nav_pri">售 价<p v-bind:style="{'color':activeColor}">￥{{goods_price}}</p></div>
+              <div class="nav_you">
+                  <div style="float: left;">优 惠</div>
+                  <div class="nav_ll" style="float: left;" v-bind:style="{'background':activeColor}">
+                    <img src="../img/details/left.png" alt="">
+                    <img src="../img/details/right.png" alt="">
+                    <div class="nav_wen">{{goods_full1}}-{{goods_minus1}}</div>
+                  </div>
+                  <div class="nav_rr" style="float: left;" v-bind:style="{'background':activeColor}">
+                    <img src="../img/details/left.png" alt="">
+                    <img src="../img/details/right.png" alt="">
+                    <div class="nav_w">{{goods_full2}}-{{goods_minus2}}</div>
+                  </div>
+              </div>
+          </div>
+          <div class="nav_gu">
+              <div style="float: left;">规格</div>
+              <div class="nav_gg" v-bind:style="{'border-color':activeColor}">
+                  <p>{{goods_val}}/{{goods_spec}}</p>
+                  <div class="z3" v-bind:style="{'border-right-color':activeColor}">
+                    <img src="../img/details/yes.png" alt="" style="float: right;">
+                  </div>
+              </div>
+          </div>
+          <div class="nav_count">
+              <div style="float: left;">数量</div>
+              <div class="nav_co">
+                  <button>-</button>
+                  <span>1</span>
+                  <button>+</button>
+              </div>
+          </div>
+          <div class="nav_pro">
+              <div style="float: left;">承诺</div>
+              <img src="../img/details/七天无理由退款.png" alt=""><span>七天退换</span>
+              <img src="../img/details/按时到货.png" alt=""><span>按时到货</span>
+              <img src="../img/details/买.png" alt=""><span>买家保障</span>
+          </div> 
+          <div class="nav_btn" v-bind:style="{'border-color':activeColor,'background':actColor}">
+              <span v-bind:style="{'color':activeColor}">立即购买</span>
+          </div>
+      </div>
+    </div>
+    <!-- 宝贝详情下部 -->
+    <div class="center_y band">
+        <div class="banditem">
+          <div class="fir">
+            <a href="">卡乐芙+海外专营店</a>
+          </div>
+          <div class="first">
+            <div class="first_btn">
+              <a>进入店铺</a>
+            </div>
+          </div>
+        </div>
+    
+        <div class="nav">
+          <el-tabs v-model="activeName" @tab-click="handleClick">
+            <el-tab-pane label="详情" name="first">
+              <div class="navcont">
+                <!-- 产品参数 -->
+                <div class="contents">
+                  <p>产品参数</p>
+                  <div class="content_c" v-for="(item,index) in tabledata">
+                    <p>{{item.dictionary_name}}: <span>{{item.dictionary_value}}</span></p>
+                  </div>
+                </div>
+                <div style="clear: both;"></div>
+                <!-- 包装说明 -->
+                <div class="bao" id="bao" style="display: block;"> 
+                  <p>包装说明</p>
+                  <div class="bao_1">
+                    {{set_description}}
+                  </div>
+                </div>
+                <!-- 产品资质 -->
+                <div class="zi" id="zi" style="display: block;">
+                  <p>产品资质</p>
+                  <div class="zi_1">
+                    <img :src="set_qualification" alt="">
+                  </div>
+                </div>
+                <!-- 详情图 -->
+                <div class="chan">产品描述</div>
+                <div class="miao" id="miao" style="display: block;">
+                  <img :src="set_detailsPic" alt="">
+                </div>
+              </div>
+            </el-tab-pane>
+
+            <el-tab-pane label="用户评价" name="second">
+              <div id="navc" style="display: block;">
+                <div class="navc" v-for="(item,index) in evaluation">
+                <!-- 用户评价 -->
+                  <!-- <div> -->
+                    <div class="grade">
+                      <P>评价等级: </P>
+                      <div class="grade_1">
+                        {{item.evaluation_level}}
+                      </div>
+                    </div>
+                  <!-- </div> -->
+                  
+                  <!-- <div style="clear: both;"></div> -->
+                  <!-- 文字 -->
+                  <div class="baoo"> 
+                    <p>评价内容: （文字部分 / 图片部分）</p>
+                    <div class="wenzi" id="wenzi" style="display: block;">
+                      <!-- <p>文字部分</p> -->
+                      <div class="baoo_1">
+                        {{item.evaluation_content}}
+                      </div>
+                    </div>
+                    <div class="picture">
+                      <!-- <p>图片部分</p> -->
+                      <div class="baoo_2">
+                        <img :src="baseUrl+item.evaluation_pic" alt="">
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
+        </div>
+    </div>
+    <!-- 页脚 -->
+    <div class="ban">
+      <p>版权所有</p>
     </div>
   </div>
 </body>
 <script src="../publicJs/vue.js"></script>
-<script src="../js/storeopt.js"></script>
+<script src="../js/pub.js"></script>
+<script src="../publicJs/axios.js"></script>
+<script src="../publicJs/jquery.1.4.2-min.js"></script>
+<script src="../publicJs/element_ui/element.js"></script>
+<script src="../js/commdetails.js"></script>
+<script>
+  window.location.href="#p1";
+  var guding=document.querySelectorAll('.navCont>.contT');
+  if(guding){
+      for(var i =0 ; i<guding.length; i++){
+          guding[i].onclick = function(){
+              var par= this.parentNode;
+              var tag = par.classList.contains('click');
+              reset();
+              if(tag){
+                  par.classList.remove('click');
+              }else{
+                  par.classList.add('click');
+              }
+          }
+      }
+      function reset(){
+          for(var j =0 ;j <guding.length; j++){
+              guding[j].parentNode.classList.remove('click');
+          }
+      }
+  }
+</script>
+<script>
+  
+  // 详情大小图切换
+  $(document).ready(function(){
+  
+  // 图片上下滚动
+  
+  var count = $("#imageMenu li").length - 5; /* 显示 6 个 li标签内容 */
+  
+  var interval = $("#imageMenu li:first").width();
+  
+  var curIndex = 0;
+  
+  
+  
+  $('.scrollbutton').click(function(){
+  
+      if( $(this).hasClass('disabled') ) return false;
+  
+      
+  
+      if ($(this).hasClass('smallImgUp')) --curIndex;
+  
+      else ++curIndex;
+  
+      
+  
+      $('.scrollbutton').removeClass('disabled');
+  
+      if (curIndex == 0) $('.smallImgUp').addClass('disabled');
+  
+      if (curIndex == count-1) $('.smallImgDown').addClass('disabled');
+  
+      
+  
+      $("#imageMenu ul").stop(false, true).animate({"marginLeft" : -curIndex*interval + "px"}, 600);
+  
+  });	
+  
+  // 解决 ie6 select框 问题
+  
+  $.fn.decorateIframe = function(options) {
+  
+      if ($.browser.msie && $.browser.version < 7) {
+  
+          var opts = $.extend({}, $.fn.decorateIframe.defaults, options);
+  
+          $(this).each(function() {
+  
+              var $myThis = $(this);
+  
+              //创建一个IFRAME
+  
+              var divIframe = $("<iframe />");
+  
+              divIframe.attr("id", opts.iframeId);
+  
+              divIframe.css("position", "absolute");
+  
+              divIframe.css("display", "none");
+  
+              divIframe.css("display", "block");
+  
+              divIframe.css("z-index", opts.iframeZIndex);
+  
+              divIframe.css("border");
+  
+              divIframe.css("top", "0");
+  
+              divIframe.css("left", "0");
+  
+              if (opts.width == 0) {
+  
+                  divIframe.css("width", $myThis.width() + parseInt($myThis.css("padding")) * 2 + "px");
+  
+              }
+  
+              if (opts.height == 0) {
+  
+                  divIframe.css("height", $myThis.height() + parseInt($myThis.css("padding")) * 2 + "px");
+  
+              }
+  
+              divIframe.css("filter", "mask(color=#fff)");
+  
+              $myThis.append(divIframe);
+  
+          });
+  
+      }
+  
+  }
+  
+  $.fn.decorateIframe.defaults = {
+  
+      iframeId: "decorateIframe1",
+  
+      iframeZIndex: -1,
+  
+      width: 0,
+  
+      height: 0
+  
+  }
+  
+  //放大镜视窗
+  
+  $("#bigView").decorateIframe();
+  
+  //点击到中图
+  
+  var midChangeHandler = null;
+  
+  setTimeout(()=>{
+    $("#imageMenu li img").bind("click", function(){
+  
+    if ($(this).attr("id") != "onlickImg") {
+
+        midChange($(this).attr("src").replace("small", "mid"));
+
+        $("#imageMenu li").removeAttr("id");
+
+        $(this).parent().attr("id", "onlickImg");
+
+    }
+
+}).bind("mouseover", function(){
+
+    if ($(this).attr("id") != "onlickImg") {
+
+        window.clearTimeout(midChangeHandler);
+
+        midChange($(this).attr("src").replace("small", "mid"));
+
+        $(this).css({ "border": "3px solid #959595" });
+
+    }
+
+}).bind("mouseout", function(){
+
+    if($(this).attr("id") != "onlickImg"){
+
+        $(this).removeAttr("style");
+
+        midChangeHandler = window.setTimeout(function(){
+
+            midChange($("#onlickImg img").attr("src").replace("small", "mid"));
+
+        }, 1000);
+
+    }
+
+});
+  },100)
+  
+  
+  
+  function midChange(src) {
+  
+      $("#midimg").attr("src", src).load(function() {
+  
+          changeViewImg();
+  
+      });
+  
+  }
+  
+  //大视窗看图
+  
+  function mouseover(e) {
+    // console.log(e)
+  
+      if ($("#winSelector").css("display") == "none") {
+  
+          $("#winSelector,#bigView").show();
+  
+      }
+  
+      $("#winSelector").css(fixedPosition(e));
+  
+      e.stopPropagation();
+  
+  }
+  
+  function mouseOut(e) {
+  
+      if ($("#winSelector").css("display") != "none") {
+  
+          $("#winSelector,#bigView").hide();
+  
+      }
+  
+      e.stopPropagation();
+  
+  }
+  
+  $("#midimg").mouseover(mouseover); //中图事件
+  
+  $("#midimg,#winSelector").mousemove(mouseover).mouseout(mouseOut); //选择器事件
+  
+  
+  
+  var $divWidth = $("#winSelector").width(); //选择器宽度
+  
+  var $divHeight = $("#winSelector").height(); //选择器高度
+  
+  var $imgWidth = $("#midimg").width(); //中图宽度
+  
+  var $imgHeight = $("#midimg").height(); //中图高度
+  
+  var $viewImgWidth = $viewImgHeight = $height = null; //IE加载后才能得到 大图宽度 大图高度 大图视窗高度
+  
+  
+  function changeViewImg() {
+    setTimeout(() => {
+      // console.log(src);
+  
+      $("#bigView img").attr("src", $("#midimg").attr("src").replace("mid", "big"));
+  
+    },100);
+  }
+  
+  changeViewImg();
+  
+  $("#bigView").scrollLeft(0).scrollTop(0);
+  
+  function fixedPosition(e) {
+  
+      if (e == null) {
+  
+          return;
+  
+      }
+  
+      var $imgLeft = $("#midimg").offset().left; //中图左边距
+  
+      var $imgTop = $("#midimg").offset().top; //中图上边距
+  
+      X = e.pageX - $imgLeft - $divWidth / 2; //selector顶点坐标 X
+  
+      Y = e.pageY - $imgTop - $divHeight / 2; //selector顶点坐标 Y
+  
+      X = X < 0 ? 0 : X;
+  
+      Y = Y < 0 ? 0 : Y;
+  
+      X = X + $divWidth > $imgWidth ? $imgWidth - $divWidth : X;
+  
+      Y = Y + $divHeight > $imgHeight ? $imgHeight - $divHeight : Y;
+  
+  
+  
+      if ($viewImgWidth == null) {
+  
+          $viewImgWidth = $("#bigView img").outerWidth();
+  
+          $viewImgHeight = $("#bigView img").height();
+  
+          if ($viewImgWidth < 200 || $viewImgHeight < 200) {
+  
+              $viewImgWidth = $viewImgHeight = 800;
+  
+          }
+  
+          $height = $divHeight * $viewImgHeight / $imgHeight;
+  
+          $("#bigView").width($divWidth * $viewImgWidth / $imgWidth);
+  
+          $("#bigView").height($height);
+  
+      }
+  
+      var scrollX = X * $viewImgWidth / $imgWidth;
+  
+      var scrollY = Y * $viewImgHeight / $imgHeight;
+  
+      $("#bigView img").css({ "left": scrollX * -1, "top": scrollY * -1 });
+  
+      $("#bigView").css({ "top": 75, "left": $(".preview").offset().left + $(".preview").width() + 15 });
+  
+  
+  
+      return { left: X, top: Y };
+  
+  }
+  
+  });
+</script>
+<script>
+// 数量加减
+// var nav=document.getElementsByClassName("nav_co");
+var btns=document.getElementsByTagName("button");
+// console.log(btns);
+for(var btn of btns){
+  btn.onclick=function(){
+      var span=this.parentNode.children[1];
+      var n=parseInt(span.innerHTML);//按值传递
+      if(this.innerHTML=="+"){
+          n++;
+      }else if(n>1){//否则如果当前点的按钮的内容是-,且n>1时，才对n-1
+          n--;
+      }
+      span.innerHTML=n;
+  }
+}
+</script>
+
 </html>

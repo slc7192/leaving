@@ -584,16 +584,13 @@
                     ref="upload" 
                     :action="imgurl"           
                     list-type="picture-card"
-                    :on-preview="handlePictureCardPreview"
-                    :file-list="contractlist"
+                    :on-change="onlunch"
+                    :file-list="contfileList"
                     :on-remove="handleRemove" 
                     :on-success="handlelunSuccess"
-                    :on-change="onlunch"
                     :show-file-list="true"
                     :class="{hide:hideUpload}"
                     style="width: 1430px;"
-                    
-                    
                    >
                     <i class="el-icon-plus"  v-if="Lunboimage.length<6"></i>
                   </el-upload>

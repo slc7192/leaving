@@ -354,7 +354,7 @@ var app =new Vue({
       switch(obj){
         case 'shop':url='../html/storeopt.html';
         break;
-        case 'goods':url='../html/commdetails.html';
+        case 'goods':url='../html/details.html';
         break;
         case 'soft':url='../html/editor_list.html';
         break;

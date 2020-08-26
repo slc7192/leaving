@@ -48,6 +48,7 @@ var index = new Vue({
     Lunboimage:[],
     // form:{
       contractlist:[],
+      contfileList:[],
     // },
     inex:'0',
     activeColor:'#db2522',
@@ -57,7 +58,7 @@ var index = new Vue({
     setid:'',
     studentid:'',
     lasna:'',
-    surl:''
+    slister:[]
   },
   created(){
     this.surl=pub._url;
@@ -102,16 +103,24 @@ var index = new Vue({
                     _this.value_shang=res.data.Navigation.value_shang;//导航
                     _this.value_shang==1?_this.value_shang=true : _this.value_shang=false;
                     _this.Lunboimage=res.data.Lunboimage;
-                   
-                    //图片回显
-                    var suvl=res.data.Contractlist;
-                    for(var i = 0 ;i <suvl.length; i++){
-                      _this.contractlist.push({name:suvl[i].uid,url:suvl[i].url});
+                   console.log(_this.Lunboimage)
+                    for(var i=0;i<_this.Lunboimage.length;i++){
+                      var file={};
+
+                      file.url=pub._url +  _this.Lunboimage[i];
+
+                      _this.contfileList.push(file);
+                      
+                      _this.slister.push( _this.Lunboimage[i]);
+                      console.log(_this.slister);
+
+                      // 超过6张则隐藏图片
+                      if(res.data.Lunboimage>=_this.limitCount){
+                        _this.hideUpload =true;
+                      }
+                      
                     }
-                    //判断是否显示新增图片按钮
-                    if(res.data.Lunboimage.length>=6){
-                      _this.hideUpload=true;
-                    }
+
                     //修改颜色
                     if(res.data.color==2){
                       _this.activeColor='#0365C6';
@@ -140,6 +149,7 @@ var index = new Vue({
       this.goods_name=val.label;//小组名字
     },
 
+    //编辑页面弹框
     editor(bol){
       bol ==1 ? this.isshow2 =true : this.isshow2=false;
       bol ==2 ? this.isshow =true : this.isshow=false;
@@ -147,6 +157,7 @@ var index = new Vue({
       bol ==4 ? this.isshow4 = true : this.isshow4 =false;
     },
 
+    //改变模板颜色
     change(bol,index) {
       this.inex=index;
       this.inex==1? color='红色' : color='蓝色'
@@ -166,6 +177,7 @@ var index = new Vue({
       
     },
 
+    //确认模板
     changesol(str,ind){
       this.template_id=ind+1;
       console.log(this.template_id)
@@ -175,15 +187,11 @@ var index = new Vue({
       });
     },
 
+    //切换tab
     handleClick(tab, event) {
       // console.log(tab, event);
     },
     
-    handlePictureCardPreview(file) {
-      this.didialogImageUrl = file.url;
-      console.log(file)
-      this.dialogVisible = true;
-    },
     //宝贝内容配置后得图片
     handleAvatarSuccess(res, file) {
       console.log(res, file);
@@ -191,7 +199,7 @@ var index = new Vue({
         this.$message.error('请选择商品内容');
         return;
       }
-      this.imgurllist.push(pub._url+res.data.files[0]);
+      this.imgurllist.push(res.data.files[0]);
 
       if(this.imgurllist.length>6){
         this.$message.error('图片最多上传6张');
@@ -205,42 +213,39 @@ var index = new Vue({
       
       this.goods_list.push(goos_count);
     },
+
+
     //logo 上传成功后得图片地址
     handleLogoSuccess(res, file){
-      console.log(res);
       this.didialogImageUrl=res.data.files[0];
     },
+
+
     //轮播图  图片成功回调
     handlelunSuccess(res, file){
-      console.log('888888888============',this.Lunboimage)
-      console.log(res, file);
-      this.dialogImageUrl=file.response.data.files[0];
-      console.log(this.dialogImageUrl)
-      this.Lunboimage.push(this.dialogImageUrl);
-      this.contractlist.push({name:file.uid,url:pub._url+this.dialogImageUrl})
+      this.contfileList=file;//图片回显  照片墙
+      this.Lunboimage.push(file.response.data.files[0]);//轮播图数组
     },
+
+    //轮播图上传内容的改变
     onlunch(file,filelist){
-      console.log(this.Lunboimage)
-      this.hideUpload = this.Lunboimage.length >= this.limitCount;
+      this.hideUpload = this.Lunboimage.length >= this.limitCount;//控制上传接口是否出现
     },
  
     //移除轮播图的图片
     handleRemove(file, fileList) {
-      console.log(fileList)
-      this.hideUpload = fileList.length >= this.limitCount;
+      console.log(fileList);
       this.Lunboimage=[];
-      this.contractlist=[];
+      this.contfileList=fileList;//图片回显  照片墙
       if(fileList.length!=0){
         for(let i=0; i<fileList.length;i++){
           var iu=fileList[i].url;
           this.Lunboimage.push(iu);
-          this.contractlist.push({name:fileList[i].uid,url:iu})
         }
       }else{
         for(let i=0; i<fileList.length;i++){
           var iu=fileList[i].response.data.files[0];
           this.Lunboimage.push(iu);
-          this.contractlist.push({name:fileList[i].uid,url:fileList[i].url})
         }
       }
     },
@@ -263,6 +268,7 @@ var index = new Vue({
     },
     //保存宝贝内容配置
     save(){
+
       if(this.inex==0){
         this.inex=1;
       }
@@ -276,7 +282,9 @@ var index = new Vue({
       }else{
         this.value_shang=1
       }
+      // console.log(this.contractlist)
       
+      console.log(44444)
       //汇总
       this.experiment_module_data={
         'goods_list':this.goods_list,
@@ -288,12 +296,13 @@ var index = new Vue({
           'value_shang':this.value_shang,
         },//导航
         'Lunboimage':this.Lunboimage,//轮播图
-        'Contractlist':this.contractlist,//轮播图回显
+        // 'Contractlist':this.contractlist,//轮播图回显
         'color':this.inex,//选择颜色
         'template_id':this.template_id
       }
 
-      this.allsave();
+      console.log(this.experiment_module_data);
+     //this.allsave();
     },
     // 全部保存
     allsave(){

@@ -196,10 +196,11 @@ var index = new Vue({
     },
     //返回个人中心或重置首页
     shouYe(num,bol){
+      // console.log(num,bol)
       var backurl;
       if(num==1 && bol){
         backurl="../html/storeopt.html?student_id="+this.meid;
-      }else if(num==1 && !bol){
+      }else if(num==2 && !bol){
         backurl="../html/usecenter.html?student_id="+this.meid+'#p1';
       }else{
         backurl="../index.html?student_id="+this.meid;
