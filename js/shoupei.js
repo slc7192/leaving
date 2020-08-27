@@ -340,6 +340,11 @@ var index = new Vue({
           }
         }
       })
+    },
+    
+    //商品列表的详情跳转
+    goemel(id){
+      window.open('../html/commdetails.html?id='+id+'&'+'stepid='+this.getid+'&'+'dw='+1)
     }
     
   },

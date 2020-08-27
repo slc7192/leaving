@@ -189,7 +189,8 @@
                 <div class="lastdiv">
                   <p>活动价：</p>
                   <p>￥</p>
-                  <p>399</p>
+                  <p v-if="item.goods_price">{{item.goods_price}}</p>
+                  <p v-else>89</p>
                   <div class="cart">
                     <p>商品购买</p>
                     <div class="pic">
@@ -206,7 +207,8 @@
                 <div class="lastdiv">
                   <p>活动价：</p>
                   <p>￥</p>
-                  <p>399</p>
+                  <p v-if="item.goods_price">{{item.goods_price}}</p>
+                  <p v-else>52</p>
                   <div class="cart">
                     <p>商品购买</p>
                     <div class="pic">
@@ -336,9 +338,10 @@
               </div>
             </div>
             <!-- 版权所有 -->
-            <div class="cop_tech">
-              <p class="cop">版权所有:某某某服装有限公司</p>
-              <p class="tech">技术支持：某某某</p>
+            <div class="cop_tech" style="width: 530px;display: flex;">
+              <p class="cop">©2012-2019 河南牧业经济学院</p>
+              <p class="tech">豫公网安备11010802017518</p>
+              <p>豫ICP备14061682号-1</p>
             </div>
           </div>
         </div>
@@ -479,7 +482,7 @@
               </div>
               <div class="line" v-if="shoplist.length != 0 " >
                 
-                <div class=" goods_list" v-for="(item,index) of shoplist" style="width: 224px;height: 350px;">
+                <div class=" goods_list" v-for="(item,index) of shoplist" style="width: 224px;height: 350px;" @click="goemel(item.id)">
                   <div class="jh">
                     <img :src="imurl+item.goods_pic" style="width: 100%;height: 100%;"  controls="controls" ></img>
                     <div class="price p_left">
@@ -489,21 +492,6 @@
                     <!-- 商品店铺名 -->
                     <div class="shop_name"></div>
                   </div>
-                  <!-- <div class="delpho"  @click="dele(item.id)"></div> -->
-                  <!-- <div class="opera">
-                    <span id="btn" @click="niceIn(3,item.id,item.video_name,item.fabulous_state)" :class="{'num':isniceIn==item.id}" class="brey" style="height: 25px;display: flex;justify-content: space-around;width: 33px;margin: 6px 0 0 15px;" v-if="item.fabulous_state % 2 == 0">
-                  
-                      <i class="iconfont" :class="{'niceIn':isniceIn==item.id}" style="display: inline;padding: 0px;">&#xe602;</i> 
-                      <p>{{item.bonus_points}}</p>
-                    </span>
-
-                    <span id="btn" @click="niceIn(3,item.id,item.video_name,item.fabulous_state)" :class="{'num':isniceIn==item.id}" style="height: 25px;display: flex;justify-content: space-around;width: 33px;margin: 6px 0 0 15px;" class="trumb" v-else>
-                  
-                      <i class="iconfont" :class="{'niceIn':isniceIn==item.id}" style="display: inline;padding: 0px;">&#xe602;</i> 
-                      <p>{{item.bonus_points}}</p>
-                    </span>
-                  
-                  </div> -->
                 </div>
                 
               </div>
@@ -522,6 +510,7 @@
           </div>
         </div>
       </div>
+      
  </div>
 
   <script src="../publicJs/vue.js"></script>

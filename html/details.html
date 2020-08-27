@@ -135,7 +135,7 @@ a:active{color:#1d7400;}
 
 #imageMenu {height:50px; width:360px; overflow:hidden; margin-left:0; float:left;}
 
-#imageMenu li {height:50px; width:60px; overflow:hidden; float:left; text-align:center;}
+#imageMenu li {height:50px; width:57px; overflow:hidden; float:left; text-align:center;}
 
 #imageMenu li img{width:50px; height:50px;cursor:pointer;}
 
@@ -453,7 +453,7 @@ a:active{color:#1d7400;}
 
                 <div>
                   <div class="right_but" style="width: 214px;margin: 0 auto;">
-                    <button @click="save()">保存</button>
+                    <button @click="save(1)">保存</button>
                     <button @click="editor(0)">取消</button>
                   </div>
                 </div>
@@ -490,15 +490,15 @@ a:active{color:#1d7400;}
                 </div>
                 <div style="display: flex; margin-top: 22px;margin-left: 10px;">
                   <span style="font-size: 14px; color: #222222;font-family: SourceHanSansCN-Normal;margin: 10px 10px 0 90px;">满</span>
-                    <el-input v-model="goods_full1" placeholder="请输入满价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
+                    <el-input id="goods_full1" v-model="goods_full1" placeholder="请输入满价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
                   <span style="font-size: 14px; color: #222222;font-family: SourceHanSansCN-Normal;margin: 10px 10px 0 10px;">减</span>
-                    <el-input v-model="goods_minus1" placeholder="请输入减价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
+                    <el-input id="goods_minus1" v-model="goods_minus1" placeholder="请输入减价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
                 </div>
                 <div style="display: flex; margin-top: 22px;margin-left: 10px;">
                   <span style="font-size: 14px; color: #222222;font-family: SourceHanSansCN-Normal;margin: 10px 10px 0 90px;">满</span>
-                    <el-input v-model="goods_full2" placeholder="请输入满价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
+                    <el-input id="goods_full2" v-model="goods_full2" placeholder="请输入满价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
                   <span style="font-size: 14px; color: #222222;font-family: SourceHanSansCN-Normal;margin: 10px 10px 0 10px;">减</span>
-                    <el-input v-model="goods_minus2" placeholder="请输入减价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
+                    <el-input id="goods_minus2" v-model="goods_minus2" placeholder="请输入减价格" style="width: 178px;height: 32px;"><i slot="suffix" style="font-size: 14px;font-family: SourceHanSansCN-Normal; color: #000;line-height: 32px;">元</i></el-input>
                 </div>
                 <div style="display: flex; margin-top: 24px;margin-left: 10px;">
                   <div style="font-size: 12px;color: #cccccc;font-family: SourceHanSansCN-Normal;margin-left: 90px;">宝贝使用门槛金额必须高于优惠金额</div>
@@ -512,7 +512,7 @@ a:active{color:#1d7400;}
                 
                 <div>
                   <div class="right_but" style="width: 214px;margin: 44px auto;">
-                    <button @click="save()">保存</button>
+                    <button @click="save(2)">保存</button>
                     <button @click="editor(0)">取消</button>
                   </div>
                 </div>
@@ -541,9 +541,10 @@ a:active{color:#1d7400;}
                   <div class="l_l_con">
                     <p style="display:inline; font-family: SourceHanSansCN-Normal; color: #222222; font-size: 14px;">宝贝参数：</p>
                     <div class="lcon">
-                      <div class="list_c" v-for="(item,index) in dic_tabledata">
+                      <div class="list_c" v-for="(item,index) in tabledata">
                         <!-- <input type="text"/> -->
-                          <el-checkbox id="cb1" @change="checkChange(index)" :checked="item.check_status" :key="item.dictionary_id">{{item.dictionary_name}}</el-checkbox>
+                          <el-checkbox id="cb1" @change="checkChange(index)"  :class="{'is-checked':check==item.check_status}" :key="item.dictionary_id">{{item.dictionary_name}}</el-checkbox>
+                          <!-- <el-checkbox id="cb1" @change="checkChange(index)" :checked="false" :key="item.dictionary_id" v-else>{{item.dictionary_name}}</el-checkbox> -->
                           <input type="text" v-model="item.dictionary_value" placeholder="请输入参数值" style="border-bottom:1px solid #e1e1e1; margin-left: -10px; height:30px; line-height:30px;">
                       </div>
                     </div>

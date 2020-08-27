@@ -136,7 +136,7 @@ a:active{color:#1d7400;}
 
 #imageMenu {height:50px; width:360px; overflow:hidden; margin-left:0; float:left;}
 
-#imageMenu li {height:50px; width:60px; overflow:hidden; float:left; text-align:center;}
+#imageMenu li {height:50px; width:57px; overflow:hidden; float:left; text-align:center;}
 
 #imageMenu li img{width:50px; height:50px;cursor:pointer;}
 
@@ -167,17 +167,17 @@ a:active{color:#1d7400;}
       <div style="width: 20px;height: 30px;display: inline-block;"></div>
       <div class="again_sec">
         <a href="#" >
-          <div  @click="shouYe(1,true)">内容配置</div>
+          <div  @click="shouYe(true)" v-show="dw!=1">内容配置</div>
         </a>
         <a href="#">
-          <div  @click="shouYe(2,false)">个人中心</div>
+          <div  @click="shouYe(false)">个人中心</div>
         </a>
       </div>
     </div>
     <div class="again_tom">
       <div>
-        <!-- <img :src="imurl+logoimg" alt="" >  -->
-        <p class="again_font">环保科技萨哈</p>
+        <img :src="imurl+logoimg" alt="" > 
+        <p class="again_font">{{step_name}}</p>
       </div>
       <div class="search">
         <div class="search_input" :style="{'border-color':activeColor}">
@@ -203,8 +203,8 @@ a:active{color:#1d7400;}
     <!-- 导航条 -->
   <div class="left_top" v-bind:style="{'background':activeColor}">
       <div class="left_dao">
-        <div class="left_1"><a href="">首页</a></div>
-        <div class="left_2"><a href="">个人中心</a></div>
+        <div class="left_1"  @click="goindex"><a href="#">首页</a></div>
+        <!-- <div class="left_2"><a href="">个人中心</a></div> -->
       </div>
     </div>
     <!-- 宝贝详情上部 -->
@@ -302,11 +302,11 @@ a:active{color:#1d7400;}
     <div class="center_y band">
         <div class="banditem">
           <div class="fir">
-            <a href="">卡乐芙+海外专营店</a>
+            <a href="#">{{step_name.substring(0,8)}}</a>
           </div>
           <div class="first">
-            <div class="first_btn">
-              <a>进入店铺</a>
+            <div class="first_btn" @click="goindex">
+              <a >进入店铺</a>
             </div>
           </div>
         </div>
@@ -384,7 +384,13 @@ a:active{color:#1d7400;}
     </div>
     <!-- 页脚 -->
     <div class="ban">
-      <p>版权所有</p>
+      
+       
+          <span>©2012-2019 河南牧业经济学院</span>
+          <span>豫公网安备11010802017518</span>
+          <span>豫ICP备14061682号-1</span>
+        
+      
     </div>
   </div>
 </body>

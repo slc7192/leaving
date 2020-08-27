@@ -64,12 +64,12 @@
       display: block;
     }
     .s_count .avatar-uploader .el-upload {
-        width: 110px;
-        height: 100px;
+        width:85px;
+        height: 60px;
       }
       
       .s_count .avatar-uploader-icon {
-        margin: -34px -34px;
+        margin: -60px -60px;
       }
       .s_d{
         width: 110px;
@@ -140,7 +140,7 @@
 
         </div>
         <!-- 头部右侧 -->
-        <div class="right_but">
+        <div class="right_but" style="margin-top: 20px;">
 
           <button @click="shotsee(true)">个人中心</button>
           <button @click="shotsee(false)">预览</button>
@@ -404,12 +404,15 @@
             <el-tab-pane label="宝贝设置" name="first">
               <template slot-scope="scope">
 
-                <div style="display: flex; margin-bottom: 40px;">
+                <div style="display: flex; margin-bottom: 20px;">
                   <p style="display:inline ;">摸板尺寸：</p>
-                  <p style="color:#999999;">此模块每个宝贝图片设计尺寸最佳为350*548px，小于或大于时图片将会变形</p>
+                  <div>
+                    <p style="color:#999999;">此模块每个宝贝图片设计尺寸最佳为350*548px，小于或大于时图片将会变形,上传图片大小不能超过 3MB!</p>
+                  <p style="color:#999999;">图片数量要求最少三张，最多六张</p>
+                  </div>
                 </div>
 
-                <div class="s_count" style="height: 390px;overflow: hidden;">
+                <div class="s_count" style="height: 386px;overflow: hidden;">
 
                   <p style="display:inline;">内容设置：</p>
 
@@ -418,7 +421,7 @@
                       v-for="item in options"
                       :key="item.goods_id"
                       :label="item.goods_name"
-                      :value="{value:item.goods_id,label:item.goods_name}">
+                      :value="{value:item.goods_id,label:item.goods_name,obite:item.goods_unit_price}">
                     </el-option>
                   </el-select>
 
@@ -429,27 +432,27 @@
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload"
-                    style="position:absolute ;top: 8%;left: 42%;"
+                    style="position:absolute ;top:10%;left: 42%;"
                     v-if="goods_list.length<6">
-                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
-                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    <!-- <img v-if="imageUrl" :src="imageUrl" class="avatar"> -->
+                    <i  class="el-icon-plus avatar-uploader-icon"></i>
                   </el-upload>
 
-                  <p class="pic_size">为了保证图片的正常使用，仅支持3M以内jpg、jpeg、png格式图片上传,最少3张最多6张。</p>
+                 
 
-                  <div  class="diledi" v-for="(item,index) of goods_list" :key="index" v-if="goods_list">
+                  <div style="height: 310px;margin-top: 25px;">
+                    <div  class="diledi" v-for="(item,index) of goods_list" :key="index" v-if="goods_list">
                       <img :src="surl+item.goods_img" alt="#" >
                       <p>{{item.goods_name}}</p>
                       <div class="shot_zhe" @click="deel(index)"></div>
+                    </div>
                   </div>
 
-                <div>
+                </div>
 
-                  <div class="right_but" style="width: 214px;margin: 7px auto; position: fixed;top: 76%;left: 50%;">
-                    <button @click="savelength(false)">保存</button>
-                    <button @click="editor(0)">取消</button>
-                  </div>
-
+                <div class="right_but" style="width: 214px;margin: -9px auto 0;">
+                  <button @click="savelength(false)">保存</button>
+                  <button @click="editor(0)">取消</button>
                 </div>
               </template>
 
@@ -598,19 +601,6 @@
                   <el-dialog :visible.sync="dialogVisible">
                     <img width="100%" :src="surl+dialogImageUrl">
                   </el-dialog>
-                  <!-- <el-upload
-                    :action="imgurl"
-                    list-type="picture-card"
-                    :on-preview="handlePictureCardPreview"
-                    :file-list="form.contractlist"
-                    :on-remove="handleRemove"
-                    :class="{hide:hideUpload}"
-                    style="width: 1430px;">
-                    <i class="el-icon-plus"></i>
-                  </el-upload>
-                  <el-dialog :visible.sync="dialogVisible">
-                    <img width="100%" :src="dialogImageUrl" alt="">
-                  </el-dialog> -->
                 </div>
 
                 <div class="right_but" style="width: 214px;margin: 0px auto; position: fixed;

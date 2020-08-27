@@ -73,15 +73,13 @@ var index = new Vue({
     check:'',//评价内容
     hideUpload: false,
     limitCount:6,
-    studentid:'',//学生id
+    studentid:'',
     lasna:'',
-    newid:''
+    experiment:{}
   },
   created(){
     this.studentid=pub._LinkParm('student_id'); 
-    // console.log(bod);
     this.lasna = localStorage.getItem("dept_id");//学生本身的店铺id
-    console.log(this.lasna)
     this.getinit();
     this.listGoods();
     this.findConfigure();
@@ -99,6 +97,10 @@ var index = new Vue({
       }).then(() => {
           this.index_s==1 ? this.activeColor='#db2522': this.activeColor='#0365c6';
           this.index_s==1 ? this.actColor='#fff2f2': this.actColor='#b9dcff';
+          this.$message({
+            message: '配色选择成功',
+            type: 'success'
+          });
           this.save();
       }).catch(() => {
         this.$message({
@@ -109,19 +111,20 @@ var index = new Vue({
     },
 
     href(tag){
-      console.log(this.id)
-      // if(tag){
-      //   if(this.goods_id==''&&this.template_id==''){
-      //     this.$message({
-      //       message: '宝贝和店铺详情页模板不能为空',
-      //       type: 'warning'
-      //     });
-      //     return;
-      //   }
-      //   window.open('../html/commdetails.html?id='+this.id);
-      // }else{
-      //   window.location.href='../html/usecenter.html?student_id='+this.studentid;
-      // }
+      console.log(this.id,this.goods_id)
+      if(tag){
+        if(this.id==''){
+          this.$message({
+            message: '宝贝和店铺详情页模板不能为空',
+            type: 'warning'
+          });
+          return;
+        }
+        
+        window.open('../html/commdetails.html?id='+this.id+'&'+'stepid='+this.newid);
+      }else{
+        window.location.href='../html/usecenter.html?student_id='+this.studentid;
+      }
       
     },
 
@@ -134,14 +137,13 @@ var index = new Vue({
         data:{},
         cbk:function cbk(res){
           if(res.stateCode=="200"){
-            console.log(res)
             var data=res.data;
-            // console.log(data);
             _this.options=data;
           }
         }
       })
     },
+
     // findShop
     findShop(){
       var _this = this;
@@ -156,13 +158,14 @@ var index = new Vue({
         cbk:function cbk(res){
           if(res.stateCode=="200"){
             _this.newid=res.data.id;
+            console.log(_this.newid);
           }
         }
       })
     },
+
     // 商品详情配置
     findConfigure(){
-      // console.log(this.goods_id,this.template_id)
       var _this = this;
       if(null==_this.goods_id||_this.goods_id==''){
         _this.$message({
@@ -181,19 +184,16 @@ var index = new Vue({
           },
           cbk:function cbk(res){
             console.log(11111,res)
-            if(res.stateCode=="200"){ 
-              // _this.goods.goods_id=_this.goods_id;
-             
+            if(res.stateCode=="200" && res.data!=null){ 
               var data=res.data;
               _this.id=data.id;
-              _this.findShop();
               // 换色
+              _this.findShop();
               _this.index_s=data.index_s;
               _this.activeColor=data.activeColor;
               _this.actColor=data.actColor;
               // 宝贝主图
               _this.goods=data.goods.goods_id+","+data.goods.goods_name;
-            //  console.log("CCCCCCCCCCCCCCCCC"+JSON.stringify( _this.goods))
               _this.goods_id=data.goods.goods_id;
               _this.goods_name=data.goods_name;
               _this.goods_picture_list=data.goods_picture_list;
@@ -228,16 +228,13 @@ var index = new Vue({
                 if(_this.fileList.length>=_this.limitCount){
                   _this.hideUpload = _this.fileList.length >= _this.limitCount;
                 }
-                // console.log(_this.fileList)
               }
-              // console.log(_this.fileList)
 
               // 产品资质图片回显
               for(var i=0;i<_this.set_qualification.length;i++){
                 var file1={};
                 file1.url= pub._url+_this.set_qualification[i];
                 _this.fileList1.push(file1);
-                // console.log(_this.fileList1)
               }
 
               // 详情图图片回显
@@ -245,71 +242,66 @@ var index = new Vue({
                 var file2={};
                 file2.url= pub._url+_this.set_detailsPic[i];
                 _this.fileList2.push(file2);
-                // console.log(_this.fileList2)
               }
 
               // 字典
               //_this.tabledata;
               // 数据
-              // console.log(_this.tabledata)
-              var data = data.set.tabledata;
-              // console.log(data);
+              //var data = data.set.tabledata;
+              var tabdata = data.set.tabledata;
               
-              if(null!=data){
-              for(var i=0;i<_this.tabledata.length;i++){
-                var dic =  _this.tabledata[i]
-               for(var j=0;j<data.length;j++){
 
-                 if(dic.dictionary_id == data[j].dictionary_id){
-                   dic.dictionary_value = data[j].dictionary_value;
-                   if(null==data[j].dictionary_value || data[j].dictionary_value==''){
-                     dic.check_status=false;
-                   }else{
-                    //  dic.check_status = data[j].check_status;
-                    dic.check_status=true;
-                   }
-                 }
-               } 
-             }
-           }
-             _this.dic_tabledata=_this.tabledata;
-            }else{
-              console.log(res.stateMsg)
-            }
+              if(null!=tabdata){
+                  for(var i=0;i<tabdata.length;i++){
+                    var dic =  tabdata[i]
+                    for(var j=0;j<tabdata.length;j++){
+                      if(dic.dictionary_id == tabdata[j].dictionary_id){
+                        dic.dictionary_value = tabdata[j].dictionary_value;
+                        if(null==tabdata[j].dictionary_value || tabdata[j].dictionary_value==''){
+                          dic.check_status=false;
+                        }else{
+                          dic.check_status=true;
+                          typeof(dic.check_status)
+                        }
+                      }
+                    } 
+                  }
+                
+              }
+              _this.tabledata=tabdata;
+              console.log(_this.tabledata)
+              }else if(res.data===null){
+                console.log(45645);
+              }else{
+                console.log(res.stateMsg)
+              }
           }
         })
       }
     },
     checkChange(index){
-      // console.log(this.dic_tabledata[index].check_status)
       this.$set(this.dic_tabledata[index], 'check_status', this.dic_tabledata[index].check_status?true:false);
-      // console.log(this.dic_tabledata)
     },
     // 商品详情静态化
     save(obj){
-      // console.log(this.tabledata);
       // 宝贝主图
       this.goods_picture_list=[];
-      // console.log(this.goods_id,this.goods_name,this.fileList);
       for(var i=0;i<this.fileList.length;i++){
         this.goods_picture_list.push(this.fileList[i].url.replace(pub._url,""));
-        // console.log(this.goods_picture_list);
       }
       // 产品资质
-      // this.set_qualification=[];
-      // for(var i=0;i<this.fileList1.length;i++){
-      //   this.set_qualification.push(this.fileList1[i].url.replace(pub._url,""));
-      //   // console.log(this.set_qualification);
-      //   if(this.fileList1.length>1){
-      //     console.log("只能一张")
-      //   }
-      // }
+      this.set_qualification=[];
+      for(var i=0;i<this.fileList1.length;i++){
+        this.set_qualification.push(this.fileList1[i].url.replace(pub._url,""));
+        if(this.fileList1.length>1){
+          console.log("只能一张")
+        }
+      }
       // 详情图
-      // this.set_detailsPic=[];
-      // for(var i=0;i<this.fileList2.length;i++){
-      //   this.set_detailsPic.push(this.fileList2[i].url.replace(pub._url,""));
-      //   // console.log(this.set_detailsPic);
-      // }
+      this.set_detailsPic=[];
+      for(var i=0;i<this.fileList2.length;i++){
+        this.set_detailsPic.push(this.fileList2[i].url.replace(pub._url,""));
+      }
       // 宝贝参数
       this.dictionary_value=[];
       for(var i=0;i<this.dic_tabledata.length;i++){
@@ -325,7 +317,7 @@ var index = new Vue({
         goods_minus2:_this.goods_minus2, //减
         goods_spec:_this.goods_spec, //规格
         goods_val:_this.goods_val, //规格
-        goods_id:_this.goods_id, //商品编号
+        goods_id:_this.goods_id, //商品编号 
         goods_name:_this.goods_name, //商品名称
         goods_radio:_this.goods_radio,//显示/不显示
       }
@@ -343,7 +335,7 @@ var index = new Vue({
         evaluation_radio:_this.evaluation_radio,
         checkList_radio:_this.checkList_radio,
       }
-      var experiment_module_data={
+      this.experiment={
         // 换色
         index_s:_this.index_s,
         activeColor:_this.activeColor,
@@ -355,62 +347,68 @@ var index = new Vue({
         // 宝贝详情配置
         set:set,
       }
-      var goods_price=document.getElementById("goods_price").value;
-      var goods_val=document.getElementById("goods_val").value;
-      var goods_spec=document.getElementById("goods_spec").value;
-      if(_this.goods_picture_list==""){
+     
+      if(obj==1 && _this.goods_picture_list==""){
         _this.$message({
           message: '未添加图片',
           type: 'warning'
         });
-      }else if(_this.goods_picture_list.length<3){
+      }else if(obj==1 && _this.goods_picture_list.length<3){
         _this.$message({
           message: '上传图片不能少于3张',
           type: 'warning'
         });
-      }else if(goods_price==""){
+      }else if(obj==2 && this.goods_price==""){
         _this.$message({
           message: '宝贝售价不能为空',
           type: 'warning'
         });
-      }else if(goods_val==""){
+      }else if(obj==2 && (_this.goods_radio==0 && this.goods_full1=="" || this.goods_minus1=="" || this.goods_full2=="" || this.goods_minus2=="")){
+          _this.$message({
+            message: '优惠信息不能为空',
+            type: 'warning'
+          });
+      }else if(obj==2 && this.goods_val==""){
         _this.$message({
           message: '宝贝规格数值不能为空',
           type: 'warning'
         });
-      }else if(goods_spec==""){
+      }else if(obj==2 && this.goods_spec==""){
         _this.$message({
           message: '宝贝规格单位不能为空',
           type: 'warning'
         });
       }else{
-        pub._InitAxios({
-          _url:pub._url,
-          ur:pub._DetailApi.makeGoodsDetailsStatic,//商品详情静态化
-          data:{
-            "student_id":_this.studentid,
-            "dept_id":_this.lasna,
-            "template_id":_this.template_id,
-            "experiment_module_data":experiment_module_data,
-            "goods_id":_this.goods_id
-          } ,
-          cbk:function cbk(res){
-            console.log(22222,res)
-            _this.id=res.data.id;
-            if(res.stateCode=="200"){
-              _this.$message({
-                  type: 'success',
-                  message: "保存成功"
-                });
-              _this.editor(0);
-            }else{
-              this.$message.error(res.stateMsg);
-            }
-          }
-        })
+        this.saveall();
       }
     },
 
+    saveall(){
+      var _this=this;
+      pub._InitAxios({
+        _url:pub._url,
+        ur:pub._DetailApi.makeGoodsDetailsStatic,//商品详情静态化
+        data:{
+          "student_id":_this.studentid,
+          "dept_id":_this.lasna,
+          "template_id":_this.template_id,
+          "experiment_module_data":this.experiment,
+          "goods_id":_this.goods_id
+        } ,
+        cbk:function cbk(res){
+          _this.id=res.data.id;
+          if(res.stateCode=="200"){
+            _this.$message({
+                type: 'success',
+                message: "保存成功"
+              });
+            _this.editor(0);
+          }else{
+            this.$message.error(res.stateMsg);
+          }
+        }
+      })
+    },
     // 详情产品参数名称
     getinit(){
       var _this=this;
@@ -422,11 +420,8 @@ var index = new Vue({
         ,
         cbk:function cbk(res){
           if(res.stateCode=="200"){
-            // console.log(res)
             var list=res.data;
-            // console.log(list);
             _this.tabledata=list;
-            // console.log(_this.tabledata);
           }
         }
       })
@@ -437,6 +432,10 @@ var index = new Vue({
       var da = this.goods.split(",");
      this.goods_id=da[0];
       this.goods_name=da[1];
+      this.$message({
+        message: '宝贝选择成功',
+        type: 'success'
+      });
     },
 
     // 悬浮显示按钮
@@ -445,18 +444,6 @@ var index = new Vue({
       bol ==2 ? this.isshow =true : this.isshow=false;
       bol ==4 ? this.isshow4 = true : this.isshow4 =false;
     },
-    // 选择宝贝
-    chan(name,str){
-      this.$alert(`已选择${name}`, '宝贝选择成功', {
-        confirmButtonText: '确定',
-        // callback: action => {
-        //   this.$message({
-        //     // type: 'success',
-        //     // message: ``
-        //   });
-        // }
-      });
-    },
 
     // 切换店铺模板
     changesol(name,str){
@@ -464,7 +451,12 @@ var index = new Vue({
         confirmButtonText: '确定',
         callback: action => {
           this.template_id=str+1;
+          console.log(this.template_id)
             this.findConfigure();
+            this.$message({
+              message: '模板选择成功',
+              type: 'success'
+            });
         }
       });
     },
@@ -474,12 +466,8 @@ var index = new Vue({
 
     // 上传宝贝主图图片
     handleAvatarSuccess(res, file,fileList) {
-      console.log(res,file,fileList)
       file.url=pub._url + res.data.files[0];
       this.fileList=fileList;
-        // this.goods_picture_list.push(this.fileList[i].url);
-      // this.$refs.upload.clearFiles();
-      // console.log(this.goods_picture_list)
     },
     // 超过6张则隐藏图片
     imgChange(file, fileList){
@@ -497,15 +485,10 @@ var index = new Vue({
 
     // 上传产品资质图片
     handleAvatarSuccess1(res, file,fileList) {
-      // console.log(res,file,fileList)
       file.url=pub._url + res.data.files[0];
       this.fileList1=fileList;
     },  
-    // imgChange1(file, fileList){
-    //   if(fileList.length > 1){
-
-    //   }
-    // },
+   
     // 产品资质图片
     handleRemove1(file, fileList) {
       this.fileList1=fileList;
@@ -517,7 +500,6 @@ var index = new Vue({
 
     // 上传详情图图片
     handleAvatarSuccess2(res, file,fileList) {
-      // console.log(res,file,fileList)
       file.url=pub._url + res.data.files[0];
       this.fileList2=fileList;
 

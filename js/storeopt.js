@@ -58,7 +58,8 @@ var index = new Vue({
     setid:'',
     studentid:'',
     lasna:'',
-    slister:[]
+    slister:[],
+    obite:''
   },
   created(){
     this.surl=pub._url;
@@ -103,24 +104,15 @@ var index = new Vue({
                     _this.value_shang=res.data.Navigation.value_shang;//导航
                     _this.value_shang==1?_this.value_shang=true : _this.value_shang=false;
                     _this.Lunboimage=res.data.Lunboimage;
-                   console.log(_this.Lunboimage)
                     for(var i=0;i<_this.Lunboimage.length;i++){
                       var file={};
-
                       file.url=pub._url +  _this.Lunboimage[i];
-
                       _this.contfileList.push(file);
-                      
-                      _this.slister.push( _this.Lunboimage[i]);
-                      console.log(_this.slister);
-
                       // 超过6张则隐藏图片
                       if(res.data.Lunboimage>=_this.limitCount){
                         _this.hideUpload =true;
                       }
-                      
                     }
-
                     //修改颜色
                     if(res.data.color==2){
                       _this.activeColor='#0365C6';
@@ -145,8 +137,9 @@ var index = new Vue({
 
     //实时监控选择的结果
     Times(val){
-      this.goods_id=val.value;//小组id
-      this.goods_name=val.label;//小组名字
+      this.goods_id=val.value;//商品id
+      this.goods_name=val.label;//商品名字
+      this.obite=val.obite;//商品价格
     },
 
     //编辑页面弹框
@@ -209,6 +202,7 @@ var index = new Vue({
         goods_id:this.goods_id,
         goods_name:this.goods_name,
         goods_img:res.data.files[0],
+        goods_price:this.obite
       }
       
       this.goods_list.push(goos_count);
@@ -234,17 +228,16 @@ var index = new Vue({
  
     //移除轮播图的图片
     handleRemove(file, fileList) {
-      console.log(fileList);
       this.Lunboimage=[];
       this.contfileList=fileList;//图片回显  照片墙
       if(fileList.length!=0){
         for(let i=0; i<fileList.length;i++){
-          var iu=fileList[i].url;
+          var iu=fileList[i].url.replace(pub._url,"");
           this.Lunboimage.push(iu);
         }
       }else{
         for(let i=0; i<fileList.length;i++){
-          var iu=fileList[i].response.data.files[0];
+          var iu=fileList[i].response.data.files[0].replace(pub._url,"");
           this.Lunboimage.push(iu);
         }
       }
@@ -257,10 +250,9 @@ var index = new Vue({
     savelength(obl){
       var imglength;
       obl? imglength=this.Lunboimage : imglength=this.goods_list;
-      
       if(imglength.length<3){
         this.editor(0);
-        this.$message.error('轮播图图片少于三张，请再次上传');
+        this.$message.error('未保存成功，轮播图图片少于三张，请再次上传');
         return;
       }
 
@@ -284,7 +276,6 @@ var index = new Vue({
       }
       // console.log(this.contractlist)
       
-      console.log(44444)
       //汇总
       this.experiment_module_data={
         'goods_list':this.goods_list,
@@ -301,8 +292,8 @@ var index = new Vue({
         'template_id':this.template_id
       }
 
-      console.log(this.experiment_module_data);
-     //this.allsave();
+      // console.log(this.experiment_module_data);
+      this.allsave();
     },
     // 全部保存
     allsave(){

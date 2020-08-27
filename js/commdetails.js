@@ -54,11 +54,21 @@ var index = new Vue({
     checkList_radio:'',
     // 用户评价
     evaluation:[],
-    student_id:''//学生msg-id
+    student_id:'',//学生msg-id
+    stepid:'',//
+    logoimg:'',//logo图片
+    step_name:'',//logo名字
+    imurl:'',
+    dw:''
   },
   created(){
 
-    this.id=getQueryVariable('id');
+    this.id=pub._LinkParm('id');
+    this.dw=pub._LinkParm('dw');
+    console.log(this.dw)
+    this.stepid=pub._LinkParm('stepid');
+    console.log(this.id,this.stepid)
+    this.imurl=pub._url;
     this.student_id =JSON.parse(localStorage.getItem("msg")).student_id;
     this.findDetails();
     this.getinit();
@@ -149,46 +159,31 @@ var index = new Vue({
         _url:pub._url,
         ur:pub._DetailApi.findShopDetail,
         data:{ 
-          "id":_this.id,
+          "id":_this.stepid,
           "student_id":_this.student_id
         },
         cbk:function cbk(res){
           if(res.stateCode=="200"){
             console.log(res.data);
-          //   _this.logoimg=res.data.Logo.dialogImage;
-          //   _this.step_name=res.data.Logo.step_name;//店铺名称
-          //   _this.lunboimglist=res.data.Lunboimage;//轮播图内容
-          //   _this.template_id=res.data.template_id;//店铺id
-          //   _this.allcolo=res.data.color;
-          //   var arr=res.data.goods_list;
-          //   var sk=res.data.goods_list;
-          //   _this.tgoods_list=sk.splice(3,6);//后三个
-          //   _this.goods_list= arr.splice(0,3);//前三个
-          //   _this.typ_id=res.data.dept_id;
-          //   var nav=res.data.Navigation.navigationList;
-          //  if(nav){
-          //     _this.Navgitlist=nav;
-          //  }
-          //  _this.shoustr=res.data.bonus_points;
-          //  _this.phonk=res.data.fabulous_state;
-          //  if(_this.phonk % 2 == 0){
-          //   _this.aolor='#fff';
-          //   _this.whir='#ccc';
-          //  }else{
-          //   _this.aolor=_this.activeColor;
-          //   _this.whir="#fff"
-          //   if(_this.allcolo==2){
-          //     _this.aolor=_this.bluecol;
-          //    }
-          //  }
-          //  if(_this.allcolo==2){
-          //   _this.activeColor=_this.bluecol;
-          //   console.log(_this.activeColor)
-          //   _this.objStyles='4px solid #0365C6'
-          //  }
+            _this.logoimg=res.data.Logo.dialogImage;//logo照片
+            _this.step_name=res.data.Logo.step_name;//logo名字
           }
         }
       });
+    },
+    goindex(){
+      window.location.href='../index/index.html?id='+this.stepid;
+    },
+    shouYe(bol){
+      console.log(bol)
+      var backurl;
+      if(bol){
+        backurl="../html/details.html?student_id="+this.student_id;
+      }else{
+        backurl="../html/usecenter.html?student_id="+this.student_id+'#p1';
+      }
+      console.log(backurl)
+      window.location.href=backurl;
     },
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg';
