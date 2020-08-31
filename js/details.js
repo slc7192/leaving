@@ -42,7 +42,6 @@ var index = new Vue({
     textarea:'',
     checked:false,
     tabledata:[],
-    dic_tabledata:[],
     // dictionary_name0:""
     // 宝贝主图
     goods_picture:'',
@@ -75,11 +74,14 @@ var index = new Vue({
     limitCount:6,
     studentid:'',
     lasna:'',
-    experiment:{}
+    experiment:{},
+    
   },
   created(){
     this.studentid=pub._LinkParm('student_id'); 
     this.lasna = localStorage.getItem("dept_id");//学生本身的店铺id
+    
+    console.log(this.slid);
     this.getinit();
     this.listGoods();
     this.findConfigure();
@@ -158,7 +160,6 @@ var index = new Vue({
         cbk:function cbk(res){
           if(res.stateCode=="200"){
             _this.newid=res.data.id;
-            console.log(_this.newid);
           }
         }
       })
@@ -184,11 +185,11 @@ var index = new Vue({
           },
           cbk:function cbk(res){
             console.log(11111,res)
+            _this.findShop();
             if(res.stateCode=="200" && res.data!=null){ 
               var data=res.data;
               _this.id=data.id;
               // 换色
-              _this.findShop();
               _this.index_s=data.index_s;
               _this.activeColor=data.activeColor;
               _this.actColor=data.actColor;
@@ -261,15 +262,17 @@ var index = new Vue({
                           dic.check_status=false;
                         }else{
                           dic.check_status=true;
-                          typeof(dic.check_status)
+                          console.log(typeof(dic.check_status));
                         }
                       }
                     } 
                   }
-                
+                 setTimeout(()=>{
+                  _this.tabledata=tabdata;
+                  console.log(_this.tabledata)
+                 },100)
               }
-              _this.tabledata=tabdata;
-              console.log(_this.tabledata)
+              
               }else if(res.data===null){
                 console.log(45645);
               }else{
@@ -280,7 +283,8 @@ var index = new Vue({
       }
     },
     checkChange(index){
-      this.$set(this.dic_tabledata[index], 'check_status', this.dic_tabledata[index].check_status?true:false);
+      console.log(index);
+      this.$set(this.tabledata[index], 'check_status', this.tabledata[index].check_status?true:false);
     },
     // 商品详情静态化
     save(obj){
@@ -304,8 +308,8 @@ var index = new Vue({
       }
       // 宝贝参数
       this.dictionary_value=[];
-      for(var i=0;i<this.dic_tabledata.length;i++){
-        this.dictionary_value.push(this.dic_tabledata[i].dictionary_value);
+      for(var i=0;i<this.tabledata.length;i++){
+        this.dictionary_value.push(this.tabledata[i].dictionary_value);
       }
       var _this=this;
       // 基础信息

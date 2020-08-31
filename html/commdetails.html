@@ -252,7 +252,7 @@ a:active{color:#1d7400;}
       <!-- 详情右侧 -->
       <div class="navCo">
           <div class="nav_title">
-              <span>{{shop_category_name}}</span>
+              <span>{{goods_name}}</span>
           </div>
           <div class="nav_price" id="nav_price" style="display: block;">
               <div class="nav_pri">售 价<p v-bind:style="{'color':activeColor}">￥{{goods_price}}</p></div>
@@ -293,7 +293,7 @@ a:active{color:#1d7400;}
               <img src="../img/details/按时到货.png" alt=""><span>按时到货</span>
               <img src="../img/details/买.png" alt=""><span>买家保障</span>
           </div> 
-          <div class="nav_btn" v-bind:style="{'border-color':activeColor,'background':actColor}">
+          <div class="nav_btn" v-bind:style="{'border-color':activeColor,'background':actColor}" @click="gobuy">
               <span v-bind:style="{'color':activeColor}">立即购买</span>
           </div>
       </div>
@@ -400,29 +400,6 @@ a:active{color:#1d7400;}
 <script src="../publicJs/jquery.1.4.2-min.js"></script>
 <script src="../publicJs/element_ui/element.js"></script>
 <script src="../js/commdetails.js"></script>
-<script>
-  window.location.href="#p1";
-  var guding=document.querySelectorAll('.navCont>.contT');
-  if(guding){
-      for(var i =0 ; i<guding.length; i++){
-          guding[i].onclick = function(){
-              var par= this.parentNode;
-              var tag = par.classList.contains('click');
-              reset();
-              if(tag){
-                  par.classList.remove('click');
-              }else{
-                  par.classList.add('click');
-              }
-          }
-      }
-      function reset(){
-          for(var j =0 ;j <guding.length; j++){
-              guding[j].parentNode.classList.remove('click');
-          }
-      }
-  }
-</script>
 <script>
   
   // 详情大小图切换

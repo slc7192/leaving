@@ -26,7 +26,7 @@ var app =new Vue({
     newagainpass:'',//重复密码
     againc:false,
     sav1:true,
-    pagesize:2,//一页几个
+    pagesize:6,//一页几个
     pagenum:1,//第几页
     total:0,//总页数
     search_name:'',
@@ -87,7 +87,7 @@ var app =new Vue({
         cbk: function cbk(res){
           console.log(res);
           _this.tabe= res.data;
-          _this.imageUrl=res.data.files;
+          _this.imageUrl=pub._url+res.data.files;
           console.log(_this.tabe);
           _this.textcount=res.data.experiment;
           _this.search_name=res.data.student_name;
@@ -152,7 +152,7 @@ var app =new Vue({
         ur:pub._DetailApi.studentEdit,
         data:{
         "student_id":_this.studentid,
-        "files":_this.imageUrl,
+        "files":res.data.files[0],
         },
         cbk:function cbk(res){
           console.log(res);

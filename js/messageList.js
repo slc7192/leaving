@@ -15,7 +15,8 @@ var app = new Vue({
         head_portrait:"",
         student_name:"",
         onLogin:false,
-        downLogin:true
+        downLogin:true,
+        imul:''
     },
     created() {
          var stname=JSON.parse(localStorage.getItem("msg"));
@@ -26,7 +27,8 @@ var app = new Vue({
 		 }else{
 			 window.location.href="../html/login.html";
 		 }
-		
+         imul:''
+         this.imul=pub._url;
         
     },
     methods: {

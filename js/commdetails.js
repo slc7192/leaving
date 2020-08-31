@@ -94,7 +94,7 @@ var index = new Vue({
             _this.actColor=data.actColor;
              // 宝贝主图
              _this.goods_id=data.goods.goods_id;
-             _this.goods_name=data.goods_name;
+             _this.goods_name=data.goods.goods_name;
              _this.goods_picture_list= data.goods_picture_list;
             //  console.log(_this.goods_picture_list)
              // 基础信息
@@ -204,6 +204,28 @@ var index = new Vue({
     // tabs
     handleClick(tab, event) {
       // console.log(tab, event);
-    }
+    },
+    gobuy(){
+      var _this=this;
+      pub._InitAxios({
+        _url:pub._url,
+        ur:pub._DetailApi.saveBonus,
+        data:{
+          "student_id":_this.student_id,
+          "type_id":"goods",
+          "bonusPointsType":"add",
+          "id":_this.id,
+          "goods_name":_this.goods_name
+        },
+        cbk:function cbk(res){
+          if(res.stateCode=="200"){
+            _this.$message({
+              message: `${_this.goods_name}购买成功`,
+              type: 'success'
+            });
+          }
+        }
+      })
+    },
   },
 })

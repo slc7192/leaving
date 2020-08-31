@@ -104,15 +104,20 @@ var index = new Vue({
                     _this.value_shang=res.data.Navigation.value_shang;//导航
                     _this.value_shang==1?_this.value_shang=true : _this.value_shang=false;
                     _this.Lunboimage=res.data.Lunboimage;
+                    
+                    _this.Contractlist=res.data.Contractlist;
                     for(var i=0;i<_this.Lunboimage.length;i++){
                       var file={};
                       file.url=pub._url +  _this.Lunboimage[i];
                       _this.contfileList.push(file);
                       // 超过6张则隐藏图片
-                      if(res.data.Lunboimage>=_this.limitCount){
-                        _this.hideUpload =true;
-                      }
+                      
                     }
+
+                    if(_this.Lunboimage.length>=_this.limitCount){
+                      _this.hideUpload =true;
+                    }
+
                     //修改颜色
                     if(res.data.color==2){
                       _this.activeColor='#0365C6';
@@ -241,6 +246,7 @@ var index = new Vue({
           this.Lunboimage.push(iu);
         }
       }
+      this.onlunch()
     },
     //删除内容配置
     deel(ind){

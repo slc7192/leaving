@@ -156,6 +156,48 @@ a:active{color:#1d7400;}
 #bigView{position:absolute;border: 1px solid #959595; overflow: hidden; z-index:999;top: 115px!important;width: 470px;height: 420px;left: 765px!important;margin-left: 50px;}
 
 #bigView img{position:absolute;}
+.is-checked .el-checkbox__inner, .el-checkbox__input.is-indeterminate .el-checkbox__inner{
+  background-color: #dfaf89;
+  border-color: #dfaf89;
+}
+.is-checked+.el-checkbox__label{
+  color: #dfaf89;
+}
+ .el-checkbox__inner::after {
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    content: "";
+    border: 1px solid #FFF;
+    border-left: 0;
+    border-top: 0;
+    height: 7px;
+    left: 4px;
+    position: absolute;
+    top: 0;
+    -webkit-transform: rotate(45deg) scaleY(0);
+    transform: rotate(45deg) scaleY(0);
+    width: 3px;
+    -webkit-transition: -webkit-transform .15s ease-in .05s;
+    transition: -webkit-transform .15s ease-in .05s;
+    transition: transform .15s ease-in .05s;
+    transition: transform .15s ease-in .05s, -webkit-transform .15s ease-in .05s;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    z-index: 9999999999;
+    display: block;
+}
+.ischecked{
+  width: 3px;
+  height: 7px;
+  border: 1px solid #dfaf89;
+  position: absolute;
+  border-left: 0;
+  border-top: 0;
+  top: 14px;
+  left: -10px;
+  transform: rotate(45deg) scaleY(1);
+  z-index: 9999;
+}
 
 </style>
 </head>
@@ -338,7 +380,7 @@ a:active{color:#1d7400;}
               <img src="../img/details/按时到货.png" alt=""><span>按时到货</span>
               <img src="../img/details/买.png" alt=""><span>买家保障</span>
           </div> 
-          <div class="nav_btn">
+          <div class="nav_btn" >
               <span>立即购买</span>
           </div>
       </div>
@@ -541,11 +583,12 @@ a:active{color:#1d7400;}
                   <div class="l_l_con">
                     <p style="display:inline; font-family: SourceHanSansCN-Normal; color: #222222; font-size: 14px;">宝贝参数：</p>
                     <div class="lcon">
-                      <div class="list_c" v-for="(item,index) in tabledata">
+                      <div class="list_c" v-for="(item,index) in tabledata" >
+                        <div :class="{'ischecked':item.check_status}"></div>
                         <!-- <input type="text"/> -->
-                          <el-checkbox id="cb1" @change="checkChange(index)"  :class="{'is-checked':check==item.check_status}" :key="item.dictionary_id">{{item.dictionary_name}}</el-checkbox>
-                          <!-- <el-checkbox id="cb1" @change="checkChange(index)" :checked="false" :key="item.dictionary_id" v-else>{{item.dictionary_name}}</el-checkbox> -->
-                          <input type="text" v-model="item.dictionary_value" placeholder="请输入参数值" style="border-bottom:1px solid #e1e1e1; margin-left: -10px; height:30px; line-height:30px;">
+                          <!-- <el-checkbox id="cb1" @change="checkChange(index)" :checked="item.check_status" :key="item.dictionary_id">{{item.dictionary_name}}</el-checkbox> -->
+                          <div >{{item.dictionary_name}}:</div>
+                          <input type="text" v-model="item.dictionary_value" placeholder="请输入参数值" style="border-bottom:1px solid #e1e1e1; margin-left: 5px; height:30px; line-height:30px;"  @change="checkChange(index)">
                       </div>
                     </div>
                   </div>  
